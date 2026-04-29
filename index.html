@@ -7,17 +7,19 @@
     <meta name="description" content="Burak Cevik. Customer Success and Automation. APM at ModSquad.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bordo: #6B1F2B;
             --bordo_dark: #4A1019;
-            --bordo_light: #8B2C3A;
             --krem: #F5EDE0;
             --krem_soft: #EFE6D6;
             --metin: #2A1A1D;
             --metin_soft: #4A3439;
             --aksan: #C97A6B;
+            --aksan_light: #E8B5A8;
+            --glow: #FFD93D;
+            --success: #6BCB77;
         }
 
         * {
@@ -40,14 +42,19 @@
 
         .container {
             display: grid;
-            grid-template-columns: 340px 1fr;
+            grid-template-columns: 32% 1fr 110px;
+            grid-template-rows: 1fr auto;
             min-height: 100vh;
         }
 
+        /* === Sidebar === */
+
         .sidebar {
+            grid-column: 1;
+            grid-row: 1;
             background: var(--bordo);
             color: var(--krem);
-            padding: 60px 32px;
+            padding: 80px 40px 60px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -55,19 +62,17 @@
         }
 
         .avatar {
-            width: 180px;
-            height: 180px;
+            width: 220px;
+            height: 220px;
             border-radius: 50%;
             background: var(--krem_soft);
-            border: 4px solid var(--aksan);
+            border: 4px solid var(--aksan_light);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 64px;
-            font-weight: 700;
-            color: var(--bordo);
-            margin-bottom: 28px;
+            margin-bottom: 80px;
             overflow: hidden;
+            flex-shrink: 0;
         }
 
         .avatar img {
@@ -77,57 +82,70 @@
         }
 
         .name {
-            font-size: 32px;
-            font-weight: 800;
+            font-size: 42px;
+            font-weight: 700;
             letter-spacing: 0.5px;
-            margin-bottom: 16px;
-        }
-
-        .divider {
-            width: 60%;
-            height: 1px;
-            background: rgba(245, 237, 224, 0.3);
-            margin: 8px 0 16px;
-        }
-
-        .title {
-            font-size: 15px;
-            font-weight: 600;
+            margin-bottom: 24px;
             color: var(--krem);
-            margin-bottom: 4px;
+        }
+
+        .role_tag {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--aksan_light);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
         }
 
         .subtitle {
-            font-size: 14px;
-            font-weight: 400;
-            color: rgba(245, 237, 224, 0.8);
-            margin-bottom: 32px;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--krem);
+            margin-bottom: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            flex-wrap: wrap;
         }
 
         .subtitle a {
-            color: var(--aksan);
+            color: var(--aksan_light);
             text-decoration: none;
             font-weight: 600;
+            border-bottom: 1px solid var(--aksan_light);
+            padding-bottom: 1px;
+            transition: opacity 0.2s;
         }
 
         .subtitle a:hover {
-            text-decoration: underline;
+            opacity: 0.75;
         }
 
         .company_logo {
             width: 18px;
             height: 18px;
             vertical-align: middle;
-            margin-left: 4px;
+            margin-left: 2px;
             border-radius: 4px;
             background: white;
             padding: 1px;
         }
 
+        .divider {
+            width: 60%;
+            max-width: 220px;
+            height: 1px;
+            background: rgba(245, 237, 224, 0.25);
+            margin: 0 auto 28px;
+        }
+
         .socials {
             display: flex;
-            gap: 18px;
-            margin-top: 8px;
+            gap: 22px;
+            margin-top: auto;
+            padding-top: 60px;
         }
 
         .socials a {
@@ -136,34 +154,45 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            opacity: 0.85;
         }
 
         .socials a:hover {
-            color: var(--aksan);
+            color: var(--aksan_light);
+            opacity: 1;
             transform: translateY(2px);
         }
 
         .socials svg {
-            width: 26px;
-            height: 26px;
+            width: 24px;
+            height: 24px;
             fill: currentColor;
         }
 
+        /* === Content === */
+
         .content {
-            padding: 80px 60px;
-            max-width: 720px;
+            grid-column: 2;
+            grid-row: 1;
+            padding: 110px 80px 80px;
+            max-width: 900px;
         }
 
         .greeting {
-            font-size: 28px;
+            font-size: 30px;
             font-weight: 800;
             color: var(--bordo);
-            margin-bottom: 24px;
+            margin-bottom: 32px;
             letter-spacing: 0.3px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
         }
 
         .wave {
             display: inline-block;
+            font-size: 28px;
             animation: wave 2.5s ease-in-out infinite;
             transform-origin: 70% 70%;
         }
@@ -178,10 +207,10 @@
         }
 
         .content p {
-            font-size: 16px;
+            font-size: 17px;
             color: var(--metin_soft);
-            margin-bottom: 22px;
-            line-height: 1.75;
+            margin-bottom: 24px;
+            line-height: 1.8;
         }
 
         .content a {
@@ -190,93 +219,415 @@
             font-weight: 700;
             border-bottom: 2px solid var(--aksan);
             padding-bottom: 1px;
-            transition: color 0.2s;
+            transition: opacity 0.2s;
         }
 
         .content a:hover {
-            color: var(--aksan);
+            opacity: 0.7;
         }
+
+        /* === Right column (vertical stickers) === */
+
+        .right_column {
+            grid-column: 3;
+            grid-row: 1;
+            background: var(--krem);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 110px 16px 60px;
+            border-left: 1px solid rgba(107, 31, 43, 0.08);
+        }
+
+        .vertical_stickers {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            align-items: center;
+        }
+
+        /* === Stickers (shared) === */
 
         .stickers {
             display: flex;
-            gap: 24px;
-            margin-top: 40px;
-            justify-content: flex-start;
+            gap: 36px;
+            margin-top: 50px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
         }
 
         .sticker {
             width: 64px;
             height: 64px;
-            background: var(--krem_soft);
-            border-radius: 16px;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.3s;
-        }
-
-        .sticker:hover {
-            transform: rotate(5deg) scale(1.1);
+            cursor: default;
+            position: relative;
         }
 
         .sticker svg {
-            width: 36px;
-            height: 36px;
+            width: 100%;
+            height: 100%;
+            display: block;
+            overflow: visible;
         }
 
-        @media (max-width: 820px) {
+        .sticker::after {
+            content: attr(data-label);
+            position: absolute;
+            top: calc(100% + 14px);
+            left: 50%;
+            transform: translateX(-50%) translateY(-4px);
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--krem);
+            background: var(--bordo);
+            padding: 6px 12px;
+            border-radius: 8px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+            pointer-events: none;
+            letter-spacing: 0.3px;
+            box-shadow: 0 4px 12px rgba(107, 31, 43, 0.18);
+        }
+
+        .sticker:hover::after {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Right-column stickers: tooltip on the LEFT */
+
+        .vertical_stickers .sticker::after {
+            top: 50%;
+            left: auto;
+            right: calc(100% + 14px);
+            transform: translateY(-50%) translateX(4px);
+        }
+
+        .vertical_stickers .sticker:hover::after {
+            transform: translateY(-50%) translateX(0);
+        }
+
+        /* === Sticker animations === */
+
+        /* 1. Robot (AI): eyes glow, antennas bob */
+
+        .robot_eye {
+            transition: fill 0.25s ease, filter 0.25s ease;
+        }
+
+        .robot_sticker:hover .robot_eye {
+            fill: var(--glow);
+            filter: drop-shadow(0 0 4px var(--glow));
+        }
+
+        .robot_sticker:hover .left_antenna {
+            animation: antenna_up 0.5s ease-in-out infinite alternate;
+        }
+
+        .robot_sticker:hover .right_antenna {
+            animation: antenna_up 0.5s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes antenna_up {
+            from { transform: translateY(0); }
+            to { transform: translateY(-4px); }
+        }
+
+        /* 2. Gear (Automation): continuous spin */
+
+        .gear_shape {
+            transform-origin: center;
+            transform-box: fill-box;
+        }
+
+        .gear_sticker:hover .gear_shape {
+            animation: gear_spin 1.6s linear infinite;
+        }
+
+        @keyframes gear_spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* 3. Workflow: 360 deg rotation */
+
+        .workflow_shape {
+            transform-origin: center;
+            transform-box: fill-box;
+            transition: transform 0.8s ease-in-out;
+        }
+
+        .workflow_sticker:hover .workflow_shape {
+            transform: rotate(360deg);
+        }
+
+        /* 4. Chat (Customer Success / Trilingual brain): cycle Hi -> Hola -> Merhaba */
+
+        .chat_dots {
+            transition: opacity 0.2s ease;
+        }
+
+        .chat_sticker:hover .chat_dots {
+            opacity: 0;
+        }
+
+        .chat_lang {
+            opacity: 0;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .chat_sticker:hover .lang1 {
+            animation: lang_cycle 2.4s ease-in-out infinite;
+            animation-delay: 0s;
+        }
+
+        .chat_sticker:hover .lang2 {
+            animation: lang_cycle 2.4s ease-in-out infinite;
+            animation-delay: 0.8s;
+        }
+
+        .chat_sticker:hover .lang3 {
+            animation: lang_cycle 2.4s ease-in-out infinite;
+            animation-delay: 1.6s;
+        }
+
+        @keyframes lang_cycle {
+            0% { opacity: 0; }
+            5%, 28% { opacity: 1; }
+            33%, 100% { opacity: 0; }
+        }
+
+        /* 5. Manager (Bar chart): bars rise */
+
+        .chart_bar {
+            transform-box: fill-box;
+            transform-origin: center bottom;
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .chart_sticker:hover .bar1 {
+            transform: scaleY(1.7);
+            transition-delay: 0s;
+        }
+
+        .chart_sticker:hover .bar2 {
+            transform: scaleY(1.45);
+            transition-delay: 0.06s;
+        }
+
+        .chart_sticker:hover .bar3 {
+            transform: scaleY(1.25);
+            transition-delay: 0.12s;
+        }
+
+        /* 6. Bug spotter (QA): magnifier scans */
+
+        .bug_sticker:hover .magnifier {
+            animation: scan 0.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes scan {
+            from { transform: translate(-2px, -1px); }
+            to { transform: translate(2px, 1px); }
+        }
+
+        /* 7. Ticket (CRM): lift + status turns green */
+
+        .ticket {
+            transition: transform 0.3s ease;
+        }
+
+        .ticket_dot {
+            transition: fill 0.3s ease;
+        }
+
+        .ticket_sticker:hover .ticket {
+            transform: translateY(-3px) rotate(-2deg);
+        }
+
+        .ticket_sticker:hover .ticket_dot {
+            fill: var(--success);
+        }
+
+        /* 8. Trend chart (Analytics): line draws + arrow jumps */
+
+        .trend_line {
+            stroke-dasharray: 80;
+            stroke-dashoffset: 0;
+        }
+
+        .trend_sticker:hover .trend_line {
+            animation: draw_line 1.2s ease-out;
+        }
+
+        @keyframes draw_line {
+            from { stroke-dashoffset: 80; }
+            to { stroke-dashoffset: 0; }
+        }
+
+        .trend_arrow {
+            transform-origin: center;
+            transform-box: fill-box;
+        }
+
+        .trend_sticker:hover .trend_arrow {
+            animation: arrow_jump 1.2s ease-in-out;
+        }
+
+        @keyframes arrow_jump {
+            0%, 70% { transform: translateY(0); }
+            85% { transform: translateY(-5px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* 9. Books (Knowledge base): books bounce in sequence */
+
+        .book {
+            transform-origin: bottom center;
+            transform-box: fill-box;
+        }
+
+        .books_sticker:hover .bk1 { animation: book_jump 0.7s ease-in-out; animation-delay: 0s; }
+        .books_sticker:hover .bk2 { animation: book_jump 0.7s ease-in-out; animation-delay: 0.08s; }
+        .books_sticker:hover .bk3 { animation: book_jump 0.7s ease-in-out; animation-delay: 0.16s; }
+        .books_sticker:hover .bk4 { animation: book_jump 0.7s ease-in-out; animation-delay: 0.24s; }
+
+        @keyframes book_jump {
+            0%, 100% { transform: translateY(0); }
+            45% { transform: translateY(-5px); }
+        }
+
+        /* 10. Spreadsheet (VLOOKUP): cells flash in sequence */
+
+        .hc {
+            opacity: 0;
+        }
+
+        .vlookup_sticker:hover .hc1 { animation: cell_flash 2s 0s infinite; }
+        .vlookup_sticker:hover .hc2 { animation: cell_flash 2s 0.4s infinite; }
+        .vlookup_sticker:hover .hc3 { animation: cell_flash 2s 0.8s infinite; }
+        .vlookup_sticker:hover .hc4 { animation: cell_flash 2s 1.2s infinite; }
+
+        @keyframes cell_flash {
+            0%, 100% { opacity: 0; }
+            5%, 18% { opacity: 0.7; }
+        }
+
+        /* === Footer === */
+
+        footer {
+            grid-column: 1 / -1;
+            grid-row: 2;
+            text-align: left;
+            padding: 24px 40px;
+            font-size: 12px;
+            color: var(--krem);
+            background: var(--bordo);
+            opacity: 0.95;
+        }
+
+        footer .inner {
+            opacity: 0.6;
+        }
+
+        /* === Mobile === */
+
+        @media (max-width: 1100px) {
             .container {
                 grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto auto;
             }
             .sidebar {
-                padding: 48px 24px 36px;
+                grid-row: 1;
+                padding: 60px 32px 40px;
             }
             .avatar {
-                width: 140px;
-                height: 140px;
-                font-size: 48px;
+                width: 160px;
+                height: 160px;
+                margin-bottom: 32px;
             }
             .name {
-                font-size: 28px;
+                font-size: 34px;
+                margin-bottom: 16px;
+            }
+            .subtitle {
+                margin-bottom: 28px;
+            }
+            .socials {
+                margin-top: 0;
+                padding-top: 24px;
             }
             .content {
-                padding: 48px 28px;
+                grid-row: 2;
+                padding: 60px 32px 60px;
                 max-width: 100%;
             }
             .greeting {
-                font-size: 24px;
+                font-size: 26px;
             }
             .content p {
-                font-size: 15px;
+                font-size: 16px;
             }
             .stickers {
-                justify-content: center;
+                gap: 18px;
+                margin-top: 36px;
             }
-        }
-
-        footer {
-            grid-column: 1 / 1;
-            text-align: center;
-            padding: 24px;
-            font-size: 13px;
-            color: var(--metin_soft);
-            opacity: 0.7;
+            .sticker {
+                width: 52px;
+                height: 52px;
+            }
+            .right_column {
+                grid-row: 3;
+                grid-column: 1;
+                border-left: none;
+                border-top: 1px solid rgba(107, 31, 43, 0.08);
+                padding: 32px;
+            }
+            .vertical_stickers {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 24px;
+            }
+            .vertical_stickers .sticker::after {
+                top: calc(100% + 14px);
+                left: 50%;
+                right: auto;
+                transform: translateX(-50%) translateY(-4px);
+            }
+            .vertical_stickers .sticker:hover::after {
+                transform: translateX(-50%) translateY(0);
+            }
+            footer {
+                grid-row: 4;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
+
+        <!-- Sidebar -->
         <aside class="sidebar">
             <div class="avatar">
                 <img src="profile.jpg" alt="Burak Cevik">
             </div>
+
             <h1 class="name">Burak Cevik</h1>
-            <div class="divider"></div>
-            <p class="title">Customer Success & Automation</p>
+
+            <p class="role_tag">Customer Success & Automation</p>
+
             <p class="subtitle">
                 APM at <a href="https://modsquad.com" target="_blank" rel="noopener">ModSquad</a>
                 <img src="modsquad-logo.png" alt="ModSquad" class="company_logo">
             </p>
+
+            <div class="divider"></div>
 
             <nav class="socials" aria-label="Social media">
                 <a href="https://github.com/bcvk" target="_blank" rel="noopener" aria-label="GitHub">
@@ -284,14 +635,14 @@
                         <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79.25.79.56 0 .28 0 1.02 0 2 3.2.7 3.87 1.54 3.87 1.54.52 1.32 1.27 1.67 1.27 1.67 1.04.71.08.7.08.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.69 1.25 3.34.95.1.74.4 1.25.72 1.54 2.55.29 5.24 1.28 5.24 5.69 0 1.26.45 2.29 1.18 3.1.12.29.51 1.46.11 3.05 0 0 .97.31 3.18 1.18a11 11 0 0 1 5.78 0c2.21 1.49 3.18 1.18 3.18 1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.84 1.18 3.1 0 4.42 2.7 5.4 5.27 5.68.41.36.78 1.06.78 2.14 0 1.55.01 2.8.01 3.18 0 .31.21.67.8.56C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/>
                     </svg>
                 </a>
-                <a href="https://linkedin.com/in/burakcevik" target="_blank" rel="noopener" aria-label="LinkedIn">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/>
-                    </svg>
-                </a>
                 <a href="https://burak.pm" target="_blank" rel="noopener" aria-label="burak.pm">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10 4.48 10 10S17.52 2 12 2zm0 17.93c-3.95 .49-7 3.85-7 7.93 0 .62.08 1.21.21 1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9 2.54c-.26 .81-1 1.39-1.9 1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                    </svg>
+                </a>
+                <a href="https://linkedin.com/in/burakcevik" target="_blank" rel="noopener" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/>
                     </svg>
                 </a>
                 <a href="mailto:hello@burak.pm" aria-label="Email">
@@ -302,11 +653,12 @@
             </nav>
         </aside>
 
+        <!-- Content -->
         <main class="content">
             <h2 class="greeting">Hey there! <span class="wave">👋</span> I'm Burak</h2>
 
             <p>
-                Welcome to my personal space. I'm an Associate Project Manager at <a href="https://modsquad.com" target="_blank" rel="noopener">ModSquad</a>, where I lead a team of 20+ multilingual customer support specialists across various language queues for a major consumer SaaS client.
+                Welcome to my personal space! I'm an Associate Project Manager at <a href="https://modsquad.com" target="_blank" rel="noopener">ModSquad</a>, where I lead a team of 20+ multilingual customer support specialists across various language queues for a major consumer SaaS client.
             </p>
 
             <p>
@@ -318,34 +670,167 @@
             </p>
 
             <p>
-                If you want to chat about automation, customer success, or building things together, drop me a line at <a href="mailto:hello@burak.pm">hello@burak.pm</a>.
+                If you want to chat about automation, customer success, or building things together, drop me a line at <a href="mailto:hello@burak.pm">hello@burak.pm</a>. I'd love to chat about automation, AI, customer success, or anything else that interests you.
             </p>
 
             <div class="stickers" aria-hidden="true">
-                <div class="sticker" title="Automation">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83 2.83M16.24 7.76l2.83 2.83" stroke="#6B1F2B" stroke-width="2" stroke-linecap="round"/>
-                        <circle cx="12" cy="12" r="3" fill="#C97A6B"/>
+
+                <span class="sticker robot_sticker" data-label="My silicon co-pilot">
+                    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                        <g class="robot_antennas">
+                            <g class="left_antenna">
+                                <line x1="22" y1="14" x2="22" y2="6" stroke="#6B1F2B" stroke-width="2.5" stroke-linecap="round"/>
+                                <circle cx="22" cy="5" r="3" fill="#C97A6B" stroke="#6B1F2B" stroke-width="1.5"/>
+                            </g>
+                            <g class="right_antenna">
+                                <line x1="42" y1="14" x2="42" y2="6" stroke="#6B1F2B" stroke-width="2.5" stroke-linecap="round"/>
+                                <circle cx="42" cy="5" r="3" fill="#C97A6B" stroke="#6B1F2B" stroke-width="1.5"/>
+                            </g>
+                        </g>
+                        <rect x="12" y="14" width="40" height="32" rx="6" fill="#EFE6D6" stroke="#6B1F2B" stroke-width="2.5"/>
+                        <circle class="robot_eye" cx="24" cy="28" r="4" fill="#2A1A1D"/>
+                        <circle class="robot_eye" cx="40" cy="28" r="4" fill="#2A1A1D"/>
+                        <rect x="22" y="38" width="20" height="3" rx="1.5" fill="#6B1F2B"/>
+                        <rect x="20" y="46" width="24" height="14" rx="3" fill="#C97A6B" stroke="#6B1F2B" stroke-width="2"/>
+                        <circle cx="27" cy="53" r="1.5" fill="#6B1F2B"/>
+                        <circle cx="37" cy="53" r="1.5" fill="#6B1F2B"/>
                     </svg>
-                </div>
-                <div class="sticker" title="Code">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 6L2 12l6 6M16 6l6 6 6 6M14 4l4 16" stroke="#6B1F2B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </span>
+
+                <span class="sticker gear_sticker" data-label="Why click twice?">
+                    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                        <g class="gear_shape">
+                            <g>
+                                <rect x="29" y="2" width="6" height="10" rx="1.5" fill="#C97A6B" stroke="#6B1F2B" stroke-width="2"/>
+                                <rect x="29" y="2" width="6" height="10" rx="1.5" fill="#C97A6B" stroke="#6B1F2B" stroke-width="2" transform="rotate(45 32 32)"/>
+                                <rect x="29" y="2" width="6" height="10" rx="1.5" fill="#C97A6B" stroke="#6B1F2B" stroke-width="2" transform="rotate(90 32 32)"/>
+                                <rect x="29" y="2" width="6" height="10" rx="1.5" fill="#C97A6B" stroke="#6B1F2B" stroke-width="2" transform="rotate(135 32 32)"/>
+                                <rect x="29" y="2" width="6" height="10" rx="1.5" fill="#C97A6B" stroke="#6B1F2B" stroke-width="2" transform="rotate(180 32 32)"/>
+                                <rect x="29" y="2" width="6" height="10" rx="1.5" fill="#C97A6B" stroke="#6B1F2B" stroke-width="2" transform="rotate(225 32 32)"/>
+                                <rect x="29" y="2" width="6" height="10" rx="1.5" fill="#C97A6B" stroke="#6B1F2B" stroke-width="2" transform="rotate(270 32 32)"/>
+                                <rect x="29" y="2" width="6" height="10" rx="1.5" fill="#C97A6B" stroke="#6B1F2B" stroke-width="2" transform="rotate(315 32 32)"/>
+                            </g>
+                            <circle cx="32" cy="32" r="20" fill="#C97A6B" stroke="#6B1F2B" stroke-width="2.5"/>
+                            <circle cx="32" cy="32" r="7" fill="#EFE6D6" stroke="#6B1F2B" stroke-width="2"/>
+                        </g>
                     </svg>
-                </div>
-                <div class="sticker" title="Hardware">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="4" y="4" width="16" height="16" rx="2" stroke="#6B1F2B" stroke-width="2"/>
-                        <rect x="9" y="9" width="6" height="6" fill="#C97A6B"/>
-                        <path d="M2 9h2M2 15h2M20 9h2M20 15h2M9 2v2M15 2v2M9 20v2M15 20v2" stroke="#6B1F2B" stroke-width="2" stroke-linecap="round"/>
+                </span>
+
+                <span class="sticker workflow_sticker" data-label="Connecting all the things">
+                    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                        <g class="workflow_shape">
+                            <path d="M 14 32 A 18 18 0 0 1 50 32" stroke="#6B1F2B" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+                            <polygon points="50,26 58,32 50,38" fill="#6B1F2B"/>
+                            <path d="M 50 32 A 18 18 0 0 1 14 32" stroke="#C97A6B" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+                            <polygon points="14,38 6,32 14,26" fill="#C97A6B"/>
+                        </g>
                     </svg>
-                </div>
+                </span>
+
+                <span class="sticker chat_sticker" data-label="Trilingual brain">
+                    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 6 14 Q 6 8 12 8 L 52 8 Q 58 8 58 14 L 58 36 Q 58 42 52 42 L 30 42 L 18 54 L 21 42 L 12 42 Q 6 42 6 36 Z"
+                              fill="#C97A6B" stroke="#6B1F2B" stroke-width="2.5" stroke-linejoin="round"/>
+                        <g class="chat_dots">
+                            <circle cx="22" cy="25" r="2.5" fill="#EFE6D6"/>
+                            <circle cx="32" cy="25" r="2.5" fill="#EFE6D6"/>
+                            <circle cx="42" cy="25" r="2.5" fill="#EFE6D6"/>
+                        </g>
+                        <text class="chat_lang lang1" x="32" y="31" text-anchor="middle" font-size="15" font-weight="800" fill="#EFE6D6">Hi!</text>
+                        <text class="chat_lang lang2" x="32" y="31" text-anchor="middle" font-size="14" font-weight="800" fill="#EFE6D6">Hola!</text>
+                        <text class="chat_lang lang3" x="32" y="30" text-anchor="middle" font-size="11" font-weight="800" fill="#EFE6D6">Merhaba!</text>
+                    </svg>
+                </span>
+
+                <span class="sticker chart_sticker" data-label="KPIs go brrr">
+                    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="6" y1="56" x2="58" y2="56" stroke="#6B1F2B" stroke-width="2.5" stroke-linecap="round"/>
+                        <line x1="6" y1="56" x2="6" y2="10" stroke="#6B1F2B" stroke-width="2.5" stroke-linecap="round"/>
+                        <rect class="chart_bar bar1" x="12" y="40" width="11" height="14" rx="1.5" fill="#E8B5A8" stroke="#6B1F2B" stroke-width="2"/>
+                        <rect class="chart_bar bar2" x="27" y="32" width="11" height="22" rx="1.5" fill="#C97A6B" stroke="#6B1F2B" stroke-width="2"/>
+                        <rect class="chart_bar bar3" x="42" y="22" width="11" height="32" rx="1.5" fill="#6B1F2B" stroke="#6B1F2B" stroke-width="2"/>
+                    </svg>
+                </span>
+
             </div>
         </main>
 
+        <!-- Right column with vertical stickers -->
+        <aside class="right_column" aria-hidden="true">
+            <div class="vertical_stickers">
+
+                <span class="sticker bug_sticker" data-label="Bug spotter">
+                    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                        <g class="magnifier">
+                            <line x1="36" y1="36" x2="50" y2="50" stroke="#6B1F2B" stroke-width="5" stroke-linecap="round"/>
+                            <circle cx="26" cy="26" r="14" fill="#EFE6D6" stroke="#6B1F2B" stroke-width="2.5"/>
+                            <path d="M 19 26 L 24 31 L 33 21" stroke="#C97A6B" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                    </svg>
+                </span>
+
+                <span class="sticker ticket_sticker" data-label="Ticket whisperer">
+                    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                        <g class="ticket">
+                            <rect x="6" y="18" width="52" height="28" rx="4" fill="#C97A6B" stroke="#6B1F2B" stroke-width="2.5"/>
+                            <line x1="32" y1="20" x2="32" y2="44" stroke="#6B1F2B" stroke-width="2" stroke-dasharray="3 2"/>
+                            <text x="19" y="36" text-anchor="middle" font-size="11" font-weight="800" fill="#EFE6D6">#42</text>
+                            <circle class="ticket_dot" cx="44" cy="32" r="4" fill="#FFD93D" stroke="#6B1F2B" stroke-width="1.5"/>
+                        </g>
+                    </svg>
+                </span>
+
+                <span class="sticker trend_sticker" data-label="Trend spotter">
+                    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="8" y1="56" x2="58" y2="56" stroke="#6B1F2B" stroke-width="2.5" stroke-linecap="round"/>
+                        <line x1="8" y1="56" x2="8" y2="10" stroke="#6B1F2B" stroke-width="2.5" stroke-linecap="round"/>
+                        <polyline class="trend_line" points="12,48 22,42 32,32 42,22 52,14" fill="none" stroke="#C97A6B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="12" cy="48" r="2.5" fill="#6B1F2B"/>
+                        <circle cx="22" cy="42" r="2.5" fill="#6B1F2B"/>
+                        <circle cx="32" cy="32" r="2.5" fill="#6B1F2B"/>
+                        <circle cx="42" cy="22" r="2.5" fill="#6B1F2B"/>
+                        <circle cx="52" cy="14" r="2.5" fill="#6B1F2B"/>
+                        <polygon class="trend_arrow" points="48,8 58,12 52,18" fill="#6B1F2B"/>
+                    </svg>
+                </span>
+
+                <span class="sticker books_sticker" data-label="Source of truth">
+                    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="6" y1="56" x2="58" y2="56" stroke="#6B1F2B" stroke-width="2.5" stroke-linecap="round"/>
+                        <rect class="book bk1" x="10" y="20" width="9" height="36" rx="1" fill="#6B1F2B" stroke="#6B1F2B" stroke-width="2"/>
+                        <rect class="book bk2" x="21" y="14" width="9" height="42" rx="1" fill="#C97A6B" stroke="#6B1F2B" stroke-width="2"/>
+                        <rect class="book bk3" x="32" y="18" width="9" height="38" rx="1" fill="#E8B5A8" stroke="#6B1F2B" stroke-width="2"/>
+                        <g transform="rotate(8 50 56)">
+                            <rect class="book bk4" x="44" y="24" width="9" height="32" rx="1" fill="#6B1F2B" stroke="#6B1F2B" stroke-width="2"/>
+                        </g>
+                    </svg>
+                </span>
+
+                <span class="sticker vlookup_sticker" data-label="VLOOKUP wizard">
+                    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="6" y="10" width="52" height="44" rx="3" fill="#EFE6D6" stroke="#6B1F2B" stroke-width="2.5"/>
+                        <rect x="6" y="10" width="52" height="10" fill="#6B1F2B"/>
+                        <line x1="23" y1="10" x2="23" y2="54" stroke="#6B1F2B" stroke-width="1.5"/>
+                        <line x1="40" y1="10" x2="40" y2="54" stroke="#6B1F2B" stroke-width="1.5"/>
+                        <line x1="6" y1="32" x2="58" y2="32" stroke="#6B1F2B" stroke-width="1.5"/>
+                        <line x1="6" y1="43" x2="58" y2="43" stroke="#6B1F2B" stroke-width="1.5"/>
+                        <text x="14.5" y="17.5" text-anchor="middle" font-size="6" font-weight="700" fill="#EFE6D6">A</text>
+                        <text x="31.5" y="17.5" text-anchor="middle" font-size="6" font-weight="700" fill="#EFE6D6">B</text>
+                        <text x="49" y="17.5" text-anchor="middle" font-size="6" font-weight="700" fill="#EFE6D6">C</text>
+                        <rect class="hc hc1" x="6.5" y="20.5" width="16.5" height="11" fill="#FFD93D"/>
+                        <rect class="hc hc2" x="6.5" y="32" width="16.5" height="11" fill="#FFD93D"/>
+                        <rect class="hc hc3" x="23.5" y="32" width="16.5" height="11" fill="#FFD93D"/>
+                        <rect class="hc hc4" x="40.5" y="32" width="17" height="11" fill="#6BCB77"/>
+                    </svg>
+                </span>
+
+            </div>
+        </aside>
+
         <footer>
-            © 2026 Burak Cevik · Made with care in Ankara
+            <span class="inner">© 2026 Burak Cevik · Made with care in Ankara</span>
         </footer>
+
     </div>
 </body>
 </html>
