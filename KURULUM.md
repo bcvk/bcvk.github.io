@@ -15,3 +15,5 @@ Yerel saat Europe/Istanbul saat diliminde hesaplanır. Diğer bilgiler mevcut si
 GitHub Pages kaynak deposu: https://github.com/bcvk/bcvk.github.io . Yayın dalı: main, kök klasör. Siteyi güncellemek için index.html ve profile.jpg dosyalarını birlikte kullanın. Alan adı ayarlarını koruyun. Güncel paket downloads/burak-pm-site.zip yolundadır.
 
 Bu paket 1 Ekim 2026 tarihli Biko atölyesi tasarımını içerir.
+
+Üst menüdeki güneş ve ay düğmeleri açık/koyu temayı seçer. İlk ziyarette sistem teması kullanılır; seçiminiz bu tarayıcıda saklanır. İki tema da inşa animasyonunu destekler.
