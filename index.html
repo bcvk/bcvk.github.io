@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta name="build-version" content="biko-studio-themes-2026-10-01">
+  <meta name="build-version" content="biko-studio-sage-2026-10-01">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Burak Cevik — customer success, thoughtful automation, and things built with care. Assistant Project Manager at ModSquad.">
@@ -13,7 +13,7 @@
       const theme = saved === 'light' || saved === 'dark' ? saved :
         (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
       document.documentElement.dataset.theme = theme;
-      document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#191619' : '#f7f3eb';
+      document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#141b18' : '#f7f3eb';
     })();
   </script>
   <title>Burak Cevik · Customer Success & Automation</title>
@@ -74,14 +74,15 @@
 
 /* Two palettes for the same little world. */
 :root{color-scheme:light;--copy:#655850;--secondary:#807167;--subtle:#95877e;--surface:#fffaf1;--bubble:#fffaf0;--bubble-ink:#655449;--surface-line:#d7c2a8;--soft-surface:#eee4d9;--button-ink:#fff4e7;--button-bg:#6b1f2b;--button-hover:#4b1b21;--stage-paper:#f5eddf;--stage-bg:radial-gradient(ellipse at 77% 22%,#d9a55e26,transparent 40%),radial-gradient(ellipse at 15% 80%,#a8666720,transparent 45%),linear-gradient(145deg,#faf6ef,#f0e4d0)}
-html[data-theme="dark"]{color-scheme:dark;--paper:#191619;--ink:#f2ece2;--wine:#eca4aa;--muted:#b9a9ad;--line:#42353d;--green:#91b89d;--peach:#e6ac84;--copy:#d0c4c7;--secondary:#bdafb4;--subtle:#ad9ca5;--surface:#282128;--bubble:#30262e;--bubble-ink:#eee0d7;--surface-line:#58424d;--soft-surface:#30242c;--button-ink:#24161b;--button-bg:#e9a3ac;--button-hover:#f3bdc4;--stage-paper:#1d181d;--stage-bg:radial-gradient(ellipse at 77% 22%,#b5804f19,transparent 42%),radial-gradient(ellipse at 15% 80%,#bc607a18,transparent 45%),linear-gradient(145deg,#211b22,#171419)}
+html[data-theme="dark"]{color-scheme:dark;--paper:#141b18;--ink:#e9f1e8;--wine:#9bc6ab;--muted:#a5b6ac;--line:#35473c;--green:#9bc6ab;--peach:#c5b888;--pink:#85ac92;--blue:#95bcb1;--copy:#c5d4cb;--secondary:#afc3b6;--subtle:#95ad9e;--surface:#1e2a23;--bubble:#24332a;--bubble-ink:#e3eee5;--surface-line:#435e4b;--soft-surface:#273b2e;--button-ink:#14261b;--button-bg:#9bc6ab;--button-hover:#b2d7be;--stage-paper:#16231b;--stage-bg:radial-gradient(ellipse at 77% 22%,#8bb89b1c,transparent 42%),radial-gradient(ellipse at 15% 80%,#648c7020,transparent 45%),linear-gradient(145deg,#1c2c22,#121b16)}
 body{transition:background-color .3s,color .3s}.construction-mode{background:var(--stage-paper)}.stage-world{background:var(--stage-bg)}
 .hero-copy{color:var(--copy)}.hero-links{color:var(--copy)}.section-note,.signal .sub,footer{color:var(--subtle)}.work-description,.work-meta,.note,.replay{color:var(--secondary)}.work-row{border-color:var(--line)}.work-icon{background:var(--soft-surface);border-color:var(--surface-line)}
 .hero-copy a,.work-title a,.note a{border-color:var(--surface-line)}.construction-mode .signals,.construction-mode footer,.construction-mode .work-row{border-color:var(--line)}.construction-mode .nav{opacity:1}
 .build-controls{background:var(--surface);border-color:var(--surface-line)}.build-status{color:var(--copy)}.crew-subtitle{color:var(--subtle)}.pause{border-color:var(--surface-line);color:var(--copy)}.pause:hover{background:var(--soft-surface)}.skip{background:var(--button-bg);color:var(--button-ink)}.skip:hover{background:var(--button-hover)}.build-progress{background:var(--line)}
 .crew-bot .bot-task{background:var(--bubble);border-color:var(--surface-line);color:var(--bubble-ink)}.crew-bot .bot-task::after{background:var(--bubble);border-color:var(--surface-line)}.crew-bot .bot-tool{background:var(--soft-surface);border-color:var(--surface-line);color:var(--wine)}.crew-bot .bot-name{color:var(--muted)}.build-complete{color:var(--wine)}.build-complete small,.craft-caption,.assembly-scan::after{color:var(--subtle)}
 .theme-picker{display:flex;align-items:center;gap:3px;padding:3px;border:1px solid var(--line);border-radius:24px;background:var(--paper);flex-shrink:0}.theme-button{display:grid;place-items:center;width:31px;height:31px;border:0;border-radius:50%;padding:0;background:transparent;color:var(--muted);transition:background .2s,color .2s}.theme-button svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.theme-button:hover{color:var(--wine);background:var(--soft-surface)}.theme-button[aria-pressed="true"]{background:var(--wine);color:var(--paper);box-shadow:0 2px 6px #00000016}.theme-button:focus-visible{outline-offset:3px}.nav .contact-label{margin:0;color:inherit}
-html[data-theme="dark"] ::selection{background:#743746;color:#fff3e8}html[data-theme="dark"] .portrait{border-color:#4c3a44;background:#30242c;box-shadow:0 10px 40px #00000040}html[data-theme="dark"] .canvas{background-image:radial-gradient(#baaaba44 .8px,transparent .8px)}html[data-theme="dark"] .stage-world::before{background-image:linear-gradient(#bda9ac0c 1px,transparent 1px),linear-gradient(90deg,#bda9ac0c 1px,transparent 1px)}html[data-theme="dark"] .studio-corner{border-color:#bfa49a55}html[data-theme="dark"] .site-slot .slot-tag{color:#ae9293}html[data-theme="dark"] .site-slot.working .slot-tag{color:#e1b58d}html[data-theme="dark"] .site-slot svg{stroke:#c7a49233}html[data-theme="dark"] .site-slot.working svg{stroke:#d2ac7d99}html[data-theme="dark"] .assembly-scan{border-color:#d2ac7d88;box-shadow:0 0 0 5px #d2ac7d08,0 8px 30px #00000030}html[data-theme="dark"] .crew-bot .bot-figure{filter:drop-shadow(0 10px 8px #00000055)}html[data-theme="dark"] .crew-bot .bot-shadow{background:#00000055}html[data-theme="dark"] .build-letter.caret::after{background:#e6ac84}html[data-theme="dark"] .build-progress span{background:linear-gradient(90deg,#c99564,#e6bf80,#eca4aa)}
+html[data-theme="dark"] ::selection{background:#365c46;color:#f1fff3}html[data-theme="dark"] .portrait{border-color:#405748;background:#273b2e;box-shadow:0 10px 40px #00000040}html[data-theme="dark"] .canvas{background-image:radial-gradient(#9fbaa944 .8px,transparent .8px)}html[data-theme="dark"] .stage-world::before{background-image:linear-gradient(#a0bea90c 1px,transparent 1px),linear-gradient(90deg,#a0bea90c 1px,transparent 1px)}html[data-theme="dark"] .studio-corner{border-color:#9bb8a455}html[data-theme="dark"] .site-slot .slot-tag{color:#8aa894}html[data-theme="dark"] .site-slot.working .slot-tag{color:#b3d3be}html[data-theme="dark"] .site-slot svg{stroke:#9bbb9f33}html[data-theme="dark"] .site-slot.working svg{stroke:#9bc6ab99}html[data-theme="dark"] .assembly-scan{border-color:#9bc6ab88;box-shadow:0 0 0 5px #9bc6ab08,0 8px 30px #00000030}html[data-theme="dark"] .assembly-scan::before{background:linear-gradient(90deg,transparent,#9bc6ab,transparent);box-shadow:0 0 8px #9bc6ab66}html[data-theme="dark"] .crew-bot .bot-figure{filter:drop-shadow(0 10px 8px #00000055)}html[data-theme="dark"] .crew-bot .bot-shadow{background:#00000055}html[data-theme="dark"] .build-letter.caret::after{background:#9bc6ab;box-shadow:0 0 7px #9bc6ab66}html[data-theme="dark"] .build-progress span{background:linear-gradient(90deg,#54896b,#afd3a2,#9bc6ab);box-shadow:0 0 7px #9bc6ab55}html[data-theme="dark"] .craft-caption span{background:#9bc6ab;box-shadow:0 0 8px #9bc6ab}html[data-theme="dark"] .bot-spark{color:#b3d3be}
+html[data-theme="dark"] [id="scribe-pearl"] stop:nth-child(1){stop-color:#f0fff4}html[data-theme="dark"] [id="scribe-pearl"] stop:nth-child(2){stop-color:#c8e0ce}html[data-theme="dark"] [id="scribe-pearl"] stop:nth-child(3){stop-color:#91b39a}html[data-theme="dark"] [id="scribe-pearl"] stop:nth-child(4){stop-color:#4c745b}html[data-theme="dark"] .bot-face path[fill="#6b1f2b"]{fill:#426952}
 @media(max-width:760px){.nav{gap:14px}.theme-button{width:29px;height:29px}}
 @media(max-width:540px){.nav{gap:10px}.nav>a[href="https://github.com/bcvk"]{display:none}.theme-picker{gap:2px;padding:3px}.theme-button{width:28px;height:28px}.nav .contact{padding:8px 10px}.wordmark{font-size:20px}.brand-mascot{margin-left:6px;width:23px}}
 @media(max-width:380px){.nav .contact-label{display:none}.nav .contact{padding:7px 9px}.nav .contact span{margin-left:0}.nav{gap:8px}.theme-button{width:27px;height:27px}}
@@ -288,12 +289,15 @@ html[data-theme="dark"] ::selection{background:#743746;color:#fff3e8}html[data-t
 
   const effects=document.getElementById('scene-effects');
   const fx=effects.getContext('2d');
-  const colors=['#c1995d','#bf887c','#863d49'];
+  const lightEffectColors=['#c1995d','#bf887c','#863d49'];
+  const darkEffectColors=['#8fba9c','#b3d3be','#6d9d7c'];
+  const effectColors=()=>document.documentElement.dataset.theme==='dark'?darkEffectColors:lightEffectColors;
   let particles=[],lastDust=0;
   function sizeEffects(){const ratio=Math.min(devicePixelRatio||1,2);effects.width=innerWidth*ratio;effects.height=innerHeight*ratio;effects.style.width=innerWidth+'px';effects.style.height=innerHeight+'px';fx.setTransform(ratio,0,0,ratio,0,0);}
   sizeEffects();window.addEventListener('resize',sizeEffects);
-  function burst(x,y,who){for(let i=0;i<18;i++){const angle=Math.PI*2*i/18;particles.push({x,y,vx:Math.cos(angle)*(25+Math.random()*50),vy:Math.sin(angle)*(25+Math.random()*50)-25,life:1100,max:1100,color:colors[who],size:1+Math.random()*2});}}
+  function burst(x,y,who){for(let i=0;i<18;i++){const angle=Math.PI*2*i/18;particles.push({x,y,vx:Math.cos(angle)*(25+Math.random()*50),vy:Math.sin(angle)*(25+Math.random()*50)-25,life:1100,max:1100,color:effectColors()[who],size:1+Math.random()*2});}}
   function drawEffects(dt){
+    const colors=effectColors();
     fx.clearRect(0,0,innerWidth,innerHeight);
     if(paused)dt=0;
     for(const bot of crew){
@@ -335,7 +339,7 @@ html[data-theme="dark"] ::selection{background:#743746;color:#fff3e8}html[data-t
       try { preference = localStorage.getItem('burak-theme'); } catch (_) {}
       function apply(theme) {
         html.dataset.theme = theme;
-        document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#191619' : '#f7f3eb';
+        document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#141b18' : '#f7f3eb';
         for (const button of buttons) button.setAttribute('aria-pressed', String(button.dataset.themeChoice === theme));
       }
       for (const button of buttons) button.addEventListener('click', () => {

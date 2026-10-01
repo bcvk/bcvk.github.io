@@ -17,3 +17,5 @@ GitHub Pages kaynak deposu: https://github.com/bcvk/bcvk.github.io . Yayın dal�
 Bu paket 1 Ekim 2026 tarihli Biko atölyesi tasarımını içerir.
 
 Üst menüdeki güneş ve ay düğmeleri açık/koyu temayı seçer. İlk ziyarette sistem teması kullanılır; seçiminiz bu tarayıcıda saklanır. İki tema da inşa animasyonunu destekler.
+
+Koyu temanın vurgu rengi adaçayı yeşili (#9BC6AB); arka plan, çerçeveler, konuşma balonları ve animasyon ışıkları bu palete uyarlanmıştır.
