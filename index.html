@@ -1,362 +1,252 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta name="build-version" content="biko-studio-sage-2026-10-01">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Burak Cevik — customer success, thoughtful automation, and things built with care. Assistant Project Manager at ModSquad.">
-  <meta name="theme-color" content="#f7f3eb">
-  <script>
-    (() => {
-      let saved;
-      try { saved = localStorage.getItem('burak-theme'); } catch (_) {}
-      const theme = saved === 'light' || saved === 'dark' ? saved :
-        (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.dataset.theme = theme;
-      document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#141b18' : '#f7f3eb';
-    })();
-  </script>
-  <title>Burak Cevik · Customer Success & Automation</title>
-  <style>
-    :root{--paper:#f7f3eb;--ink:#302321;--wine:#6b1f2b;--muted:#82736a;--line:#ded5c9;--green:#4b7562;--peach:#bd765b;--pink:#b8607a;--blue:#5a7c9e}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Avenir Next",Avenir,"Trebuchet MS",sans-serif;-webkit-font-smoothing:antialiased}button,a{-webkit-tap-highlight-color:transparent}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:pointer}a:focus-visible,button:focus-visible{outline:2px solid var(--wine);outline-offset:6px}::selection{background:#e5c4bf}
-    .canvas{position:fixed;inset:0;pointer-events:none;background-image:radial-gradient(#b7a59155 .8px,transparent .8px);background-size:20px 20px;opacity:.26;z-index:-1;transition:opacity 1s}.building .canvas{opacity:.7}
-    .page{max-width:1024px;margin:auto;padding:0 52px}.topbar{height:110px;display:flex;align-items:center;justify-content:space-between}.wordmark{font-family:Georgia,serif;font-size:23px;letter-spacing:-1.4px;font-weight:bold;color:var(--wine)}.wordmark span{font-weight:normal;color:var(--muted)}.nav{display:flex;align-items:center;gap:25px;font-size:12px}.nav a{transition:color .2s}.nav a:hover{color:var(--wine)}.nav .contact{padding:10px 15px;border:1px solid var(--line);border-radius:25px}.contact span{margin-left:9px;color:var(--wine)}
-    .hero{position:relative;display:grid;grid-template-columns:1fr 235px;gap:55px;padding:60px 0 62px;align-items:center}.eyebrow,.label{font-family:ui-monospace,"SFMono-Regular",Consolas,monospace;letter-spacing:1.5px;font-size:10px;text-transform:uppercase;font-weight:normal}.eyebrow{color:var(--muted);display:flex;align-items:center;gap:9px;margin:0 0 25px}.dot{width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block;flex-shrink:0}h1{font-family:Georgia,"Times New Roman",serif;font-weight:normal;font-size:clamp(48px,5.5vw,67px);letter-spacing:-3.2px;line-height:1.06;margin:0 0 24px}.name{font-style:italic;color:var(--wine)}.hero-copy{font-size:17px;line-height:1.8;max-width:540px;margin:0;color:#655850}.hero-copy em{font-style:normal;color:var(--wine)}.hero-copy a{border-bottom:1px solid #bc9a91;padding-bottom:2px}.hero-links{display:flex;gap:22px;font-size:12px;margin-top:26px;align-items:center;color:#6a5a51}.hero-links a{display:flex;gap:6px;align-items:center}.hero-links a:hover{color:var(--wine)}.hero-links svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.5}
-    .portrait-wrap{position:relative;padding:0 0 28px}.portrait{width:235px;height:278px;border-radius:90px 90px 11px 11px;overflow:hidden;background:#ded2c6;box-shadow:0 8px 24px #6b1f2b0a;transform:rotate(3deg);border:5px solid #fffdf7}.portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 38%}.portrait-caption{position:absolute;bottom:0;right:2px;font-family:Georgia,serif;font-style:italic;color:var(--muted);font-size:12px;transform:rotate(-4deg)}.small-star{position:absolute;left:-26px;top:30px;font-size:40px;color:var(--peach);transform:rotate(-13deg)}
-    .signals{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0 30px}.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}.label{color:var(--muted);margin:0}.section-note{font-family:Georgia,serif;font-style:italic;color:#a39387;font-size:13px}.signal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}.signal .signal-label{font-size:11px;color:var(--muted);display:block;margin-bottom:10px}.signal .value{font-size:19px;letter-spacing:-.4px;display:flex;align-items:center;gap:8px;font-weight:500;line-height:1.5}.signal .sub{font-size:10px;color:#95877e;margin-top:4px;display:block}.clock-value{font-variant-numeric:tabular-nums}.signal:last-child .value{color:var(--wine)}
-    .work{padding:43px 0 16px}.work .section-header{margin-bottom:29px}.work-row{display:grid;grid-template-columns:42px 1fr 130px;gap:17px;align-items:start;padding:23px 0;border-bottom:1px solid #e8e0d5}.work-row:last-child{border-bottom:0}.work-icon{width:36px;height:36px;border:1px solid #ddc8bd;border-radius:11px;background:#eee4d9;display:grid;place-items:center;color:var(--wine)}.work-icon svg{height:20px;width:20px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.work-title{font-size:15px;font-weight:600;margin:0 0 7px;letter-spacing:-.2px}.work-title a{border-bottom:1px solid #c6afa0}.work-description{font-size:13px;line-height:1.8;color:#807167;margin:0;max-width:570px}.work-meta{font-family:ui-monospace,"SFMono-Regular",Consolas,monospace;font-size:9px;line-height:1.8;color:#938278;text-align:right;text-transform:uppercase;letter-spacing:.7px;padding-top:4px}
-    .note{padding:32px 0 38px;color:#7c6c62;font-size:13px;line-height:1.9;max-width:680px}.note p{margin:0}.note a{color:var(--wine);border-bottom:1px solid #ceb5a8}.note .hello{display:block;font-family:Georgia,serif;font-size:20px;color:var(--wine);font-style:italic;margin-bottom:10px}
-    footer{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding:23px 0 33px;font-size:10px;color:#9b8b7d;gap:20px}.replay{border:0;background:transparent;color:#7d6a61;padding:5px 0;display:flex;align-items:center;gap:7px;font-size:11px}.replay svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:1.4}.replay:hover{color:var(--wine)}
-    .build-controls{position:fixed;bottom:23px;left:50%;transform:translateX(-50%);z-index:15;display:flex;align-items:center;gap:15px;padding:10px 12px 10px 17px;border-radius:40px;background:#fffdf9f2;border:1px solid #e1d3c5;box-shadow:0 5px 25px #4a261311;font-size:11px;backdrop-filter:blur(12px);max-width:calc(100vw - 30px)}.build-controls[hidden]{display:none}.build-status{white-space:nowrap;color:#7f6c60;display:flex;align-items:center;gap:8px}.build-status .dot{animation:breathe 1s infinite}.skip{border:0;background:#ede5da;border-radius:20px;padding:7px 11px;font-size:10px;white-space:nowrap}.skip:hover{background:#dfd1c0}.build-progress{position:absolute;bottom:0;left:17px;right:17px;height:1px;background:#e9ded3;overflow:hidden}.build-progress span{height:100%;display:block;background:var(--wine);transform-origin:left;transform:scaleX(0)}
-    .agent{position:fixed;left:0;top:0;z-index:12;pointer-events:none;opacity:0;color:var(--agent-color);will-change:transform;transition:opacity .2s;filter:drop-shadow(0 2px 3px #3c221320)}.agent svg{width:18px;height:23px;fill:currentColor;stroke:var(--paper);stroke-width:1.5}.agent-name{display:block;background:var(--agent-color);color:#fff;white-space:nowrap;font-family:ui-monospace,"SFMono-Regular",Consolas,monospace;font-size:9px;letter-spacing:.15px;padding:4px 8px;border-radius:4px;margin:0 0 0 13px}.agent-name span{opacity:.7;margin-left:7px;font-size:8px}.frame{position:fixed;pointer-events:none;z-index:11;border:1px solid var(--agent-color);border-radius:4px;opacity:0;box-shadow:0 0 0 3px #f7f3eb66;transition:opacity .18s}.frame::after{content:'';width:4px;height:4px;position:absolute;bottom:-3px;right:-3px;background:var(--agent-color);border:1px solid var(--paper)}
-    .building [data-build]{opacity:0;transform:translateY(8px);transition:opacity .45s,transform .65s}.building [data-build].placed{opacity:1;transform:none}.building [data-build].typing{clip-path:inset(0 100% 0 0);animation:type-in .7s steps(18,end) forwards}.building .portrait-wrap.placed .portrait{animation:photo-in .8s cubic-bezier(.2,.8,.2,1) both}.building .nav{opacity:.4;transition:opacity .5s}.building .signals,.building footer{border-color:transparent}.building .work-row{border-color:transparent}
-    @keyframes type-in{to{clip-path:inset(0 0 0 0)}}@keyframes photo-in{from{transform:rotate(-5deg) scale(.94);filter:blur(4px)}to{transform:rotate(3deg) scale(1);filter:blur(0)}}@keyframes breathe{50%{opacity:.4}}
-    @media(max-width:760px){.page{padding:0 28px}.topbar{height:85px}.nav{gap:18px}.hero{grid-template-columns:1fr 170px;gap:25px;padding:38px 0 46px}h1{font-size:52px}.portrait{width:170px;height:215px}.hero-copy{font-size:15px}.signal-grid{gap:16px}.signal .value{font-size:16px}.work-row{grid-template-columns:36px 1fr 100px;gap:12px}.section-note{font-size:11px}}
-    @media(max-width:540px){.page{padding:0 24px}.topbar{height:79px}.wordmark{font-size:21px}.nav{gap:16px}.nav .contact{padding:8px 12px}.nav>a:first-child{display:none}.hero{display:flex;flex-direction:column-reverse;align-items:flex-start;gap:25px;padding:25px 0 38px}.portrait-wrap{padding:0 0 20px;margin-left:7px}.portrait{width:115px;height:139px;border-radius:40px 40px 8px 8px;border-width:3px}.portrait-caption{font-size:10px;bottom:-3px;right:-65px}.small-star{font-size:25px;left:135px;top:23px}.eyebrow{font-size:9px;margin-bottom:18px;letter-spacing:1px}h1{font-size:53px;letter-spacing:-2.8px;margin-bottom:20px}.hero-copy{font-size:15px;line-height:1.85}.hero-links{margin-top:20px;gap:19px;font-size:11px}.signal-grid{grid-template-columns:1fr 1fr;gap:25px 20px}.signal .value{font-size:18px}.section-header{align-items:center}.section-note{font-size:10px}.signals{padding:25px 0}.work{padding-top:31px}.work .section-header{margin-bottom:10px}.work-row{grid-template-columns:34px 1fr;gap:13px;padding:24px 0}.work-meta{grid-column:2;grid-row:auto;text-align:left;margin-top:-5px;font-size:8px}.work-title{font-size:14px}.work-description{font-size:12px}.note{padding:25px 0 30px;font-size:12px}footer{font-size:9px;gap:15px;align-items:flex-start}.replay{font-size:10px;white-space:nowrap}.agent-name{font-size:8px}.agent-name span{display:none}.build-controls{gap:10px;font-size:10px;bottom:14px}.build-status{font-size:10px}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.building [data-build]{opacity:1;transform:none;clip-path:none}.agent,.frame{display:none}}
-
-.crew-paused *, .crew-paused *::before, .crew-paused *::after{animation-play-state:paused!important}.crew-bot.waiting .bot-task{display:none}.crew-bot.edge-right .bot-task{left:auto;right:-8px;transform:none}.crew-bot.edge-left .bot-task{left:0;transform:none}
-/* A tiny construction crew. Each character has a job, not just a cursor. */
-.agent,.frame{display:none}
-.construction-mode [data-build]{opacity:0;transform:none;transition:none}
-.construction-mode [data-build].constructing,.construction-mode [data-build].built{opacity:1;transform:none;clip-path:none;animation:none}
-.construction-mode .portrait-wrap.placed .portrait{animation:none}
-.construction-mode [data-build].assembling{transform:translate(var(--piece-x,0px),var(--piece-y,0px)) rotate(var(--piece-rotation,0deg));clip-path:inset(0 0 var(--piece-clip,0%) 0)}
-.build-letter{opacity:0;transition:opacity .12s}.build-letter.inked{opacity:1}.build-word{white-space:nowrap}
-.build-letter.caret{position:relative}.build-letter.caret::after{content:'';position:absolute;right:-3px;top:10%;height:85%;width:2px;background:var(--wine);animation:blink .8s steps(1) infinite}
-.site-slot{position:fixed;z-index:2;pointer-events:none;color:#ae9c8d;transition:opacity .45s}.site-slot svg{width:100%;height:100%;overflow:visible;position:absolute;inset:0;fill:none;stroke:#bdafa044;stroke-width:1;stroke-dasharray:4 5}.site-slot .slot-tag{position:absolute;left:4px;top:5px;font:8px ui-monospace,monospace;letter-spacing:.7px;color:#b5a494;background:var(--paper);padding:3px 5px}.site-slot .cross{position:absolute;color:#b8a593;font:13px monospace;line-height:1}.site-slot .cross.first{top:-6px;left:-4px}.site-slot .cross.last{bottom:-6px;right:-4px}.site-slot.working svg{stroke:#9c8d7977;stroke-dasharray:180 30;animation:trace 2s linear infinite}.site-slot.working .slot-tag{color:var(--wine)}
-.crew-bot{position:fixed;left:0;top:0;z-index:30;pointer-events:none;opacity:0;will-change:transform;transition:opacity .4s}.bot-figure{width:56px;height:58px;position:relative;filter:drop-shadow(0 5px 5px #3424191b);transform-origin:center bottom}.crew-bot.travel .bot-figure{animation:bot-walk .38s ease-in-out infinite alternate}.crew-bot.work .bot-figure{animation:bot-work .8s ease-in-out infinite}.crew-bot.rest .bot-figure{animation:bot-idle 2s ease-in-out infinite}.bot-shadow{position:absolute;bottom:-4px;left:11px;right:11px;height:5px;border-radius:50%;background:#33261f12}.bot-face{height:54px;width:56px;display:block;overflow:visible}.bot-face .eye{transform-origin:center;animation:eye-blink 5.3s infinite}.bot-face .arm{transform-origin:42px 37px}.work .bot-face .arm{animation:hammer .45s ease-in-out infinite}.bot-task{position:absolute;left:50%;bottom:73px;transform:translateX(-50%);background:#fffdf9;border:1px solid #dfd4c6;box-shadow:0 3px 12px #392c2010;color:#655449;border-radius:10px 10px 10px 2px;padding:7px 10px;font-size:10px;line-height:1.4;white-space:nowrap}.bot-name{position:absolute;top:65px;left:50%;transform:translateX(-50%);font:9px ui-monospace,monospace;color:#7d6b5c;white-space:nowrap;background:#f7f3ebd9;padding:3px 6px;border-radius:6px}.bot-tool{position:absolute;right:-9px;top:25px;background:#fffaf2;border:1px solid #d8c6b3;border-radius:4px;font:10px ui-monospace,monospace;padding:4px 5px;color:var(--wine);opacity:0}.work .bot-tool{opacity:1;animation:tool-tap .5s ease-in-out infinite}.bot-parcel{position:absolute;left:-25px;top:7px;width:29px;height:36px;background:#eadccd;border:2px solid #fffdf8;box-shadow:0 2px 4px #34241922;border-radius:4px;opacity:0;transform:rotate(-12deg)}.bot-parcel img{width:100%;height:100%;object-fit:cover;border-radius:2px}.carry .bot-parcel{opacity:1}.carry .bot-tool{opacity:0}.bot-spark{position:absolute;left:43px;top:24px;font-size:19px;color:#bd765b;opacity:0}.work .bot-spark{animation:spark .8s ease-out infinite}.bot-done{position:absolute;right:-12px;top:0;color:#fff;background:#4b7562;border-radius:50%;width:20px;height:20px;display:grid;place-items:center;font-size:12px;opacity:0;transform:scale(.5);transition:opacity .2s,transform .2s}.done .bot-done{opacity:1;transform:scale(1)}
-.assembly-scan{position:fixed;z-index:3;pointer-events:none;border:1px solid #6b1f2b55;box-shadow:0 0 0 4px #c5a4930b;border-radius:3px;opacity:0}.assembly-scan::before{content:'';position:absolute;left:0;top:0;width:100%;height:1px;background:#6b1f2b66;transform:translateY(var(--scan-y,0px))}.assembly-scan::after{content:attr(data-measure);position:absolute;bottom:-18px;right:0;color:#927d6b;font:8px ui-monospace,monospace}
-.build-controls{gap:15px;padding:13px 15px;border-radius:16px;bottom:18px;width:560px;max-width:calc(100vw - 28px);flex-wrap:wrap;justify-content:space-between;background:#fffdf8f5;box-shadow:0 5px 35px #4a261316}.crew-roster{display:flex;gap:10px;align-items:center}.roster-avatar{width:25px;height:25px}.roster-avatar svg{width:100%;height:100%;overflow:visible}.crew-readout{flex:1;min-width:125px}.build-status{font-size:11px;color:#5e4d42}.crew-subtitle{font:9px ui-monospace,monospace;color:#a49182;display:block;margin-top:5px}.dock-actions{display:flex;gap:7px}.skip,.pause{border:0;background:#eee5d9;border-radius:7px;padding:8px 10px;font-size:10px;white-space:nowrap}.pause{background:transparent;border:1px solid #e8ddd0}.skip:hover,.pause:hover{background:#e1d2bf}.build-progress{left:15px;right:15px;height:2px;bottom:0}.building .canvas{opacity:.8}.construction-mode .signals,.construction-mode footer,.construction-mode .work-row{border-color:#c5b6a34d}
-@keyframes bot-walk{from{transform:rotate(-5deg) translateY(0)}to{transform:rotate(5deg) translateY(-5px)}}@keyframes bot-work{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-3px) rotate(2deg)}}@keyframes bot-idle{50%{transform:translateY(-3px)}}@keyframes eye-blink{0%,44%,48%,100%{opacity:1}46%{opacity:.1}}@keyframes hammer{50%{transform:rotate(-30deg)}}@keyframes tool-tap{50%{transform:translate(3px,-2px)}}@keyframes spark{0%,70%,100%{opacity:0;transform:scale(.4) rotate(0)}30%{opacity:1;transform:scale(1) rotate(40deg)}}@keyframes blink{50%{opacity:0}}@keyframes trace{to{stroke-dashoffset:-210}}
-@media(max-width:540px){.bot-figure{transform:scale(.83);transform-origin:center bottom}.bot-task{font-size:8px;padding:5px 7px;bottom:64px}.bot-name{top:60px;font-size:8px}.build-controls{width:calc(100vw - 24px);padding:11px;gap:8px;bottom:12px}.crew-roster{gap:4px}.roster-avatar{width:19px;height:22px}.crew-readout{min-width:100px}.build-status{font-size:9px}.crew-subtitle{font-size:8px}.skip,.pause{font-size:9px;padding:7px}.dock-actions{gap:3px}.slot-tag{font-size:7px!important}}
-@media(prefers-reduced-motion:reduce){.construction-mode [data-build]{opacity:1;transform:none;clip-path:none}.crew-bot,.site-slot,.assembly-scan{display:none}.build-letter{opacity:1}}
-
-.wordmark{display:flex;align-items:center}.brand-mascot{width:27px;height:29px;display:inline-flex;margin-left:10px}.brand-mascot svg{width:100%;height:100%}.bot-name{font-size:9px}.crew-bot .bot-figure{width:64px;height:65px}.crew-bot .bot-face{width:64px;height:64px}.crew-bot .bot-name{top:70px}.crew-bot .bot-task{bottom:78px}.crew-bot .bot-shadow{bottom:-5px}.roster-avatar .bot-face{width:100%;height:100%}
-
-/* The assembly stage: light, depth, paper, and a crew with presence. */
-.construction-mode{background:#f5eddf;transition:background 1.2s}.construction-mode .page{transform:perspective(1700px) rotateX(var(--camera-tilt,1.8deg)) scale(var(--camera-scale,.96));transform-origin:center 230px;will-change:transform}.page{transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
-.stage-world{position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:0;transition:opacity 1.3s;background:radial-gradient(ellipse at 77% 22%,#d9a55e26,transparent 40%),radial-gradient(ellipse at 15% 80%,#a8666720,transparent 45%),linear-gradient(145deg,#faf6ef,#f0e4d0)}.construction-mode .stage-world{opacity:1}.stage-world::before{content:'';position:absolute;inset:-20%;background-image:linear-gradient(#9b735b0b 1px,transparent 1px),linear-gradient(90deg,#9b735b0b 1px,transparent 1px);background-size:46px 46px;transform:perspective(1000px) rotateX(18deg);animation:studio-drift 30s linear infinite}.stage-world::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,transparent 40%,#8363400b)}
-.studio-corner{position:fixed;width:36px;height:36px;border:1px solid #9f7c5855;pointer-events:none;z-index:4;opacity:0;transition:opacity .8s}.construction-mode .studio-corner{opacity:1}.studio-corner.tl{top:13px;left:13px;border-right:0;border-bottom:0}.studio-corner.tr{top:13px;right:13px;border-left:0;border-bottom:0}.studio-corner.bl{bottom:13px;left:13px;border-right:0;border-top:0}.studio-corner.br{bottom:13px;right:13px;border-left:0;border-top:0}
-.craft-caption{position:fixed;right:30px;top:22px;z-index:35;pointer-events:none;color:#967c65;font:9px ui-monospace,monospace;text-transform:uppercase;letter-spacing:1.7px;opacity:0;transition:opacity .6s}.construction-mode .craft-caption{opacity:1}.craft-caption span{display:inline-block;width:4px;height:4px;border-radius:50%;background:#ab7851;margin-right:8px;box-shadow:0 0 8px #c7965a;animation:breathe 1.4s infinite}
-.construction-mode .topbar{height:128px}.construction-mode .nav{opacity:.55}.construction-mode .canvas{opacity:.45}.crew-bot{z-index:32}.crew-bot .bot-figure{width:88px;height:87px;filter:drop-shadow(0 10px 6px #62463322)}.crew-bot .bot-face{width:88px;height:88px}.crew-bot .bot-name{top:96px;font-size:9px;letter-spacing:.8px;background:transparent}.crew-bot .bot-task{bottom:106px;font-family:Georgia,serif;font-style:italic;font-size:12px;padding:10px 13px;border-radius:12px 12px 12px 2px;background:#fffaf0e8;border:1px solid #d9c5aabb;box-shadow:0 5px 20px #865b3c12;max-width:200px;white-space:normal;min-width:125px;text-align:center;backdrop-filter:blur(8px)}.crew-bot .bot-task::after{content:'';position:absolute;left:45%;bottom:-5px;width:8px;height:8px;transform:rotate(45deg);background:#fffaf0;border-right:1px solid #d9c5aa;border-bottom:1px solid #d9c5aa}.crew-bot .bot-tool{right:-3px;top:40px;padding:5px 7px;font-size:12px;background:#fff3d5;box-shadow:0 3px 8px #b28b5722}.crew-bot .bot-done{width:25px;height:25px;font-size:14px;right:-2px;top:0}.crew-bot .bot-spark{left:77px;top:30px;font-size:26px}.crew-bot .bot-parcel{left:-28px;top:16px;width:42px;height:52px;border-width:3px;border-radius:6px;box-shadow:0 6px 12px #7b563535}.crew-bot .bot-shadow{left:14px;right:12px;bottom:-9px;height:8px;background:#6f4e3020;filter:blur(2px)}.crew-bot.carry .bot-figure{animation:heavy-walk .55s ease-in-out infinite alternate}.crew-bot.done .bot-figure{animation:tiny-cheer .65s ease-out both}
-.site-slot{color:#aa8b6d}.site-slot svg{stroke:#a2866722;stroke-dasharray:2 9}.site-slot .slot-tag{font-size:7px;letter-spacing:1.2px;color:#b09c87;background:transparent}.site-slot .cross{color:#b6997e88}.site-slot.working svg{stroke:#a7774688;stroke-dasharray:none;animation:none;filter:drop-shadow(0 0 4px #c89b5422)}.site-slot.working svg rect{stroke-dasharray:1000;stroke-dashoffset:var(--outline-offset,1000);transition:stroke-dashoffset .2s linear}.site-slot.working .slot-tag{color:#966a43}
-.construction-mode [data-build].assembling{transform:perspective(800px) translate3d(var(--piece-x,0px),var(--piece-y,0px),var(--piece-z,0px)) rotateY(var(--piece-yaw,0deg)) rotate(var(--piece-rotation,0deg));transform-origin:65% 50%;clip-path:inset(0 0 var(--piece-clip,0%) 0);filter:drop-shadow(0 15px 14px #6b1f2b12)}.construction-mode [data-build].assembling .portrait img{filter:blur(var(--piece-blur,0px));transition:filter .15s}.construction-mode [data-build].built{animation:snap-in .6s cubic-bezier(.16,.8,.2,1) both}.construction-mode [data-build].constructing:not(.assembling) .inked{animation:ink-arrive .3s ease-out both}.build-letter.caret::after{background:#986034;box-shadow:0 0 7px #bd8d4c66;width:2px}
-.assembly-scan{border:1px solid #ae834f77;box-shadow:0 0 0 5px #e1b36f08,0 8px 30px #be976211}.assembly-scan::before{background:linear-gradient(90deg,transparent,#d9a24c,transparent);box-shadow:0 0 8px #d9a24c66}.assembly-scan::after{color:#a57e54}.scene-effects{position:fixed;inset:0;pointer-events:none;z-index:22;width:100%;height:100%}
-.build-controls{width:585px;border:1px solid #d1b99799;box-shadow:0 8px 35px #704c2520;background:#fffaf1ef;border-radius:18px;padding:15px 17px;bottom:22px}.crew-roster{gap:6px}.roster-avatar{width:32px;height:32px}.build-status{color:#634d38;font-size:11px}.crew-subtitle{letter-spacing:.4px;color:#a38b70;font-size:8px}.build-progress{height:2px;left:18px;right:18px;bottom:0;background:#e3d6c4}.build-progress span{background:linear-gradient(90deg,#9d6847,#d7a44f,#6b1f2b);box-shadow:0 0 7px #b9894b}.skip{background:#6b1f2b;color:#fff4e7}.skip:hover{background:#4b1b21}.pause{border-color:#d7c2a8;color:#7b6047}.dock-actions{gap:6px}
-.build-complete{position:fixed;left:50%;top:25%;transform:translate(-50%,20px);color:#6b1f2b;z-index:36;pointer-events:none;opacity:0;transition:opacity .5s,transform .7s;text-align:center;font-family:Georgia,serif;font-size:25px;font-style:italic}.build-complete.show{opacity:1;transform:translate(-50%,0)}.build-complete small{font-family:ui-monospace,monospace;font-style:normal;font-size:9px;letter-spacing:2px;display:block;text-transform:uppercase;margin-top:10px;color:#9a7f66}
-@keyframes studio-drift{to{background-position:46px 92px}}@keyframes heavy-walk{from{transform:rotate(-7deg) translateY(0)}to{transform:rotate(5deg) translateY(-4px)}}@keyframes tiny-cheer{0%{transform:translateY(0)}35%{transform:translateY(-12px) rotate(-7deg)}65%{transform:translateY(2px) rotate(4deg)}100%{transform:none}}@keyframes snap-in{0%{transform:translateY(-3px) scale(1.006)}50%{transform:translateY(2px) scale(.999)}100%{transform:none}}@keyframes ink-arrive{from{opacity:0;filter:blur(3px);transform:translateY(5px)}to{opacity:1;filter:blur(0);transform:none}}
-@media(max-width:650px){.craft-caption{top:18px;right:25px;font-size:7px;letter-spacing:1px}.construction-mode .topbar{height:108px}.crew-bot .bot-figure{width:66px;height:66px}.crew-bot .bot-face{width:66px;height:66px}.crew-bot .bot-task{bottom:82px;font-size:10px;padding:7px 9px;min-width:110px}.crew-bot .bot-name{top:74px;font-size:8px}.crew-bot .bot-spark{left:53px;top:24px}.crew-bot .bot-parcel{width:32px;height:40px;left:-18px}.crew-bot .bot-tool{top:30px;font-size:9px}.build-controls{padding:12px 13px;bottom:15px;max-width:calc(100vw - 26px);gap:6px}.roster-avatar{width:23px;height:25px}.build-status{font-size:9px}.crew-subtitle{font-size:7px;letter-spacing:0}.crew-readout{min-width:90px}.crew-roster{gap:2px}.pause,.skip{padding:7px;font-size:9px}.studio-corner{width:22px;height:22px}.studio-corner.tl,.studio-corner.tr{top:9px}.studio-corner.bl,.studio-corner.br{bottom:9px}.studio-corner.tl,.studio-corner.bl{left:9px}.studio-corner.tr,.studio-corner.br{right:9px}}
-@media(prefers-reduced-motion:reduce){.stage-world,.studio-corner,.craft-caption,.scene-effects,.build-complete{display:none}.construction-mode .page{transform:none}.construction-mode [data-build].assembling{filter:none}}
-
-.crew-bot.waiting{opacity:0!important}
-
-/* Two palettes for the same little world. */
-:root{color-scheme:light;--copy:#655850;--secondary:#807167;--subtle:#95877e;--surface:#fffaf1;--bubble:#fffaf0;--bubble-ink:#655449;--surface-line:#d7c2a8;--soft-surface:#eee4d9;--button-ink:#fff4e7;--button-bg:#6b1f2b;--button-hover:#4b1b21;--stage-paper:#f5eddf;--stage-bg:radial-gradient(ellipse at 77% 22%,#d9a55e26,transparent 40%),radial-gradient(ellipse at 15% 80%,#a8666720,transparent 45%),linear-gradient(145deg,#faf6ef,#f0e4d0)}
-html[data-theme="dark"]{color-scheme:dark;--paper:#141b18;--ink:#e9f1e8;--wine:#9bc6ab;--muted:#a5b6ac;--line:#35473c;--green:#9bc6ab;--peach:#c5b888;--pink:#85ac92;--blue:#95bcb1;--copy:#c5d4cb;--secondary:#afc3b6;--subtle:#95ad9e;--surface:#1e2a23;--bubble:#24332a;--bubble-ink:#e3eee5;--surface-line:#435e4b;--soft-surface:#273b2e;--button-ink:#14261b;--button-bg:#9bc6ab;--button-hover:#b2d7be;--stage-paper:#16231b;--stage-bg:radial-gradient(ellipse at 77% 22%,#8bb89b1c,transparent 42%),radial-gradient(ellipse at 15% 80%,#648c7020,transparent 45%),linear-gradient(145deg,#1c2c22,#121b16)}
-body{transition:background-color .3s,color .3s}.construction-mode{background:var(--stage-paper)}.stage-world{background:var(--stage-bg)}
-.hero-copy{color:var(--copy)}.hero-links{color:var(--copy)}.section-note,.signal .sub,footer{color:var(--subtle)}.work-description,.work-meta,.note,.replay{color:var(--secondary)}.work-row{border-color:var(--line)}.work-icon{background:var(--soft-surface);border-color:var(--surface-line)}
-.hero-copy a,.work-title a,.note a{border-color:var(--surface-line)}.construction-mode .signals,.construction-mode footer,.construction-mode .work-row{border-color:var(--line)}.construction-mode .nav{opacity:1}
-.build-controls{background:var(--surface);border-color:var(--surface-line)}.build-status{color:var(--copy)}.crew-subtitle{color:var(--subtle)}.pause{border-color:var(--surface-line);color:var(--copy)}.pause:hover{background:var(--soft-surface)}.skip{background:var(--button-bg);color:var(--button-ink)}.skip:hover{background:var(--button-hover)}.build-progress{background:var(--line)}
-.crew-bot .bot-task{background:var(--bubble);border-color:var(--surface-line);color:var(--bubble-ink)}.crew-bot .bot-task::after{background:var(--bubble);border-color:var(--surface-line)}.crew-bot .bot-tool{background:var(--soft-surface);border-color:var(--surface-line);color:var(--wine)}.crew-bot .bot-name{color:var(--muted)}.build-complete{color:var(--wine)}.build-complete small,.craft-caption,.assembly-scan::after{color:var(--subtle)}
-.theme-picker{display:flex;align-items:center;gap:3px;padding:3px;border:1px solid var(--line);border-radius:24px;background:var(--paper);flex-shrink:0}.theme-button{display:grid;place-items:center;width:31px;height:31px;border:0;border-radius:50%;padding:0;background:transparent;color:var(--muted);transition:background .2s,color .2s}.theme-button svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.theme-button:hover{color:var(--wine);background:var(--soft-surface)}.theme-button[aria-pressed="true"]{background:var(--wine);color:var(--paper);box-shadow:0 2px 6px #00000016}.theme-button:focus-visible{outline-offset:3px}.nav .contact-label{margin:0;color:inherit}
-html[data-theme="dark"] ::selection{background:#365c46;color:#f1fff3}html[data-theme="dark"] .portrait{border-color:#405748;background:#273b2e;box-shadow:0 10px 40px #00000040}html[data-theme="dark"] .canvas{background-image:radial-gradient(#9fbaa944 .8px,transparent .8px)}html[data-theme="dark"] .stage-world::before{background-image:linear-gradient(#a0bea90c 1px,transparent 1px),linear-gradient(90deg,#a0bea90c 1px,transparent 1px)}html[data-theme="dark"] .studio-corner{border-color:#9bb8a455}html[data-theme="dark"] .site-slot .slot-tag{color:#8aa894}html[data-theme="dark"] .site-slot.working .slot-tag{color:#b3d3be}html[data-theme="dark"] .site-slot svg{stroke:#9bbb9f33}html[data-theme="dark"] .site-slot.working svg{stroke:#9bc6ab99}html[data-theme="dark"] .assembly-scan{border-color:#9bc6ab88;box-shadow:0 0 0 5px #9bc6ab08,0 8px 30px #00000030}html[data-theme="dark"] .assembly-scan::before{background:linear-gradient(90deg,transparent,#9bc6ab,transparent);box-shadow:0 0 8px #9bc6ab66}html[data-theme="dark"] .crew-bot .bot-figure{filter:drop-shadow(0 10px 8px #00000055)}html[data-theme="dark"] .crew-bot .bot-shadow{background:#00000055}html[data-theme="dark"] .build-letter.caret::after{background:#9bc6ab;box-shadow:0 0 7px #9bc6ab66}html[data-theme="dark"] .build-progress span{background:linear-gradient(90deg,#54896b,#afd3a2,#9bc6ab);box-shadow:0 0 7px #9bc6ab55}html[data-theme="dark"] .craft-caption span{background:#9bc6ab;box-shadow:0 0 8px #9bc6ab}html[data-theme="dark"] .bot-spark{color:#b3d3be}
-html[data-theme="dark"] [id="scribe-pearl"] stop:nth-child(1){stop-color:#f0fff4}html[data-theme="dark"] [id="scribe-pearl"] stop:nth-child(2){stop-color:#c8e0ce}html[data-theme="dark"] [id="scribe-pearl"] stop:nth-child(3){stop-color:#91b39a}html[data-theme="dark"] [id="scribe-pearl"] stop:nth-child(4){stop-color:#4c745b}html[data-theme="dark"] .bot-face path[fill="#6b1f2b"]{fill:#426952}
-@media(max-width:760px){.nav{gap:14px}.theme-button{width:29px;height:29px}}
-@media(max-width:540px){.nav{gap:10px}.nav>a[href="https://github.com/bcvk"]{display:none}.theme-picker{gap:2px;padding:3px}.theme-button{width:28px;height:28px}.nav .contact{padding:8px 10px}.wordmark{font-size:20px}.brand-mascot{margin-left:6px;width:23px}}
-@media(max-width:380px){.nav .contact-label{display:none}.nav .contact{padding:7px 9px}.nav .contact span{margin-left:0}.nav{gap:8px}.theme-button{width:27px;height:27px}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Burak Cevik | Customer experience operations and automation</title>
+<meta name="description" content="Burak Cevik leads multilingual customer support teams and builds automations that take repetitive work off people's plates. Based in Ankara, working remotely.">
+<meta name="author" content="Burak Cevik">
+<link rel="canonical" href="https://burak.pm/">
+<link rel="alternate" hreflang="en" href="https://burak.pm/">
+<link rel="alternate" hreflang="tr" href="https://burak.pm/?lang=tr">
+<meta name="theme-color" content="#E9ECF2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#10131F" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://burak.pm/">
+<meta property="og:title" content="Burak Cevik">
+<meta property="og:description" content="I get people to the right answer. Multilingual support operations, team leadership and automation.">
+<meta property="og:image" content="https://burak.pm/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/styles.css">
+<script src="/boot.js"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Burak Cevik","url":"https://burak.pm","email":"mailto:hello@burak.pm","image":"https://burak.pm/assets/burak.jpg","jobTitle":"Associate Project Manager","worksFor":{"@type":"Organization","name":"ModSquad","url":"https://modsquad.com"},"address":{"@type":"PostalAddress","addressLocality":"Ankara","addressCountry":"TR"},"knowsLanguage":["tr","en","es"],"sameAs":["https://linkedin.com/in/bcvk","https://github.com/bcvk"]}
+</script>
 </head>
 <body>
-  <div class="stage-world" aria-hidden="true"></div>
-  <i class="studio-corner tl" aria-hidden="true"></i><i class="studio-corner tr" aria-hidden="true"></i><i class="studio-corner bl" aria-hidden="true"></i><i class="studio-corner br" aria-hidden="true"></i>
-  <div class="craft-caption" aria-hidden="true"><span></span>A little world, coming to life.</div>
-  <canvas class="scene-effects" id="scene-effects" aria-hidden="true"></canvas>
-  <div class="build-complete" id="build-complete" aria-hidden="true">Made of little things.<small>Made with care.</small></div>
-  <div class="canvas" aria-hidden="true"></div>
-  <div class="page" id="top">
-    <header class="topbar">
-      <a class="wordmark" href="#top" aria-label="Burak home">burak<span>.pm</span></a>
-      <nav class="nav" aria-label="Main navigation"><a href="#work">What I do</a><a href="https://github.com/bcvk" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a class="contact" href="mailto:hello@burak.pm"><span class="contact-label">Say hello</span> <span aria-hidden="true">↗</span></a><div class="theme-picker" role="group" aria-label="Color theme"><button class="theme-button" type="button" data-theme-choice="light" aria-label="Light mode" aria-pressed="false" title="Light mode"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></button><button class="theme-button" type="button" data-theme-choice="dark" aria-label="Dark mode" aria-pressed="false" title="Dark mode"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 13.5A8.5 8.5 0 0 1 10.5 3.5 8.5 8.5 0 1 0 20.5 13.5Z"/></svg></button></div></nav>
-    </header>
-    <main>
-      <section class="hero" aria-labelledby="greeting">
+<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<header class="topbar">
+  <a class="brand" href="#top" aria-label="burak.pm home">
+    <span class="brand__mark" aria-hidden="true">b</span><span class="brand__name">burak<b>.pm</b></span>
+  </a>
+  <nav class="nav" aria-label="Sections">
+    <a href="#work" data-i18n="nav.work">What I do</a>
+    <a href="#path" data-i18n="nav.path">Path</a>
+    <a href="#projects" data-i18n="nav.projects">Projects</a>
+    <a href="#now" data-i18n="nav.now">Now</a>
+    <a href="#contact" data-i18n="nav.contact">Contact</a>
+  </nav>
+  <div class="tools">
+    <span class="clock" title="Ankara"><span class="clock__icon" aria-hidden="true"></span><span class="clock__time" data-clock>--:--</span><span class="clock__city">Ankara</span></span>
+    <button class="tool" type="button" data-action="lang" aria-label="Switch language"><span data-lang-label>TR</span></button>
+    <button class="tool" type="button" data-action="theme" aria-label="Switch theme">
+      <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5.3 5.3l1.7 1.7M17 17l1.7 1.7M5.3 18.7 7 17M17 7l1.7-1.7"/></svg>
+      <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6Z"/></svg>
+    </button>
+    <button class="tool tool--k" type="button" data-action="palette" aria-label="Open menu"><kbd data-modkey>Ctrl</kbd><kbd>K</kbd><svg class="i-menu" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top">
+    <div class="hero__text">
+      <p class="hero__hello" data-i18n="hero.hello">Hi, I'm Burak.</p>
+      <h1 class="hero__title" data-i18n="hero.title" data-split>I get people to the right answer.</h1>
+      <p class="hero__lede" data-i18n="hero.lede">I lead multilingual customer support teams and build the automations that keep repetitive work off their plates. Right now I'm an Associate Project Manager at ModSquad, working remotely from Ankara.</p>
+      <div class="hero__actions">
+        <a class="btn btn--solid" href="#projects" data-i18n="hero.cta1">See what I've built</a>
+        <a class="btn btn--ghost" href="#contact" data-i18n="hero.cta2">Write to me</a>
+      </div>
+    </div>
+
+    <figure class="board" aria-labelledby="board-title">
+      <div class="board__head">
         <div>
-          <p class="eyebrow" data-build="intro"><span class="dot"></span> Customer success & automation</p>
-          <h1 id="greeting" data-build="title">Hey there,<br>I’m <span class="name">Burak.</span></h1>
-          <p class="hero-copy" data-build="bio">I bring a human touch to customer success<br class="desktop-break"> and build <em>automations that make work simpler.</em><br>Currently an Assistant Project Manager at <a href="https://modsquad.com/" target="_blank" rel="noopener noreferrer">ModSquad</a>.</p>
-          <div class="hero-links" data-build="links"><a href="mailto:hello@burak.pm">hello@burak.pm <span>↗</span></a><a href="https://linkedin.com/in/bcvk" target="_blank" rel="noopener noreferrer">LinkedIn <span>↗</span></a></div>
+          <p class="board__title" id="board-title"><span class="live" aria-hidden="true"></span><span data-i18n="board.title">Live queue</span></p>
+          <p class="board__hint" data-i18n="board.hint">Messages arrive in three languages and find their lane. Tap one to resolve it.</p>
         </div>
-        <div class="portrait-wrap" data-build="portrait"><span class="small-star" aria-hidden="true">✳</span><div class="portrait"><img src="profile.jpg" alt="Burak Cevik" width="235" height="278" fetchpriority="high"></div><span class="portrait-caption">the human behind the workflows.</span></div>
-      </section>
-      <section class="signals" aria-labelledby="signals-title">
-        <div class="section-header" data-build="signal-heading"><h2 class="label" id="signals-title">A little context</h2><span class="section-note">people, processes, possibilities.</span></div>
-        <div class="signal-grid">
-          <div class="signal" data-build="signal-1"><span class="signal-label">My local time</span><span class="value clock-value" id="clock">—:—</span><span class="sub">Ankara, Türkiye · UTC+3</span></div>
-          <div class="signal" data-build="signal-2"><span class="signal-label">People I lead</span><span class="value">20+ <span class="dot"></span></span><span class="sub">Multilingual support specialists</span></div>
-          <div class="signal" data-build="signal-3"><span class="signal-label">Currently tinkering</span><span class="value">ESP32-S3</span><span class="sub">Hardware meets curiosity</span></div>
-          <div class="signal" data-build="signal-4"><span class="signal-label">Learning, always</span><span class="value">¡Hola!</span><span class="sub">Practicing Spanish</span></div>
-        </div>
-      </section>
-      <section class="work" id="work" aria-labelledby="work-title">
-        <div class="section-header" data-build="work-heading"><h2 class="label" id="work-title">Where I put my energy</h2><span class="section-note">a few things from my corner.</span></div>
-        <article class="work-row" data-build="work-1"><div class="work-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20v-3a6 6 0 0 1 12 0v3M16 5a3 3 0 0 1 0 6m1 3a5 5 0 0 1 4 5"/></svg></div><div><h3 class="work-title">People-first operations at <a href="https://modsquad.com/" target="_blank" rel="noopener noreferrer">ModSquad ↗</a></h3><p class="work-description">Leading 20+ multilingual customer support specialists across language queues for a major consumer SaaS client.</p></div><div class="work-meta">Customer success<br>Team leadership</div></article>
-        <article class="work-row" data-build="work-2"><div class="work-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="9" width="6" height="6" rx="2"/><rect x="16" y="2" width="6" height="6" rx="2"/><rect x="16" y="16" width="6" height="6" rx="2"/><path d="M8 12h4V5h4m-4 7v7h4"/></svg></div><div><h3 class="work-title">Less repetitive work. More room to think.</h3><p class="work-description">Building tools for shift planning, coaching, performance reporting, and quality analysis with an AI-first mindset.</p></div><div class="work-meta">Apps Script · n8n<br>Claude API</div></article>
-        <article class="work-row" data-build="work-3"><div class="work-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4m6-4v4M9 18v4m6-4v4M2 9h4m-4 6h4m12-6h4m-4 6h4"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg></div><div><h3 class="work-title">Making things just to see what’s possible.</h3><p class="work-description">Prototyping with ESP32-S3 hardware, exploring new ideas, and enjoying the little discoveries along the way.</p></div><div class="work-meta">Hardware prototyping<br>Side explorations</div></article>
-      </section>
-      <section class="note" data-build="note" aria-label="Get in touch"><p><span class="hello">Good things start with a conversation.</span>Into automation, AI, customer success, or building something together?<br>Drop me a line at <a href="mailto:hello@burak.pm">hello@burak.pm</a>. I’d love to hear what you’re thinking.</p></section>
-    </main>
-    <footer><span>© <span id="year">2026</span> Burak Cevik · Made with care in Ankara</span><button class="replay" type="button" id="replay"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 8a7 7 0 1 1 .5 6M3 3v5h5"/></svg>Biko, build it again</button></footer>
+        <button class="board__pause" type="button" data-action="queue-pause" aria-pressed="false">
+          <span data-i18n="board.pause">Pause</span>
+        </button>
+      </div>
+      <canvas class="board__canvas" aria-hidden="true"></canvas>
+      <figcaption class="board__foot">
+        <span><b data-stat="resolved">0</b> <span data-i18n="board.resolved">resolved by you</span></span>
+        <span><b data-stat="waiting">0</b> <span data-i18n="board.waiting">waiting</span></span>
+        <span class="board__best" hidden><span data-i18n="board.fastest">fastest pickup</span> <b data-stat="fastest">0</b>s</span>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="facts" aria-label="At a glance">
+    <div class="fact"><b data-count="5" data-suffix="+">0</b><span data-i18n="fact.years">years in customer experience, from the front line to project management</span></div>
+    <div class="fact"><b data-count="20" data-prefix="~">0</b><span data-i18n="fact.team">people on my multilingual team, across Turkish and Indonesian queues</span></div>
+    <div class="fact"><b data-count="3">0</b><span data-i18n="fact.langs">languages I work in: Turkish, English and Spanish</span></div>
+    <div class="fact"><b data-count="6">0</b><span data-i18n="fact.tools">tools I designed and built so the team spends time on people, not spreadsheets</span></div>
+  </section>
+
+  <section class="section work" id="work" aria-labelledby="work-title">
+    <h2 class="section__title" id="work-title" data-i18n="work.title">What I do</h2>
+    <div class="work__list" role="list">
+      <article class="lane" role="listitem">
+        <button class="lane__head" type="button" aria-expanded="true">
+          <span class="lane__glyph" aria-hidden="true"><svg viewBox="0 0 40 40"><circle cx="13" cy="14" r="5"/><circle cx="27" cy="14" r="5"/><path d="M4 33c1.5-6 5-9 9-9s7.5 3 9 9M18 33c1.5-6 5-9 9-9s7.5 3 9 9"/></svg></span>
+          <span class="lane__title" data-i18n="work.a.title">I help teams do their best work</span>
+          <span class="lane__toggle" aria-hidden="true"></span>
+        </button>
+        <div class="lane__body"><div class="lane__inner">
+          <p data-i18n="work.a.body">Day to day I run a team of about twenty advisors handling Turkish and Indonesian support, with English as a shared skill. That means KPI tracking, quality frameworks, monthly coaching, scheduling and a lot of one to one conversations.</p>
+          <ul class="tags"><li data-i18n="tag.kpi">KPI management</li><li data-i18n="tag.qa">Quality frameworks</li><li data-i18n="tag.coaching">Coaching</li><li data-i18n="tag.wfm">Scheduling</li></ul>
+        </div></div>
+      </article>
+      <article class="lane" role="listitem">
+        <button class="lane__head" type="button" aria-expanded="false">
+          <span class="lane__glyph" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M6 12h10l4 8-4 8H6M24 12h10M24 20h10M24 28h10"/><circle cx="20" cy="20" r="2.2"/></svg></span>
+          <span class="lane__title" data-i18n="work.b.title">I hand repetitive work to machines</span>
+          <span class="lane__toggle" aria-hidden="true"></span>
+        </button>
+        <div class="lane__body"><div class="lane__inner">
+          <p data-i18n="work.b.body">If a task repeats every week, I try to automate it. I build dashboards, feedback platforms and AI assisted coaching flows with Google Apps Script and the Claude API, so the team gets answers faster and I get time back for people.</p>
+          <ul class="tags"><li>Apps Script</li><li>Claude API</li><li>Google Workspace</li><li>n8n</li></ul>
+        </div></div>
+      </article>
+      <article class="lane" role="listitem">
+        <button class="lane__head" type="button" aria-expanded="false">
+          <span class="lane__glyph" aria-hidden="true"><svg viewBox="0 0 40 40"><rect x="9" y="9" width="22" height="22" rx="3"/><path d="M15 9V4M20 9V4M25 9V4M15 36v-5M20 36v-5M25 36v-5M9 15H4M9 20H4M9 25H4M36 15h-5M36 20h-5M36 25h-5"/><rect x="15" y="15" width="10" height="10" rx="1.5"/></svg></span>
+          <span class="lane__title" data-i18n="work.c.title">I build things to see what's possible</span>
+          <span class="lane__toggle" aria-hidden="true"></span>
+        </button>
+        <div class="lane__body"><div class="lane__inner">
+          <p data-i18n="work.c.body">Outside work I prototype hardware with ESP32 boards and I'm building Tamga, an AI product for people who do business across borders. Studying international trade and logistics feeds straight into it.</p>
+          <ul class="tags"><li data-i18n="tag.hw">Hardware</li><li data-i18n="tag.product">Product</li><li data-i18n="tag.trade">Trade and logistics</li></ul>
+        </div></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section path" id="path" aria-labelledby="path-title">
+    <h2 class="section__title" id="path-title" data-i18n="path.title">Path</h2>
+    <p class="section__lede" data-i18n="path.lede">Five years at one company, one step at a time. Pick a step to read about it.</p>
+    <div class="path__track" role="tablist" aria-label="Career steps">
+      <button class="step" role="tab" type="button" aria-selected="false" data-step="0"><span class="step__n">1</span><span class="step__role" data-i18n="path.s1.role">Customer Success Specialist</span></button>
+      <button class="step" role="tab" type="button" aria-selected="false" data-step="1"><span class="step__n">2</span><span class="step__role" data-i18n="path.s2.role">Team Lead</span></button>
+      <button class="step" role="tab" type="button" aria-selected="true" data-step="2"><span class="step__n">3</span><span class="step__role" data-i18n="path.s3.role">Associate Project Manager</span></button>
+      <button class="step step--next" role="tab" type="button" aria-selected="false" data-step="3"><span class="step__n">4</span><span class="step__role" data-i18n="path.s4.role">Next</span></button>
+      <span class="path__rail" aria-hidden="true"><span></span></span>
+    </div>
+    <div class="path__panel" role="tabpanel" aria-live="polite">
+      <p class="path__when" data-path-when></p>
+      <p class="path__text" data-path-text></p>
+    </div>
+  </section>
+
+  <section class="section projects" id="projects" aria-labelledby="projects-title">
+    <div class="projects__head">
+      <h2 class="section__title" id="projects-title" data-i18n="projects.title">Things I've built</h2>
+      <div class="filters" role="group" aria-label="Filter projects">
+        <button type="button" class="chip" aria-pressed="true" data-filter="all" data-i18n="filter.all">All</button>
+        <button type="button" class="chip" aria-pressed="false" data-filter="auto" data-i18n="filter.auto">Automation</button>
+        <button type="button" class="chip" aria-pressed="false" data-filter="ai" data-i18n="filter.ai">AI</button>
+        <button type="button" class="chip" aria-pressed="false" data-filter="product" data-i18n="filter.product">Product</button>
+        <button type="button" class="chip" aria-pressed="false" data-filter="hw" data-i18n="filter.hw">Hardware</button>
+      </div>
+    </div>
+    <p class="section__lede" data-i18n="projects.lede">Most of these live inside the company, so here's what they do rather than screenshots. Open any of them for the details.</p>
+    <div class="bento" data-projects></div>
+  </section>
+
+  <section class="section now" id="now" aria-labelledby="now-title">
+    <div class="now__portrait">
+      <picture>
+        <source srcset="/assets/burak.webp" type="image/webp">
+        <img src="/assets/burak.jpg" width="491" height="617" alt="Portrait of Burak Cevik" loading="lazy" decoding="async">
+      </picture>
+      <p class="hola" aria-live="off"><span data-greet>Merhaba</span></p>
+    </div>
+    <div class="now__text">
+      <h2 class="section__title" id="now-title" data-i18n="now.title">These days</h2>
+      <ul class="now__list">
+        <li><b data-i18n="now.1.t">Studying international trade and logistics</b><span data-i18n="now.1.d">I started at Hitit University in 2026, alongside work.</span></li>
+        <li><b data-i18n="now.2.t">Building Tamga</b><span data-i18n="now.2.d">An AI product that lets you follow every step of a cross border deal in one place.</span></li>
+        <li><b data-i18n="now.3.t">Getting better at Spanish</b><span data-i18n="now.3.d">Working proficiency today, fluency is the goal.</span></li>
+        <li><b data-i18n="now.4.t">Tinkering with an ESP32</b><span data-i18n="now.4.d">A little sticker printer that listens to kids and prints what they ask for.</span></li>
+      </ul>
+      <div class="toolbox">
+        <h3 data-i18n="tools.title">What I work with</h3>
+        <dl>
+          <div><dt data-i18n="tools.ops">Operations</dt><dd data-i18n="tools.ops.d">KPI management, quality assurance, coaching, scheduling, reporting</dd></div>
+          <div><dt data-i18n="tools.cx">Support platforms</dt><dd>Zendesk, Salesforce, Freshdesk, HubSpot, Google Workspace</dd></div>
+          <div><dt data-i18n="tools.build">Building</dt><dd>Apps Script, JavaScript, Claude API, n8n, Python</dd></div>
+          <div><dt data-i18n="tools.lang">Languages</dt><dd data-i18n="tools.lang.d">Turkish (native), English (C2), Spanish (working)</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact" id="contact" aria-labelledby="contact-title">
+    <div class="contact__intro">
+      <h2 class="contact__title" id="contact-title" data-i18n="contact.title">Let's talk.</h2>
+      <p data-i18n="contact.lede">Into support operations, automation, AI or building something together? Pick a reason, write a line, and your mail app opens with everything filled in.</p>
+      <div class="contact__direct">
+        <button class="btn btn--ghost" type="button" data-action="copy-email"><span>hello@burak.pm</span><span class="sr" data-i18n="contact.copy">Copy address</span></button>
+        <a class="link" href="https://linkedin.com/in/bcvk" rel="me noopener" target="_blank">LinkedIn</a>
+        <a class="link" href="https://github.com/bcvk" rel="me noopener" target="_blank">GitHub</a>
+        <button class="link" type="button" data-action="vcard" data-i18n="contact.vcard">Add me to contacts</button>
+      </div>
+    </div>
+    <form class="composer" data-composer novalidate>
+      <fieldset class="composer__reasons">
+        <legend data-i18n="contact.reason">What's it about?</legend>
+        <label class="chip"><input type="radio" name="reason" value="collab" checked><span data-i18n="reason.collab">Working together</span></label>
+        <label class="chip"><input type="radio" name="reason" value="role"><span data-i18n="reason.role">A role or opportunity</span></label>
+        <label class="chip"><input type="radio" name="reason" value="automation"><span data-i18n="reason.automation">An automation idea</span></label>
+        <label class="chip"><input type="radio" name="reason" value="hello"><span data-i18n="reason.hello">Just saying hi</span></label>
+      </fieldset>
+      <label class="field"><span data-i18n="contact.name">Your name</span><input name="name" autocomplete="name" required></label>
+      <label class="field"><span data-i18n="contact.msg">Message</span><textarea name="msg" rows="4" required></textarea></label>
+      <p class="composer__error" data-composer-error hidden></p>
+      <button class="btn btn--solid" type="submit" data-i18n="contact.send">Open in my mail app</button>
+    </form>
+  </section>
+</main>
+
+<footer class="footer">
+  <p data-i18n="footer.made">Designed and built in Ankara. Hosted on Cloudflare Pages.</p>
+  <p class="footer__keys"><span data-i18n="footer.keys">Press</span> <kbd data-modkey>Ctrl</kbd><kbd>K</kbd> <span data-i18n="footer.keys2">to jump anywhere, or type the name of a certain goat.</span></p>
+</footer>
+
+<dialog class="sheet" data-project-sheet aria-labelledby="sheet-title">
+  <div class="sheet__inner">
+    <button class="sheet__close" type="button" data-close aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <div class="sheet__glyph" data-sheet-glyph aria-hidden="true"></div>
+    <h3 id="sheet-title" data-sheet-title></h3>
+    <p class="sheet__lede" data-sheet-lede></p>
+    <ul class="sheet__points" data-sheet-points></ul>
+    <ul class="tags" data-sheet-tags></ul>
+    <a class="btn btn--solid" data-sheet-link hidden target="_blank" rel="noopener"></a>
   </div>
-  <div class="build-controls" id="controls" hidden>
-    <div class="crew-roster" id="roster" aria-hidden="true"></div>
-    <div class="crew-readout"><span class="build-status" id="build-message">The crew is clocking in…</span><span class="crew-subtitle" id="crew-subtitle">3 little minds · one personal space</span></div>
-    <div class="dock-actions"><button class="pause" id="pause" type="button">Pause</button><button type="button" class="skip" id="skip">Skip ↗</button></div>
-    <div class="build-progress" aria-hidden="true"><span id="progress"></span></div>
+</dialog>
+
+<dialog class="palette" data-palette aria-label="Command menu">
+  <div class="palette__inner">
+    <input class="palette__input" type="text" data-palette-input autocomplete="off" spellcheck="false" aria-label="Search commands">
+    <ul class="palette__list" role="listbox" data-palette-list></ul>
+    <p class="palette__foot"><kbd>↑</kbd><kbd>↓</kbd> <span data-i18n="palette.move">to move</span> <kbd>Enter</kbd> <span data-i18n="palette.pick">to choose</span> <kbd>Esc</kbd> <span data-i18n="palette.close">to close</span></p>
   </div>
-  <div id="agents" aria-hidden="true"></div>
-  <script>
+</dialog>
 
-(() => {
-  'use strict';
-  // Hand-authored characters and choreography; no external AI calls.
-  const body=document.body, root=document.getElementById('agents');
-  const controls=document.getElementById('controls'), message=document.getElementById('build-message');
-  const subtitle=document.getElementById('crew-subtitle'), progress=document.getElementById('progress');
-  const pauseButton=document.getElementById('pause');
-  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
-  const blocks=[...document.querySelectorAll('[data-build]')];
-  const originals=new Map(blocks.map(el=>[el,el.innerHTML]));
-  const svgWrap=body=>'<svg class="bot-face" viewBox="0 0 60 60">'+body+'</svg>';
-  const robot=svgWrap(`<defs><linearGradient id="maker-shell" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff5e5"/><stop offset=".35" stop-color="#d3b99c"/><stop offset=".65" stop-color="#96816c"/><stop offset="1" stop-color="#e1cfb5"/></linearGradient><radialGradient id="maker-glass" cx=".4" cy=".18" r="1"><stop stop-color="#6c5049"/><stop offset=".5" stop-color="#302a29"/><stop offset="1" stop-color="#16191b"/></radialGradient><linearGradient id="maker-copper"><stop stop-color="#e0bba0"/><stop offset="1" stop-color="#8d5949"/></linearGradient></defs><ellipse cx="30" cy="56" rx="17" ry="3" fill="#805442" opacity=".2"/><path d="M30 9V4" stroke="#ae8a6b" stroke-width="2"/><circle cx="30" cy="3" r="2" fill="#eed3a3"/><rect x="7" y="9" width="46" height="35" rx="15" fill="url(#maker-shell)" stroke="#9d836b" stroke-width=".65"/><rect x="11" y="14" width="38" height="24" rx="10" fill="url(#maker-glass)"/><path d="M15 15q15-5 29 0" stroke="#f9ecdc88" stroke-width="1" fill="none"/><g class="eye"><ellipse cx="22" cy="25" rx="3" ry="5" fill="#f5cc9d"/><ellipse cx="38" cy="25" rx="3" ry="5" fill="#f5cc9d"/><circle cx="22" cy="23" r="1" fill="#fffaf0"/><circle cx="38" cy="23" r="1" fill="#fffaf0"/></g><path d="M26 33q4 2 8 0" stroke="#dbb395" stroke-width="1" fill="none"/><rect x="19" y="43" width="22" height="11" rx="4" fill="url(#maker-copper)"/><path d="M21 52l-6 5m24-5l6 5" stroke="#967a61" stroke-width="3" stroke-linecap="round"/><path d="M9 36l-5 11" stroke="#ae8e70" stroke-width="3" stroke-linecap="round"/><g class="arm"><path d="M50 36l5 9" stroke="#ae8e70" stroke-width="3" stroke-linecap="round"/><path d="M55 38v12m-3-12h7" stroke="#e2ba84" stroke-width="2.5" stroke-linecap="round"/></g><circle cx="30" cy="49" r="2" fill="#f7e4c4"/>`);
-  const writer=svgWrap(`<defs><radialGradient id="scribe-pearl" cx=".29" cy=".2" r=".9"><stop stop-color="#fff7ee"/><stop offset=".25" stop-color="#eed4cb"/><stop offset=".62" stop-color="#cba29b"/><stop offset="1" stop-color="#826469"/></radialGradient><linearGradient id="scribe-ring" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ead9bf"/><stop offset="1" stop-color="#ba956a"/></linearGradient></defs><ellipse cx="30" cy="55" rx="16" ry="3" fill="#745246" opacity=".18"/><circle cx="30" cy="28" r="21" fill="url(#scribe-pearl)" stroke="#b69489" stroke-width=".65"/><path d="M13 20q3-9 16-11" stroke="#fffaf1aa" stroke-width="2" fill="none" stroke-linecap="round"/><ellipse cx="30" cy="37" rx="27" ry="6" fill="none" stroke="url(#scribe-ring)" stroke-width="2" transform="rotate(-16 30 37)"/><g class="eye"><ellipse cx="23" cy="26" rx="2.5" ry="4" fill="#49383b"/><ellipse cx="37" cy="26" rx="2.5" ry="4" fill="#49383b"/><circle cx="23" cy="25" r=".8" fill="#f9ebde"/><circle cx="37" cy="25" r=".8" fill="#f9ebde"/></g><path d="M26 35q4 3 8 0" fill="none" stroke="#79535a" stroke-width="1" stroke-linecap="round"/><path d="M19 49l-4 6m26-6l4 6" stroke="#b79184" stroke-width="3" stroke-linecap="round"/><g class="arm"><path d="M48 33l7 8" stroke="#c8a393" stroke-width="3" stroke-linecap="round"/><path d="M53 34l-2 13" stroke="#785946" stroke-width="2" stroke-linecap="round"/><circle cx="53" cy="34" r="1.5" fill="#f9d4a5"/></g>`);
-  const designer=svgWrap(`<defs><radialGradient id="biko-fur" cx=".3" cy=".19" r=".9"><stop stop-color="#fffdf4"/><stop offset=".5" stop-color="#f0e7d8"/><stop offset="1" stop-color="#c5ae94"/></radialGradient><linearGradient id="biko-horn" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#62483c"/><stop offset="1" stop-color="#b99872"/></linearGradient></defs><ellipse cx="30" cy="56" rx="15" ry="2.5" fill="#a98b74" opacity=".2"/><path d="M19 18C9 10 15 1 18 1c-3 6 2 10 7 14M41 18C51 10 45 1 42 1c3 6-2 10-7 14" fill="url(#biko-horn)" stroke="#80604a" stroke-width=".6"/><path d="M18 18C8 11 0 18 7 25c3 3 6 4 10 2M42 18c10-7 18 0 11 7-3 3-6 4-10 2" fill="#e2c9b1" stroke="#baa18a" stroke-width=".6"/><path d="M14 22l-6-3 4 5m34-2 6-3-4 5" stroke="#c69488" stroke-width="2" stroke-linecap="round"/><path d="M16 20q1-12 14-11 13-1 14 11l-2 17q-1 10-12 10T18 37Z" fill="url(#biko-fur)" stroke="#bea58c" stroke-width=".6"/><path d="M23 12l1-5 5 4 5-4 2 5" fill="#fffdf5" stroke="#d6c3ac" stroke-width=".5"/><g class="eye"><ellipse cx="22" cy="26" rx="4" ry="3.4" fill="#b69b68"/><ellipse cx="38" cy="26" rx="4" ry="3.4" fill="#b69b68"/><rect x="19" y="25.3" width="6" height="1.5" rx=".7" fill="#3c302b"/><rect x="35" y="25.3" width="6" height="1.5" rx=".7" fill="#3c302b"/><circle cx="20.5" cy="24.5" r=".7" fill="#fff"/><circle cx="36.5" cy="24.5" r=".7" fill="#fff"/></g><ellipse cx="30" cy="37" rx="8" ry="5.7" fill="#e4d1bf"/><path d="M28 35q2-2 4 0l-2 2Z" fill="#8f7062"/><path d="M30 37v2m-5 1q5 3 10 0" stroke="#8f7062" stroke-width=".8" fill="none" stroke-linecap="round"/><path d="M25 42l2 9 3-3 3 3 2-9" fill="#e9decc" stroke="#cdbba4" stroke-width=".5"/><path d="M19 46q11 4 22 0l-3 8H22Z" fill="#6b1f2b"/><circle cx="30" cy="51" r="3" fill="#d7a884"/><text x="30" y="53" text-anchor="middle" fill="#6b1f2b" font-family="Georgia,serif" font-size="5" font-weight="bold">b</text><path d="M21 54l-5 3m23-3l5 3" stroke="#876b56" stroke-width="3" stroke-linecap="round"/>`);
-  const names=['The maker','The storyteller','Biko · burak.pm'];
-  const faces=[robot,writer,designer];
-  document.querySelector('.wordmark').insertAdjacentHTML('beforeend','<span class="brand-mascot" aria-hidden="true">'+designer+'</span>');
-  const crew=faces.map((face,i)=>{
-    const node=document.createElement('div');node.className='crew-bot rest';
-    node.innerHTML='<div class="bot-task">Ready to build.</div><div class="bot-figure"><span class="bot-shadow"></span>'+face+'<div class="bot-parcel"></div><span class="bot-tool">'+(i===0?'↗':i===1?'Aa':'↔')+'</span><span class="bot-spark">✧</span><span class="bot-done">✓</span></div><span class="bot-name">'+names[i]+'</span>';
-    root.append(node);
-    const scan=document.createElement('div');scan.className='assembly-scan';root.append(scan);
-    const avatar=document.createElement('span');avatar.className='roster-avatar';avatar.innerHTML=face;document.getElementById('roster').append(avatar);
-    return {node,scan,queue:[],job:null,x:-80-i*40,y:160+i*75,targetX:0,targetY:0,index:i};
-  });
-  const jobs=[
-    {id:'portrait',who:0,length:7400,type:'assembly',say:['I’ll bring the photo.','Getting the frame right…','A little to the left.','Photo in place.'],tag:'01 / PORTRAIT'},
-    {id:'intro',who:0,length:2800,type:'type',say:['Let’s give this a label.','Customer success. Automation.','Checking the spacing.','That feels right.'],tag:'02 / INTRO'},
-    {id:'title',who:1,length:8200,type:'type',say:['Every site starts with hello.','Writing your introduction…','A little personality.','Hello, Burak.'],tag:'03 / HEADLINE',delay:900},
-    {id:'bio',who:1,length:9700,type:'type',say:['Now, your story.','One word at a time…','Keeping it human.','That’s you.'],tag:'04 / BIO'},
-    {id:'links',who:1,length:3000,type:'type',say:['People should find you.','Adding the connections…','Links look good.','Connected.'],tag:'05 / LINKS'},
-    {id:'signal-heading',who:2,length:2800,type:'type',say:['Biko on the job.','A little context.','Checking the baseline.','Grid ready.'],tag:'06 / CONTEXT',delay:7000},
-    {id:'signal-1',who:2,length:3500,type:'assembly',say:['Time goes here.','Placing the clock…','Aligned to the grid.','Right on time.'],tag:'07 / LOCAL TIME'},
-    {id:'signal-2',who:2,length:3500,type:'assembly',say:['People are the point.','Building the team card…','Making room for 20+.','Team in place.'],tag:'08 / PEOPLE'},
-    {id:'signal-3',who:2,length:3500,type:'assembly',say:['Something to tinker with.','Adding a little hardware…','Checking the edges.','Plugged in.'],tag:'09 / HARDWARE'},
-    {id:'signal-4',who:2,length:3500,type:'assembly',say:['One more detail.','A little Spanish…','¡Hola, mundo!','Context complete.'],tag:'10 / LEARNING'},
-    {id:'work-heading',who:2,length:2200,type:'type',say:['Let’s build your corner.','Laying out your work…','Giving it some space.','Ready for the cards.'],tag:'11 / WORK'},
-    {id:'work-1',who:0,length:5400,type:'assembly',say:['Here comes the first card.','People-first operations.','Snapping it into place…','First piece, done.'],tag:'12 / OPERATIONS'},
-    {id:'work-2',who:1,length:6600,type:'type',say:['Let’s talk automation.','Writing the next piece…','Less work. More thought.','Workflow complete.'],tag:'13 / AUTOMATION'},
-    {id:'work-3',who:2,length:5400,type:'assembly',say:['Making room for curiosity.','Assembling the last card…','A final alignment check.','Built with curiosity.'],tag:'14 / EXPLORATION'},
-    {id:'note',who:1,length:6500,type:'type',say:['Let’s leave a door open.','An invitation to say hello…','The finishing touch.','Made with care.'],tag:'15 / SAY HELLO'}
-  ].map(job=>({...job,el:document.querySelector('[data-build="'+job.id+'"]'),elapsed:0,letters:[],cursor:0}));
-  const slots=new Map();
-  let running=false, paused=false, raf=null, previous=0, clock=0, doneCount=0, observer=null;
-  const scenes={work:false,note:false};
-  function createSlots(){
-    for(const job of jobs){const slot=document.createElement('div');slot.className='site-slot';slot.innerHTML='<svg><rect x="0" y="0" width="100%" height="100%" rx="3" pathLength="1000"/></svg><span class="cross first">+</span><span class="cross last">+</span><span class="slot-tag">'+job.tag+'</span>';root.append(slot);slots.set(job.id,slot);}
-  }
-  function positionSlots(){
-    for(const job of jobs){const slot=slots.get(job.id);if(!slot)continue;const r=job.el.getBoundingClientRect();Object.assign(slot.style,{left:(r.left-5)+'px',top:(r.top-4)+'px',width:(r.width+10)+'px',height:(r.height+8)+'px',display:r.bottom<0||r.top>innerHeight?'none':'block'});}
-  }
-  function prepareLetters(job){
-    const walker=document.createTreeWalker(job.el,NodeFilter.SHOW_TEXT);
-    const textNodes=[];while(walker.nextNode()){if(walker.currentNode.textContent.trim()&&!walker.currentNode.parentElement.closest('svg'))textNodes.push(walker.currentNode);}
-    for(const text of textNodes){const fragment=document.createDocumentFragment();for(const token of text.textContent.split(/(\s+)/)){if(!token)continue;if(/^\s+$/.test(token)){fragment.append(document.createTextNode(token));continue;}const word=document.createElement('span');word.className='build-word';for(const char of token){const letter=document.createElement('span');letter.className='build-letter';letter.textContent=char;word.append(letter);job.letters.push(letter);}fragment.append(word);}text.replaceWith(fragment);}
-  }
-  function queueScene(name){
-    if(scenes[name]||!running)return;scenes[name]=true;
-    const ids=name==='work'?['work-heading','work-1','work-2','work-3']:['note'];
-    ids.forEach(id=>{const job=jobs.find(j=>j.id===id);crew[job.who].queue.push(job);});
-  }
-  function checkScenes(){
-    if(!running)return;
-    ['work','note'].forEach(name=>{const el=name==='work'?document.querySelector('.work'):document.querySelector('.note');const r=el.getBoundingClientRect();if(r.top<innerHeight-95&&r.bottom>70)queueScene(name);});
-  }
-  function initJob(bot,job){
-    bot.job=job;job.elapsed=0;job.fromX=bot.x;job.fromY=bot.y;
-    const rect=job.el.getBoundingClientRect();
-    job.arriveX=Math.min(innerWidth-80,Math.max(20,rect.left+Math.min(rect.width*.45,120)));
-    job.arriveY=Math.min(innerHeight-200,Math.max(135,rect.top+35));
-    if(job.type==='type')prepareLetters(job);
-    bot.node.querySelector('.bot-parcel').innerHTML=job.id==='portrait'?'<img alt="" src="'+document.querySelector('.portrait img').src+'">':'<span style="display:block;padding:7px 4px;font-size:10px">▤</span>';
-    slots.get(job.id).classList.add('working');
-  }
-  function setState(bot,state,text){bot.node.className='crew-bot '+state;bot.node.querySelector('.bot-task').textContent=text;}
-  const lerp=(a,b,t)=>a+(b-a)*t;
-  const smooth=t=>t*t*(3-2*t);
-  function workOn(bot,dt){
-    const job=bot.job;job.elapsed+=dt;const p=Math.min(job.elapsed/job.length,1),r=job.el.getBoundingClientRect();
-    const onscreen=r.bottom>30&&r.top<innerHeight-110;
-    bot.node.style.opacity=onscreen?'1':'0';bot.scan.style.opacity='0';
-    let targetX=job.arriveX,targetY=job.arriveY;
-    const phase=p<.22?0:p<.78?1:p<.91?2:3;
-    slots.get(job.id).style.setProperty('--outline-offset',Math.round((1-Math.min(p/.45,1))*1000));
-    setState(bot,phase===0?'travel'+(job.type==='assembly'?' carry':''):phase===1?'work':phase===2?'rest':'done',job.say[phase]);
-    if(phase===0){const t=smooth(p/.22);targetX=lerp(job.fromX,job.arriveX,t);targetY=lerp(job.fromY,job.arriveY,t)+Math.sin(t*Math.PI)*-34;}
-    else if(job.type==='type'){
-      job.el.classList.add('constructing');const typing=Math.min(1,Math.max(0,(p-.22)/.56));const count=Math.floor(typing*job.letters.length);
-      for(let i=job.cursor;i<count;i++)job.letters[i].classList.add('inked');
-      job.letters.forEach((letter,i)=>letter.classList.toggle('caret',i===count-1&&count<job.letters.length));
-      job.cursor=count;
-      if(count>0){const char=job.letters[Math.min(count-1,job.letters.length-1)].getBoundingClientRect();targetX=char.right+5;targetY=char.bottom+8;}
-    }else{
-      job.el.classList.add('constructing','assembling');const t=smooth(Math.min(1,Math.max(0,(p-.22)/.52)));
-      job.el.style.setProperty('--piece-x',(1-t)*-55+'px');job.el.style.setProperty('--piece-y',(1-t)*70+'px');job.el.style.setProperty('--piece-z',(1-t)*60+'px');job.el.style.setProperty('--piece-yaw',(1-t)*-24+'deg');job.el.style.setProperty('--piece-blur',(1-t)*4+'px');job.el.style.setProperty('--piece-rotation',(1-t)*-7+'deg');job.el.style.setProperty('--piece-clip',(1-t)*100+'%');
-      targetX=r.left+r.width*Math.min(.9,.18+t*.7);targetY=r.top+r.height*Math.min(.7,.12+t*.5);
-    }
-    if(phase===2&&onscreen){targetX=r.right-30;targetY=r.top+30;Object.assign(bot.scan.style,{left:r.left+'px',top:r.top+'px',width:r.width+'px',height:r.height+'px',opacity:'.6'});bot.scan.style.setProperty('--scan-y',r.height*Math.min(1,(p-.78)/.13)+'px');bot.scan.dataset.measure=Math.round(r.width)+' × '+Math.round(r.height)+' · aligned';}
-    if(phase===3){targetX=r.right-30;targetY=r.top+26;}
-    if(phase!==0){targetX=Math.max(12,Math.min(innerWidth-110,targetX));targetY=Math.max(105,Math.min(innerHeight-205,targetY));bot.x=lerp(bot.x,targetX,1-Math.exp(-dt/160));bot.y=lerp(bot.y,targetY,1-Math.exp(-dt/160));}else{bot.x=Math.max(-80,Math.min(innerWidth-110,targetX));bot.y=targetY;}
-    bot.node.style.transform='translate3d('+bot.x+'px,'+bot.y+'px,0)';
-    bot.node.classList.toggle('edge-right',bot.x>innerWidth-160);bot.node.classList.toggle('edge-left',bot.x<55);
-    if(p>=1){
-      burst(r.left+r.width*.7,r.top+Math.min(r.height*.5,50),job.who);
-      job.el.innerHTML=originals.get(job.el);job.el.classList.remove('constructing','assembling');job.el.classList.add('built');job.el.style.removeProperty('--piece-x');job.el.style.removeProperty('--piece-y');job.el.style.removeProperty('--piece-rotation');job.el.style.removeProperty('--piece-clip');job.el.style.removeProperty('--piece-z');job.el.style.removeProperty('--piece-yaw');job.el.style.removeProperty('--piece-blur');
-      slots.get(job.id).style.opacity='0';bot.scan.style.opacity='0';doneCount++;bot.job=null;
-    }
-  }
-  function tick(now){
-    if(!running)return;const dt=paused?0:Math.max(0,now-previous);previous=now;clock+=dt;positionSlots();
-    let busy=false;
-    for(const bot of crew){
-      if(!bot.job&&bot.queue.length){const next=bot.queue[0];if(clock>=(next.delay||0)){bot.queue.shift();initJob(bot,next);}}
-      if(bot.job){busy=true;if(!paused)workOn(bot,dt);}
-      else{const idleX=innerWidth/2-140+bot.index*105,idleY=innerHeight-190;if(!paused){bot.x=lerp(bot.x,idleX,.07);bot.y=lerp(bot.y,idleY,.07);}bot.node.style.transform='translate3d('+bot.x+'px,'+bot.y+'px,0)';bot.node.style.opacity='1';setState(bot,'rest waiting',doneCount===jobs.length?'Nice. We built that.':clock<1000?'Ready to build.':'Ready for the next piece.');}
-    }
-    body.classList.toggle('building',busy&&!paused);
-    const camera=Math.min(clock/12000,1);body.style.setProperty('--camera-tilt',(1-camera)*1.8+'deg');body.style.setProperty('--camera-scale',.96+camera*.04);drawEffects(dt);
-    progress.style.transform='scaleX('+doneCount/jobs.length+')';
-    if(paused){message.textContent='The crew is taking a break.';subtitle.textContent='Press Resume to keep building.';}
-    else if(busy){message.textContent=clock<7500?'From a blank canvas, a little world.':clock<15000?'A story, carefully coming to life.':'Every little piece has its place.';subtitle.textContent=String(doneCount).padStart(2,'0')+' / 15 · a little care in every detail';}
-    else if(doneCount===jobs.length){celebrate();finish();return;}
-    else{message.textContent='The next pieces are down below.';subtitle.textContent='Scroll to watch the crew keep building ↓';}
-    raf=requestAnimationFrame(tick);
-  }
-  function finish(){
-    running=false;if(raf!==null)cancelAnimationFrame(raf);raf=null;observer?.disconnect();
-    body.classList.remove('building','construction-mode','crew-paused');controls.hidden=true;
-    blocks.forEach(el=>{el.innerHTML=originals.get(el);el.classList.remove('built','constructing','assembling');el.removeAttribute('style');});
-    crew.forEach(bot=>{bot.job=null;bot.queue=[];bot.node.style.opacity='0';bot.scan.style.opacity='0';});
-    slots.forEach(slot=>slot.remove());slots.clear();fx.clearRect(0,0,innerWidth,innerHeight);body.style.removeProperty('--camera-tilt');body.style.removeProperty('--camera-scale');updateClock();
-  }
-  function start(){
-    finish();if(reduced.matches)return;
-    paused=false;pauseButton.textContent='Pause';particles=[];document.getElementById('build-complete').classList.remove('show');clock=0;doneCount=0;scenes.work=false;scenes.note=false;
-    jobs.forEach(job=>{job.elapsed=0;job.letters=[];job.cursor=0;});
-    crew.forEach(bot=>{bot.x=-90-bot.index*50;bot.y=180+bot.index*70;});
-    body.classList.add('construction-mode','building');controls.hidden=false;running=true;createSlots();
-    jobs.slice(0,10).forEach(job=>crew[job.who].queue.push(job));
-    observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting)queueScene(entry.target.classList.contains('work')?'work':'note');});},{rootMargin:'0px 0px -110px 0px',threshold:0.08});
-    observer.observe(document.querySelector('.work'));observer.observe(document.querySelector('.note'));
-    previous=performance.now();raf=requestAnimationFrame(tick);
-  }
-  function updateClock(){
-    const clockEl=document.getElementById('clock');
-    if(clockEl&&!clockEl.querySelector('.build-letter'))clockEl.textContent=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Istanbul',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());
-    document.getElementById('year').textContent=new Intl.DateTimeFormat('en',{timeZone:'Europe/Istanbul',year:'numeric'}).format(new Date());
-  }
+<div class="toast" role="status" aria-live="polite" data-toast></div>
+<div class="biko" data-biko aria-hidden="true"><img src="/assets/biko.svg" alt="" width="72" height="72"><span class="biko__say" data-biko-say></span></div>
 
-  const effects=document.getElementById('scene-effects');
-  const fx=effects.getContext('2d');
-  const lightEffectColors=['#c1995d','#bf887c','#863d49'];
-  const darkEffectColors=['#8fba9c','#b3d3be','#6d9d7c'];
-  const effectColors=()=>document.documentElement.dataset.theme==='dark'?darkEffectColors:lightEffectColors;
-  let particles=[],lastDust=0;
-  function sizeEffects(){const ratio=Math.min(devicePixelRatio||1,2);effects.width=innerWidth*ratio;effects.height=innerHeight*ratio;effects.style.width=innerWidth+'px';effects.style.height=innerHeight+'px';fx.setTransform(ratio,0,0,ratio,0,0);}
-  sizeEffects();window.addEventListener('resize',sizeEffects);
-  function burst(x,y,who){for(let i=0;i<18;i++){const angle=Math.PI*2*i/18;particles.push({x,y,vx:Math.cos(angle)*(25+Math.random()*50),vy:Math.sin(angle)*(25+Math.random()*50)-25,life:1100,max:1100,color:effectColors()[who],size:1+Math.random()*2});}}
-  function drawEffects(dt){
-    const colors=effectColors();
-    fx.clearRect(0,0,innerWidth,innerHeight);
-    if(paused)dt=0;
-    for(const bot of crew){
-      const job=bot.job;if(!job||job.elapsed/job.length<.22||job.elapsed/job.length>.9)continue;
-      const r=job.el.getBoundingClientRect();if(r.top>innerHeight-110||r.bottom<0)continue;
-      const p=job.elapsed/job.length,t=Math.min(1,(p-.22)/.56);
-      let endX=r.left+r.width*t,endY=r.top+Math.min(r.height*.45,60);
-      if(job.type==='type'&&job.cursor>0){const char=job.letters[Math.min(job.cursor-1,job.letters.length-1)].getBoundingClientRect();endX=char.right;endY=char.bottom;}
-      const startX=bot.x+(innerWidth<650?54:73),startY=bot.y+42;
-      fx.save();fx.strokeStyle=colors[bot.index];fx.lineWidth=.75;fx.globalAlpha=.5;fx.shadowBlur=8;fx.shadowColor=colors[bot.index];
-      fx.beginPath();fx.moveTo(startX,startY);fx.bezierCurveTo(startX+40,startY-35,endX+25,endY+30,endX,endY);fx.stroke();
-      fx.globalAlpha=.8;fx.beginPath();fx.arc(endX,endY,2.2,0,Math.PI*2);fx.fillStyle=colors[bot.index];fx.fill();fx.restore();
-      if(!paused&&clock-lastDust>80){particles.push({x:endX,y:endY,vx:(Math.random()-.5)*25,vy:-15-Math.random()*18,life:600,max:600,color:colors[bot.index],size:.8+Math.random()});}
-    }
-    if(clock-lastDust>80)lastDust=clock;
-    const seconds=Math.min(dt,120)/1000;
-    particles=particles.filter(p=>p.life>0);
-    for(const p of particles){p.life-=dt;p.x+=p.vx*seconds;p.y+=p.vy*seconds;p.vy+=35*seconds;fx.globalAlpha=Math.max(0,p.life/p.max)*.7;fx.fillStyle=p.color;fx.beginPath();fx.arc(p.x,p.y,p.size,0,Math.PI*2);fx.fill();}
-    fx.globalAlpha=1;
-  }
-  function celebrate(){const note=document.getElementById('build-complete');note.classList.add('show');setTimeout(()=>note.classList.remove('show'),2100);}
-
-  document.getElementById('skip').addEventListener('click',finish);
-  pauseButton.addEventListener('click',()=>{paused=!paused;body.classList.toggle('crew-paused',paused);pauseButton.textContent=paused?'Resume':'Pause';});
-  document.getElementById('replay').addEventListener('click',()=>{window.scrollTo({top:0,behavior:'instant'});start();});
-  document.addEventListener('keydown',event=>{if(running&&(event.key==='Escape'||event.key==='Tab'))finish();});
-  window.addEventListener('scroll',checkScenes,{passive:true});
-  reduced.addEventListener('change',()=>{if(reduced.matches)finish();});
-  updateClock();for(const el of blocks)originals.set(el,el.innerHTML);setInterval(updateClock,15000);start();
-})();
-
-  </script>
-  <script>
-    (() => {
-      const html = document.documentElement;
-      const buttons = [...document.querySelectorAll('[data-theme-choice]')];
-      const system = matchMedia('(prefers-color-scheme: dark)');
-      let preference;
-      try { preference = localStorage.getItem('burak-theme'); } catch (_) {}
-      function apply(theme) {
-        html.dataset.theme = theme;
-        document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#141b18' : '#f7f3eb';
-        for (const button of buttons) button.setAttribute('aria-pressed', String(button.dataset.themeChoice === theme));
-      }
-      for (const button of buttons) button.addEventListener('click', () => {
-        preference = button.dataset.themeChoice;
-        apply(preference);
-        try { localStorage.setItem('burak-theme', preference); } catch (_) {}
-      });
-      system.addEventListener('change', () => {
-        if (preference !== 'light' && preference !== 'dark') apply(system.matches ? 'dark' : 'light');
-      });
-      window.addEventListener('storage', event => {
-        if (event.key !== 'burak-theme') return;
-        preference = event.newValue;
-        apply(preference === 'light' || preference === 'dark' ? preference : (system.matches ? 'dark' : 'light'));
-      });
-      apply(html.dataset.theme || 'light');
-    })();
-  </script>
+<script src="/app.js" defer></script>
 </body>
 </html>
