@@ -56,7 +56,7 @@ async function notifyEmail(env, m) {
     method: 'POST',
     headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      from: env.NOTIFY_FROM || 'burak.pm <site@send.burak.pm>',
+      from: env.NOTIFY_FROM || 'burak.pm <site@burak.pm>',
       to: [env.NOTIFY_EMAIL],
       reply_to: m.email,
       subject: `burak.pm: ${m.reason} | ${m.name}`,
