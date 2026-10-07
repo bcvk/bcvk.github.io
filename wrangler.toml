@@ -6,6 +6,7 @@ compatibility_date = "2026-09-01"
 
 [vars]
 SPOTIFY_CLIENT_ID = "ed803d50d3334d5e935a3e2bd4b6018c"
+TURNSTILE_SITE_KEY = "0x4AAAAAAFQz-wiB8T5o-gZY"
 
 [[d1_databases]]
 binding = "DB"
