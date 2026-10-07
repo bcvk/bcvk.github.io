@@ -27,7 +27,7 @@
 <link rel="stylesheet" href="/styles.css">
 <script src="/boot.js"></script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Person","name":"Burak Cevik","url":"https://burak.pm","email":"mailto:hello@burak.pm","image":"https://burak.pm/assets/burak.jpg","jobTitle":"Associate Project Manager","worksFor":{"@type":"Organization","name":"ModSquad","url":"https://modsquad.com"},"address":{"@type":"PostalAddress","addressLocality":"Ankara","addressCountry":"TR"},"knowsLanguage":["tr","en","es"],"sameAs":["https://linkedin.com/in/bcvk","https://github.com/bcvk"]}
+{"@context":"https://schema.org","@type":"Person","name":"Burak Cevik","url":"https://burak.pm","email":"mailto:hello@burak.pm","image":"https://burak.pm/assets/burak.jpg","jobTitle":"Assistant Project Manager","worksFor":{"@type":"Organization","name":"ModSquad","url":"https://modsquad.com"},"address":{"@type":"PostalAddress","addressLocality":"Ankara","addressCountry":"TR"},"knowsLanguage":["tr","en","es"],"sameAs":["https://linkedin.com/in/bcvk","https://github.com/bcvk"]}
 </script>
 </head>
 <body>
@@ -59,37 +59,62 @@
 <main id="main">
   <section class="hero" id="top">
     <div class="hero__text">
+      <div class="hero__head">
       <p class="hero__hello" data-i18n="hero.hello">Hi, I'm Burak.</p>
       <h1 class="hero__title" data-i18n="hero.title" data-split>I get people to the right answer.</h1>
-      <p class="hero__lede" data-i18n="hero.lede">I lead multilingual customer support teams and build the automations that keep repetitive work off their plates. Right now I'm an Associate Project Manager at ModSquad, working remotely from Ankara.</p>
+      </div>
+      <div class="hero__side">
+      <p class="hero__lede" data-i18n="hero.lede">I lead multilingual customer support teams and build the automations that keep repetitive work off their plates. Right now I'm an Assistant Project Manager at ModSquad, working remotely from Ankara.</p>
       <div class="hero__actions">
         <a class="btn btn--solid" href="#projects" data-i18n="hero.cta1">See what I've built</a>
         <a class="btn btn--ghost" href="#contact" data-i18n="hero.cta2">Write to me</a>
+      </div>
       </div>
     </div>
 
     <figure class="board" aria-labelledby="board-title">
       <div class="board__head">
-        <div>
+        <div class="board__intro">
           <p class="board__title" id="board-title"><span class="live" aria-hidden="true"></span><span data-i18n="board.title">Live queue</span></p>
-          <p class="board__hint" data-i18n="board.hint">Messages arrive in three languages and find their lane. Tap one to resolve it.</p>
+          <p class="board__hint" data-i18n="board.hint">Messages arrive in many languages over chat, mail and social. Each one is routed by topic and the team works through them in order. Tap one to help.</p>
         </div>
-        <button class="board__pause" type="button" data-action="queue-pause" aria-pressed="false">
-          <span data-i18n="board.pause">Pause</span>
-        </button>
+        <div class="board__controls">
+          <div class="seg" role="group" aria-label="Traffic">
+            <button type="button" data-traffic="calm" aria-pressed="false" data-i18n="traffic.calm">Calm</button>
+            <button type="button" data-traffic="normal" aria-pressed="true" data-i18n="traffic.normal">Normal</button>
+            <button type="button" data-traffic="busy" aria-pressed="false" data-i18n="traffic.busy">Peak</button>
+          </div>
+          <button class="board__pause" type="button" data-action="queue-pause" aria-pressed="false"><span data-i18n="board.pause">Pause</span></button>
+        </div>
       </div>
-      <canvas class="board__canvas" aria-hidden="true"></canvas>
-      <figcaption class="board__foot">
-        <span><b data-stat="resolved">0</b> <span data-i18n="board.resolved">resolved by you</span></span>
-        <span><b data-stat="waiting">0</b> <span data-i18n="board.waiting">waiting</span></span>
-        <span class="board__best" hidden><span data-i18n="board.fastest">fastest pickup</span> <b data-stat="fastest">0</b>s</span>
-      </figcaption>
+      <div class="board__main">
+      <div class="board__stage">
+        <canvas class="board__canvas" aria-hidden="true"></canvas>
+        <div class="tip" data-tip hidden></div>
+      </div>
+      <div class="board__side">
+        <dl class="kpis">
+          <div><dt data-i18n="kpi.you">Resolved by you</dt><dd><b data-stat="you" class="kpi--you">0</b></dd></div>
+          <div><dt data-i18n="kpi.team">Resolved by the team</dt><dd><b data-stat="team">0</b></dd></div>
+          <div><dt data-i18n="kpi.frt">Average wait</dt><dd><b data-stat="frt">0</b> <small data-i18n="unit.min">min</small></dd></div>
+          <div><dt data-i18n="kpi.sla">Within SLA</dt><dd><b data-stat="sla">100</b><small>%</small></dd></div>
+          <div><dt data-i18n="kpi.csat">Satisfaction</dt><dd><b data-stat="csat">5.0</b><small>/5</small></dd></div>
+          <div><dt data-i18n="kpi.waiting">Waiting now</dt><dd><b data-stat="waiting">0</b></dd></div>
+        </dl>
+        <div class="mix">
+          <p class="mix__label"><span data-i18n="mix.title">Language mix</span> <span class="mix__count"><b data-stat="langs">0</b> <span data-i18n="mix.langs">languages so far</span></span></p>
+          <div class="mix__bar" data-mix aria-hidden="true"></div>
+          <ul class="mix__legend" data-mix-legend></ul>
+        </div>
+        <p class="board__note"><span class="legend"><i class="pr pr--1"></i><span data-i18n="legend.p1">Urgent</span></span><span class="legend"><i class="pr pr--2"></i><span data-i18n="legend.p2">High</span></span><span class="legend"><i class="pr pr--3"></i><span data-i18n="legend.p3">Normal</span></span><span class="board__scale" data-i18n="board.scale">Simulation: one second equals one minute.</span></p>
+      </div>
+      </div>
     </figure>
   </section>
 
   <section class="facts" aria-label="At a glance">
     <div class="fact"><b data-count="5" data-suffix="+">0</b><span data-i18n="fact.years">years in customer experience, from the front line to project management</span></div>
-    <div class="fact"><b data-count="20" data-prefix="~">0</b><span data-i18n="fact.team">people on my multilingual team, across Turkish and Indonesian queues</span></div>
+    <div class="fact"><b data-count="20" data-prefix="~">0</b><span data-i18n="fact.team">people on my multilingual team, led by Turkish and English and spanning many other language queues</span></div>
     <div class="fact"><b data-count="3">0</b><span data-i18n="fact.langs">languages I work in: Turkish, English and Spanish</span></div>
     <div class="fact"><b data-count="6">0</b><span data-i18n="fact.tools">tools I designed and built so the team spends time on people, not spreadsheets</span></div>
   </section>
@@ -104,7 +129,7 @@
           <span class="lane__toggle" aria-hidden="true"></span>
         </button>
         <div class="lane__body"><div class="lane__inner">
-          <p data-i18n="work.a.body">Day to day I run a team of about twenty advisors handling Turkish and Indonesian support, with English as a shared skill. That means KPI tracking, quality frameworks, monthly coaching, scheduling and a lot of one to one conversations.</p>
+          <p data-i18n="work.a.body">I lead a multilingual support team. My job is to set clear goals, keep quality high, coach people one to one and make sure every customer gets a good answer, whichever language they write in.</p>
           <ul class="tags"><li data-i18n="tag.kpi">KPI management</li><li data-i18n="tag.qa">Quality frameworks</li><li data-i18n="tag.coaching">Coaching</li><li data-i18n="tag.wfm">Scheduling</li></ul>
         </div></div>
       </article>
@@ -115,7 +140,7 @@
           <span class="lane__toggle" aria-hidden="true"></span>
         </button>
         <div class="lane__body"><div class="lane__inner">
-          <p data-i18n="work.b.body">If a task repeats every week, I try to automate it. I build dashboards, feedback platforms and AI assisted coaching flows with Google Apps Script and the Claude API, so the team gets answers faster and I get time back for people.</p>
+          <p data-i18n="work.b.body">If a task repeats every week, I try to automate it. I build dashboards, feedback platforms and AI assisted coaching flows with Google Apps Script and the Claude API, so the team gets answers faster and I get time back for people. One rule I never bend: internal and customer data stays out of AI tools. The systems that touch it run on plain logic inside the company workspace.</p>
           <ul class="tags"><li>Apps Script</li><li>Claude API</li><li>Google Workspace</li><li>n8n</li></ul>
         </div></div>
       </article>
@@ -126,7 +151,7 @@
           <span class="lane__toggle" aria-hidden="true"></span>
         </button>
         <div class="lane__body"><div class="lane__inner">
-          <p data-i18n="work.c.body">Outside work I prototype hardware with ESP32 boards and I'm building Tamga, an AI product for people who do business across borders. Studying international trade and logistics feeds straight into it.</p>
+          <p data-i18n="work.c.body">Outside work I prototype hardware with ESP32 boards and I'm building Tamga, an AI product for people who do business across borders.</p>
           <ul class="tags"><li data-i18n="tag.hw">Hardware</li><li data-i18n="tag.product">Product</li><li data-i18n="tag.trade">Trade and logistics</li></ul>
         </div></div>
       </article>
@@ -139,7 +164,7 @@
     <div class="path__track" role="tablist" aria-label="Career steps">
       <button class="step" role="tab" type="button" aria-selected="false" data-step="0"><span class="step__n">1</span><span class="step__role" data-i18n="path.s1.role">Customer Success Specialist</span></button>
       <button class="step" role="tab" type="button" aria-selected="false" data-step="1"><span class="step__n">2</span><span class="step__role" data-i18n="path.s2.role">Team Lead</span></button>
-      <button class="step" role="tab" type="button" aria-selected="true" data-step="2"><span class="step__n">3</span><span class="step__role" data-i18n="path.s3.role">Associate Project Manager</span></button>
+      <button class="step" role="tab" type="button" aria-selected="true" data-step="2"><span class="step__n">3</span><span class="step__role" data-i18n="path.s3.role">Assistant Project Manager</span></button>
       <button class="step step--next" role="tab" type="button" aria-selected="false" data-step="3"><span class="step__n">4</span><span class="step__role" data-i18n="path.s4.role">Next</span></button>
       <span class="path__rail" aria-hidden="true"><span></span></span>
     </div>
@@ -166,16 +191,27 @@
 
   <section class="section now" id="now" aria-labelledby="now-title">
     <div class="now__portrait">
+      <div class="now__photo">
       <picture>
         <source srcset="/assets/burak.webp" type="image/webp">
         <img src="/assets/burak.jpg" width="491" height="617" alt="Portrait of Burak Cevik" loading="lazy" decoding="async">
       </picture>
       <p class="hola" aria-live="off"><span data-greet>Merhaba</span></p>
+      </div>
+      <a class="np" data-np href="https://open.spotify.com/" target="_blank" rel="noopener" hidden>
+        <span class="np__art"><img data-np-art alt="" width="64" height="64" decoding="async"></span>
+        <span class="np__body">
+          <span class="np__status"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span data-np-status></span></span>
+          <span class="np__title" data-np-title></span>
+          <span class="np__artist" data-np-artist></span>
+          <span class="np__progress"><span class="np__bar"><i data-np-bar></i></span><span class="np__time" data-np-time></span></span>
+        </span>
+      </a>
     </div>
     <div class="now__text">
       <h2 class="section__title" id="now-title" data-i18n="now.title">These days</h2>
       <ul class="now__list">
-        <li><b data-i18n="now.1.t">Studying international trade and logistics</b><span data-i18n="now.1.d">I started at Hitit University in 2026, alongside work.</span></li>
+        <li><b data-i18n="now.1.t">Studying international trade and logistics</b><span data-i18n="now.1.d">For years I have helped people on the other side of the world through a screen. Now I want to understand how goods and deals make that same journey, so I study it at Hitit University alongside work.</span></li>
         <li><b data-i18n="now.2.t">Building Tamga</b><span data-i18n="now.2.d">An AI product that lets you follow every step of a cross border deal in one place.</span></li>
         <li><b data-i18n="now.3.t">Getting better at Spanish</b><span data-i18n="now.3.d">Working proficiency today, fluency is the goal.</span></li>
         <li><b data-i18n="now.4.t">Tinkering with an ESP32</b><span data-i18n="now.4.d">A little sticker printer that listens to kids and prints what they ask for.</span></li>
@@ -220,7 +256,7 @@
 </main>
 
 <footer class="footer">
-  <p data-i18n="footer.made">Designed and built in Ankara. Hosted on Cloudflare Pages.</p>
+  <p data-i18n="footer.made">Designed and built in Ankara.</p>
   <p class="footer__keys"><span data-i18n="footer.keys">Press</span> <kbd data-modkey>Ctrl</kbd><kbd>K</kbd> <span data-i18n="footer.keys2">to jump anywhere, or type the name of a certain goat.</span></p>
 </footer>
 
