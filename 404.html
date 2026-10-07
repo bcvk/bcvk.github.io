@@ -1,19 +1,56 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Not found | burak.pm</title>
+<title>Page not found | burak.pm</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/styles.css">
-<script src="/boot.js"></script>
+<link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/styles.css?v=20261008c">
+<script src="/boot.js?v=20261008c"></script>
 </head>
-<body>
+<body class="lost-page">
+<header class="topbar">
+  <a class="brand" href="/" aria-label="burak.pm home"><span class="brand__mark" aria-hidden="true">b</span><span class="brand__name">burak<b>.pm</b></span></a>
+  <div class="tools">
+    <button class="tool" type="button" data-lost-lang aria-label="Switch language"><span data-lost-lang-label>TR</span></button>
+  </div>
+</header>
 <main class="lost">
-  <img src="/assets/biko.svg" alt="" width="120" height="120">
-  <h1 class="section__title">This message got lost in the queue.</h1>
-  <p>Bu sayfa kuyrukta kayboldu. The page you asked for isn't here.</p>
-  <a class="btn btn--solid" href="/">Back to burak.pm</a>
+  <div class="lost__hero">
+    <p class="lost__code" aria-hidden="true"><span>4</span><span class="lost__ticket"><img src="/assets/biko.svg" alt="" width="96" height="96"></span><span>4</span></p>
+    <h1 class="lost__title" data-t="title">This message landed in the wrong queue.</h1>
+    <p class="lost__lede" data-t="lede">The page you were looking for has moved or never existed. Let me route you somewhere useful.</p>
+    <nav class="lost__links" aria-label="Pages">
+      <a class="btn btn--solid" href="/" data-t="home">Back to the homepage</a>
+      <a class="btn btn--ghost" href="/#projects" data-t="projects">Projects</a>
+      <a class="btn btn--ghost" href="/#now" data-t="now">What I'm doing now</a>
+      <a class="btn btn--ghost" href="/#contact" data-t="contact">Write to me</a>
+    </nav>
+  </div>
+
+  <section class="game" aria-labelledby="game-title">
+    <div class="game__head">
+      <div>
+        <h2 id="game-title" data-t="game">While you're here, clear the queue</h2>
+        <p data-t="rules">Tickets keep coming in. Click each one before its timer runs out. You have 30 seconds.</p>
+      </div>
+      <dl class="game__stats">
+        <div><dt data-t="score">Resolved</dt><dd data-g-score>0</dd></div>
+        <div><dt data-t="missed">Missed</dt><dd data-g-missed>0</dd></div>
+        <div><dt data-t="time">Time</dt><dd data-g-time>30</dd></div>
+        <div><dt data-t="best">Best</dt><dd data-g-best>0</dd></div>
+      </dl>
+    </div>
+    <div class="game__stage">
+      <canvas class="game__canvas" aria-label="Game area"></canvas>
+      <div class="game__overlay" data-g-overlay>
+        <p class="game__msg" data-g-msg></p>
+        <button class="btn btn--solid" type="button" data-g-start data-t="start">Start</button>
+      </div>
+    </div>
+  </section>
 </main>
+<script src="/404.js?v=20261008c" defer></script>
 </body>
 </html>

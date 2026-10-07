@@ -24,8 +24,8 @@
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/styles.css">
-<script src="/boot.js"></script>
+<link rel="stylesheet" href="/styles.css?v=20261008c">
+<script src="/boot.js?v=20261008c"></script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Burak Cevik","url":"https://burak.pm","email":"mailto:hello@burak.pm","image":"https://burak.pm/assets/burak.jpg","jobTitle":"Assistant Project Manager","worksFor":{"@type":"Organization","name":"ModSquad","url":"https://modsquad.com"},"address":{"@type":"PostalAddress","addressLocality":"Ankara","addressCountry":"TR"},"knowsLanguage":["tr","en","es"],"sameAs":["https://linkedin.com/in/bcvk","https://github.com/bcvk"]}
 </script>
@@ -43,10 +43,12 @@
     <a href="#path" data-i18n="nav.path">Path</a>
     <a href="#projects" data-i18n="nav.projects">Projects</a>
     <a href="#now" data-i18n="nav.now">Now</a>
+    <a href="#visits" data-i18n="nav.visits">Visitors</a>
     <a href="#contact" data-i18n="nav.contact">Contact</a>
   </nav>
   <div class="tools">
     <span class="clock" title="Ankara"><span class="clock__icon" aria-hidden="true"></span><span class="clock__time" data-clock>--:--</span><span class="clock__city">Ankara</span></span>
+    <span class="wx" data-wx hidden><span class="wx__icon" data-wx-icon aria-hidden="true"></span><span data-wx-temp></span></span>
     <button class="tool" type="button" data-action="lang" aria-label="Switch language"><span data-lang-label>TR</span></button>
     <button class="tool" type="button" data-action="theme" aria-label="Switch theme">
       <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5.3 5.3l1.7 1.7M17 17l1.7 1.7M5.3 18.7 7 17M17 7l1.7-1.7"/></svg>
@@ -76,9 +78,10 @@
       <div class="board__head">
         <div class="board__intro">
           <p class="board__title" id="board-title"><span class="live" aria-hidden="true"></span><span data-i18n="board.title">Live queue</span></p>
-          <p class="board__hint" data-i18n="board.hint">Messages arrive in many languages over chat, mail and social. Each one is routed by topic and the team works through them in order. Tap one to help.</p>
+          <p class="board__hint" data-i18n="board.hint">Messages arrive in more than twenty languages over chat, mail and social. Each one is routed by topic and the team works through them in order. Tap one to help.</p>
         </div>
         <div class="board__controls">
+          <span class="seg__label" data-i18n="traffic.label">Traffic</span>
           <div class="seg" role="group" aria-label="Traffic">
             <button type="button" data-traffic="calm" aria-pressed="false" data-i18n="traffic.calm">Calm</button>
             <button type="button" data-traffic="normal" aria-pressed="true" data-i18n="traffic.normal">Normal</button>
@@ -228,6 +231,25 @@
     </div>
   </section>
 
+  <section class="section visits" id="visits" aria-labelledby="visits-title">
+    <div class="visits__head">
+      <div>
+        <h2 class="section__title" id="visits-title" data-i18n="visits.title">Who drops by</h2>
+        <p class="section__lede" data-i18n="visits.lede">Every visit lights up a country on the map. Only the country is counted, never an address or a name.</p>
+      </div>
+      <div class="visits__stats" data-visit-stats hidden>
+        <p class="visits__total"><b data-visit-total>0</b> <span data-i18n="visits.total">visits from</span> <b data-visit-countries>0</b> <span data-i18n="visits.countries">countries</span></p>
+        <p class="visits__you" data-visit-you hidden></p>
+      </div>
+    </div>
+    <div class="map">
+      <div class="map__svg" data-map aria-hidden="true"></div>
+      <div class="map__tip" data-map-tip hidden></div>
+      <div class="map__scale" data-visit-scale hidden><span data-i18n="visits.fewer">fewer</span><i></i><span data-i18n="visits.more">more</span></div>
+    </div>
+    <ol class="visits__top" data-visit-top></ol>
+  </section>
+
   <section class="section contact" id="contact" aria-labelledby="contact-title">
     <div class="contact__intro">
       <h2 class="contact__title" id="contact-title" data-i18n="contact.title">Let's talk.</h2>
@@ -283,6 +305,6 @@
 <div class="toast" role="status" aria-live="polite" data-toast></div>
 <div class="biko" data-biko aria-hidden="true"><img src="/assets/biko.svg" alt="" width="72" height="72"><span class="biko__say" data-biko-say></span></div>
 
-<script src="/app.js" defer></script>
+<script src="/app.js?v=20261008c" defer></script>
 </body>
 </html>

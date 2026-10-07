@@ -20,8 +20,14 @@
       'hero.title': 'I get people to the right answer.',
       'hero.lede': "I lead multilingual customer support teams and build the automations that keep repetitive work off their plates. Right now I'm an Assistant Project Manager at ModSquad, working remotely from Ankara.",
       'hero.cta1': "See what I've built", 'hero.cta2': 'Write to me',
+      'traffic.label': 'Traffic', 'nav.visits': 'Visitors',
+      'visits.title': 'Who drops by', 'visits.lede': 'Every visit lights up a country on the map. Only the country is counted, never an address or a name.',
+      'visits.total': 'visits from', 'visits.countries': 'countries', 'visits.fewer': 'fewer', 'visits.more': 'more',
+      'visits.you': 'You are visiting from {c}. Hello!', 'visits.home': 'I am here', 'visits.one': 'visit', 'visits.many': 'visits', 'visits.none': 'No visits yet',
+      'wx': { 0: 'clear', 1: 'mostly clear', 2: 'partly cloudy', 3: 'overcast', 45: 'foggy', 48: 'foggy', 51: 'light drizzle', 53: 'drizzle', 55: 'heavy drizzle', 61: 'light rain', 63: 'rain', 65: 'heavy rain', 71: 'light snow', 73: 'snow', 75: 'heavy snow', 77: 'snow grains', 80: 'rain showers', 81: 'rain showers', 82: 'heavy showers', 85: 'snow showers', 86: 'snow showers', 95: 'thunderstorm', 96: 'thunderstorm', 99: 'thunderstorm' },
+      'wx.title': 'Weather in Ankara: {d}, {t}°C',
       'board.title': 'Live queue',
-      'board.hint': 'Messages arrive in many languages over chat, mail and social. Each one is routed by topic and the team works through them in order. Tap one to help.',
+      'board.hint': 'Messages arrive in more than twenty languages over chat, mail and social. Each one is routed by topic and the team works through them in order. Tap one to help.',
       'board.pause': 'Pause', 'board.play': 'Resume',
       'board.lanes': ['Account and login', 'Billing and payments', 'Technical issues', 'General questions'],
       'board.router': 'Routing', 'board.incoming': 'Incoming',
@@ -92,8 +98,14 @@
       'hero.title': 'İnsanları doğru cevaba ulaştırırım.',
       'hero.lede': 'Çok dilli müşteri destek ekiplerini yönetiyor, tekrarlayan işleri onların üzerinden alan otomasyonlar kuruyorum. Şu an ModSquad’da Assistant Project Manager olarak Ankara’dan uzaktan çalışıyorum.',
       'hero.cta1': 'Neler yaptığıma bak', 'hero.cta2': 'Bana yaz',
+      'traffic.label': 'Trafik', 'nav.visits': 'Ziyaretçiler',
+      'visits.title': 'Kimler uğruyor', 'visits.lede': 'Her ziyaret haritada bir ülkeyi aydınlatır. Sadece ülke sayılır; adres ya da isim asla tutulmaz.',
+      'visits.total': 'ziyaret,', 'visits.countries': 'farklı ülkeden', 'visits.fewer': 'az', 'visits.more': 'çok',
+      'visits.you': '{c} üzerinden bağlandın. Merhaba!', 'visits.home': 'Ben buradayım', 'visits.one': 'ziyaret', 'visits.many': 'ziyaret', 'visits.none': 'Henüz ziyaret yok',
+      'wx': { 0: 'açık', 1: 'çoğunlukla açık', 2: 'parçalı bulutlu', 3: 'kapalı', 45: 'sisli', 48: 'sisli', 51: 'hafif çisenti', 53: 'çisenti', 55: 'yoğun çisenti', 61: 'hafif yağmurlu', 63: 'yağmurlu', 65: 'sağanak', 71: 'hafif karlı', 73: 'karlı', 75: 'yoğun kar', 77: 'kar taneleri', 80: 'sağanak yağış', 81: 'sağanak yağış', 82: 'şiddetli sağanak', 85: 'kar sağanağı', 86: 'kar sağanağı', 95: 'gök gürültülü', 96: 'gök gürültülü', 99: 'gök gürültülü' },
+      'wx.title': 'Ankara\u2019da hava: {d}, {t}°C',
       'board.title': 'Canlı kuyruk',
-      'board.hint': 'Mesajlar pek çok dilde sohbet, mail ve sosyal medyadan gelir. Her biri konusuna göre doğru kuyruğa yönlenir, ekip sırayla çözer. Birine dokunarak sen de yardım et.',
+      'board.hint': 'Mesajlar yirmiden fazla dilde sohbet, mail ve sosyal medyadan gelir. Her biri konusuna göre doğru kuyruğa yönlenir, ekip sırayla çözer. Birine dokunarak sen de yardım et.',
       'board.pause': 'Durdur', 'board.play': 'Devam et',
       'board.lanes': ['Hesap ve giriş', 'Ödeme ve fatura', 'Teknik sorunlar', 'Genel sorular'],
       'board.router': 'Yönlendirme', 'board.incoming': 'Gelen',
@@ -263,6 +275,7 @@
     syncPauseLabel();
     if (queue) queue.relabel();
     if (typeof renderNp === 'function') renderNp();
+    if (typeof renderWx === 'function') { renderWx(); renderMap(); }
   }
 
   function splitTitle(el, text) {
@@ -370,6 +383,18 @@
     { l: 'ja', i: 3, c: 'mail', p: 3, s: 'プランを変更したいです', en: "I'd like to change my plan", tr: 'Planımı değiştirmek istiyorum' },
     { l: 'ko', i: 1, c: 'chat', p: 1, s: '결제가 두 번 됐어요', en: 'I was charged twice', tr: 'İki kez ödeme alındı' },
     { l: 'sv', i: 3, c: 'social', p: 3, s: 'Tack för hjälpen!', en: 'Thanks for the help!', tr: 'Yardımın için teşekkürler!' },
+    { l: 'hi', i: 0, c: 'chat', p: 2, s: 'मैं लॉग इन नहीं कर पा रहा हूँ', en: "I can't log in", tr: 'Giriş yapamıyorum' },
+    { l: 'vi', i: 1, c: 'mail', p: 2, s: 'Tôi bị trừ tiền hai lần', en: 'I was charged twice', tr: 'İki kez ücret alındı' },
+    { l: 'th', i: 3, c: 'social', p: 3, s: 'ขอบคุณมากครับ', en: 'Thank you very much', tr: 'Çok teşekkürler' },
+    { l: 'uk', i: 2, c: 'chat', p: 2, s: 'Застосунок не запускається', en: "The app won't start", tr: 'Uygulama başlamıyor' },
+    { l: 'el', i: 1, c: 'chat', p: 1, s: 'Η πληρωμή μου απέτυχε', en: 'My payment failed', tr: 'Ödemem başarısız oldu' },
+    { l: 'he', i: 0, c: 'mail', p: 2, s: 'שכחתי את הסיסמה שלי', en: 'I forgot my password', tr: 'Şifremi unuttum' },
+    { l: 'cs', i: 3, c: 'chat', p: 3, s: 'Jak změním tarif?', en: 'How do I change my plan?', tr: 'Planımı nasıl değiştiririm?' },
+    { l: 'ro', i: 2, c: 'social', p: 2, s: 'Aplicația se blochează mereu', en: 'The app keeps freezing', tr: 'Uygulama sürekli donuyor' },
+    { l: 'hu', i: 1, c: 'mail', p: 3, s: 'Szeretném lemondani az előfizetést', en: 'I want to cancel my subscription', tr: 'Aboneliğimi iptal etmek istiyorum' },
+    { l: 'fi', i: 0, c: 'chat', p: 2, s: 'En pääse kirjautumaan', en: "I can't log in", tr: 'Giriş yapamıyorum' },
+    { l: 'da', i: 3, c: 'social', p: 3, s: 'Tusind tak for hjælpen!', en: 'Thanks so much for the help!', tr: 'Yardımın için çok teşekkürler!' },
+    { l: 'ms', i: 2, c: 'chat', p: 2, s: 'Aplikasi tidak boleh dibuka', en: "The app won't open", tr: 'Uygulama açılmıyor' },
     { l: 'zh', i: 2, c: 'chat', p: 2, s: '应用总是卡顿', en: 'The app keeps freezing', tr: 'Uygulama sürekli donuyor' }
   ];
   // Turkish and English carry most of the volume, the rest share what's left
@@ -831,6 +856,97 @@
   loadNp(); setInterval(loadNp, 30000); setInterval(renderNp, 1000);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) loadNp(); });
 
+
+  /* -------------------------------------------------------------- weather */
+  const WX_ICON = {
+    sun: '<svg viewBox="0 0 24 24"><g class="sun"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4"/></g></svg>',
+    moon: '<svg viewBox="0 0 24 24"><path d="M19 14.5A7.5 7.5 0 0 1 9.5 5a7.5 7.5 0 1 0 9.5 9.5Z"/></svg>',
+    part: '<svg viewBox="0 0 24 24"><g class="sun"><path d="M8 3v1.5M3.5 8H5M4.8 4.8l1 1M11.2 4.8l-1 1"/><path d="M5.6 10.4A3.2 3.2 0 0 1 10.9 7"/></g><path d="M7 19h10a3.5 3.5 0 0 0 0-7 5 5 0 0 0-9.6 1.4A2.8 2.8 0 0 0 7 19Z"/></svg>',
+    cloud: '<svg viewBox="0 0 24 24"><path d="M6.5 18.5h11a4 4 0 0 0 0-8 5.5 5.5 0 0 0-10.6 1.6 3.2 3.2 0 0 0-.4 6.4Z"/></svg>',
+    fog: '<svg viewBox="0 0 24 24"><path d="M4 9h16M6 13h12M4 17h16"/></svg>',
+    rain: '<svg viewBox="0 0 24 24"><path d="M6.5 14.5h11a4 4 0 0 0 0-8 5.5 5.5 0 0 0-10.6 1.6 3.2 3.2 0 0 0-.4 6.4Z"/><path class="drop" d="M8 17.5l-1 2.5M12 17.5l-1 2.5M16 17.5l-1 2.5"/></svg>',
+    snow: '<svg viewBox="0 0 24 24"><path d="M6.5 14.5h11a4 4 0 0 0 0-8 5.5 5.5 0 0 0-10.6 1.6 3.2 3.2 0 0 0-.4 6.4Z"/><path d="M8 18.5h.01M12 20h.01M16 18.5h.01"/></svg>',
+    storm: '<svg viewBox="0 0 24 24"><path d="M6.5 14.5h11a4 4 0 0 0 0-8 5.5 5.5 0 0 0-10.6 1.6 3.2 3.2 0 0 0-.4 6.4Z"/><path class="sun" d="m12.5 14.5-2 3.5h3l-2 3.5"/></svg>'
+  };
+  const wx = { data: null };
+  const wxKind = (code, day) => code <= 1 ? (day ? 'sun' : 'moon') : code === 2 ? (day ? 'part' : 'cloud') : code === 3 ? 'cloud' : code < 50 ? 'fog' : code < 70 || (code >= 80 && code < 85) ? 'rain' : code < 90 ? 'snow' : 'storm';
+  function renderWx() {
+    const d = wx.data, el = $('[data-wx]'); if (!d || !el) return;
+    const temp = Math.round(d.temperature_2m), desc = (t('wx')[d.weather_code] || '');
+    $('[data-wx-icon]').innerHTML = WX_ICON[wxKind(d.weather_code, d.is_day)];
+    $('[data-wx-temp]').textContent = temp + '°';
+    el.title = t('wx.title').replace('{d}', desc).replace('{t}', temp);
+    el.setAttribute('aria-label', el.title);
+    el.hidden = false;
+  }
+  async function loadWx() {
+    try {
+      const r = await fetch('https://api.open-meteo.com/v1/forecast?latitude=39.93&longitude=32.86&current=temperature_2m,weather_code,is_day&timezone=Europe%2FIstanbul');
+      if (!r.ok) return;
+      const j = await r.json(); wx.data = j.current; renderWx();
+    } catch (e) { /* the weather simply stays hidden */ }
+  }
+  loadWx(); setInterval(loadWx, 15 * 60 * 1000);
+
+  /* ----------------------------------------------------------- visitor map */
+  const vm = { data: null, ready: false };
+  const regionName = (cc) => { try { return new Intl.DisplayNames([lang], { type: 'region' }).of(cc); } catch (e) { return cc; } };
+  async function loadMap() {
+    const box = $('[data-map]'); if (!box) return;
+    try { box.innerHTML = await (await fetch('/assets/world.svg')).text(); } catch (e) { return; }
+    const svg = box.querySelector('svg');
+    const ns = 'http://www.w3.org/2000/svg';
+    const home = document.createElementNS(ns, 'g'); home.setAttribute('class', 'map__home');
+    home.innerHTML = '<circle class="ring" cx="558.2" cy="121.8" r="7"/><circle cx="558.2" cy="121.8" r="4.5"/><text x="568" y="117" data-home-label></text>';
+    svg.appendChild(home);
+    vm.ready = true;
+    const tip = $('[data-map-tip]');
+    svg.addEventListener('pointermove', (e) => {
+      const p = e.target.closest('path[data-cc]');
+      if (!p) { tip.hidden = true; return; }
+      const n = +(p.dataset.n || 0);
+      tip.innerHTML = `${esc(regionName(p.dataset.cc))}<small>${n ? n + ' ' + t(n === 1 ? 'visits.one' : 'visits.many') : t('visits.none')}</small>`;
+      tip.hidden = false;
+      const r = $('.map').getBoundingClientRect();
+      const x = Math.min(r.width - tip.offsetWidth - 8, Math.max(8, e.clientX - r.left + 14));
+      tip.style.transform = `translate(${x}px, ${e.clientY - r.top - tip.offsetHeight - 12}px)`;
+    });
+    svg.addEventListener('pointerleave', () => { tip.hidden = true; });
+    renderMap();
+    try {
+      const r = await fetch('/api/visits', { method: 'POST', headers: { Accept: 'application/json' } });
+      if (!r.ok || !(r.headers.get('content-type') || '').includes('json')) return;
+      const d = await r.json(); if (!d.ok) return;
+      vm.data = d; renderMap();
+      setInterval(async () => {
+        if (document.hidden) return;
+        try { const g = await (await fetch('/api/visits')).json(); if (g.ok) { vm.data = g; renderMap(); } } catch (e) { /* keep last */ }
+      }, 60000);
+    } catch (e) { /* counter not available here, the map still shows home */ }
+  }
+  function renderMap() {
+    if (!vm.ready) return;
+    const label = $('[data-home-label]'); if (label) label.textContent = t('visits.home');
+    const d = vm.data;
+    if (!d) return;
+    const max = Math.max(1, ...d.countries.map((c) => c.count));
+    const counts = Object.fromEntries(d.countries.map((c) => [c.country, c.count]));
+    $$('[data-map] path[data-cc]').forEach((p) => {
+      const n = counts[p.dataset.cc] || 0;
+      if (n) { p.dataset.n = n; const k = 0.22 + 0.78 * Math.sqrt(n / max); p.style.fill = `color-mix(in srgb, var(--blue) ${Math.round(k * 100)}%, var(--paper-2))`; }
+      else { delete p.dataset.n; p.style.fill = ''; }
+      p.classList.toggle('is-you', p.dataset.cc === d.you);
+    });
+    $('[data-visit-stats]').hidden = false; $('[data-visit-scale]').hidden = false;
+    $('[data-visit-total]').textContent = d.total.toLocaleString(lang);
+    $('[data-visit-countries]').textContent = d.countries.length;
+    const you = $('[data-visit-you]');
+    if (d.you) { you.textContent = t('visits.you').replace('{c}', regionName(d.you)); you.hidden = false; } else you.hidden = true;
+    $('[data-visit-top]').innerHTML = d.countries.slice(0, 5).map((c) =>
+      `<li><b>${esc(regionName(c.country))}</b><span>${c.count.toLocaleString(lang)} ${t(c.count === 1 ? 'visits.one' : 'visits.many')}</span><i style="width:${Math.max(6, (c.count / max) * 100)}%"></i></li>`).join('');
+  }
+  loadMap();
+
   /* --------------------------------------------------------- facts count */
   function countUp(el) {
     const end = +el.dataset.count, pre = el.dataset.prefix || '', suf = el.dataset.suffix || '';
@@ -892,7 +1008,7 @@
   const pal = $('[data-palette]'), palIn = $('[data-palette-input]'), palList = $('[data-palette-list]');
   let palItems = [], palSel = 0;
   function commands() {
-    const go = [['#work', 'nav.work'], ['#path', 'nav.path'], ['#projects', 'nav.projects'], ['#now', 'nav.now'], ['#contact', 'nav.contact']]
+    const go = [['#work', 'nav.work'], ['#path', 'nav.path'], ['#projects', 'nav.projects'], ['#now', 'nav.now'], ['#visits', 'nav.visits'], ['#contact', 'nav.contact']]
       .map(([h, k]) => ({ label: t(k), hint: t('cmd.go'), run: () => $(h).scrollIntoView({ behavior: reduced.matches ? 'auto' : 'smooth' }) }));
     const projects = P.en.map((_, i) => ({ label: project(i, lang).title, hint: t('nav.projects'), run: () => openSheet(i) }));
     return [

@@ -1,0 +1,13 @@
+# Cloudflare Pages settings. Secrets (Spotify client secret and refresh token)
+# are NOT stored here; add them in the Pages dashboard as encrypted variables.
+name = "burak-pm"
+pages_build_output_dir = "."
+compatibility_date = "2026-09-01"
+
+[vars]
+SPOTIFY_CLIENT_ID = "ed803d50d3334d5e935a3e2bd4b6018c"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "burak-pm-visits"
+database_id = "ad057e67-8b71-4e53-bdbb-7cc6dec14a36"
