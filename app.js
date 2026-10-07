@@ -79,6 +79,13 @@
       'contact.name': 'Your name', 'contact.msg': 'Message', 'contact.send': 'Open in my mail app',
       'contact.err': 'Add your name and a short message, then try again.',
       'contact.opened': 'Your mail app should be open now',
+      'contact.ledeApi': 'Into support operations, automation, AI or building something together? Pick a reason, write a few lines and send it. It comes straight to me.',
+      'contact.email': 'Your email', 'contact.sendApi': 'Send message', 'contact.book': 'Book a call',
+      'contact.errEmail': 'That email address does not look right. Check it and try again.',
+      'contact.errCaptcha': 'The spam check did not finish. Wait a second and send again.',
+      'contact.errRate': 'You have sent a few messages already. Try again in an hour, or write to hello@burak.pm.',
+      'contact.errSend': 'The message could not be sent. Try again, or write to hello@burak.pm.',
+      'contact.done': 'Message received.', 'contact.doneText': 'It landed straight in my queue. I usually reply within a day or two.', 'contact.again': 'Write another',
       'subject.collab': 'Working together', 'subject.role': 'A role or opportunity', 'subject.automation': 'An automation idea', 'subject.hello': 'Hello from burak.pm',
       'footer.made': 'Designed and built in Ankara.',
       'footer.keys': 'Press', 'footer.keys2': 'to jump anywhere, or type the name of a certain goat.',
@@ -157,6 +164,13 @@
       'contact.name': 'Adın', 'contact.msg': 'Mesajın', 'contact.send': 'Mail uygulamamda aç',
       'contact.err': 'Adını ve kısa bir mesaj yaz, sonra tekrar dene.',
       'contact.opened': 'Mail uygulaman şimdi açılmış olmalı',
+      'contact.ledeApi': 'Destek operasyonu, otomasyon, yapay zekâ ya da birlikte bir şey kurmak mı aklında? Bir konu seç, birkaç satır yaz ve gönder. Doğrudan bana ulaşır.',
+      'contact.email': 'E-posta adresin', 'contact.sendApi': 'Mesajı gönder', 'contact.book': 'Görüşme ayarla',
+      'contact.errEmail': 'E-posta adresi doğru görünmüyor. Kontrol edip tekrar dene.',
+      'contact.errCaptcha': 'Spam kontrolü tamamlanmadı. Bir saniye bekleyip tekrar gönder.',
+      'contact.errRate': 'Kısa sürede birkaç mesaj gönderdin. Bir saat sonra tekrar dene ya da hello@burak.pm adresine yaz.',
+      'contact.errSend': 'Mesaj gönderilemedi. Tekrar dene ya da hello@burak.pm adresine yaz.',
+      'contact.done': 'Mesajın ulaştı.', 'contact.doneText': 'Doğrudan kuyruğuma düştü. Genelde bir iki gün içinde dönüyorum.', 'contact.again': 'Yeni mesaj yaz',
       'subject.collab': 'Birlikte çalışmak', 'subject.role': 'Bir pozisyon ya da fırsat', 'subject.automation': 'Bir otomasyon fikri', 'subject.hello': 'burak.pm üzerinden merhaba',
       'footer.made': 'Ankara’da tasarlanıp kodlandı.',
       'footer.keys': 'Her yere atlamak için', 'footer.keys2': 'tuşlarına bas ya da tanıdık bir keçinin adını yaz.',
@@ -276,6 +290,7 @@
     if (queue) queue.relabel();
     if (typeof renderNp === 'function') renderNp();
     if (typeof renderWx === 'function') { renderWx(); renderMap(); }
+    if (window.__onLang) window.__onLang();
   }
 
   function splitTitle(el, text) {
@@ -983,16 +998,89 @@
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
 
   /* ------------------------------------------------------------ composer */
-  $('[data-composer]').addEventListener('submit', (e) => {
+  // Two modes. With the contact API configured, messages are sent from the page
+  // (Turnstile protected). Without it, the form falls back to opening a mail app.
+  const composer = $('[data-composer]'), composerErr = $('[data-composer-error]');
+  const sendBtn = $('[data-composer-send]'), doneBox = $('[data-composer-done]');
+  const contactCfg = { api: false, sitekey: null, widget: null };
+
+  function composerMode() {
+    const api = contactCfg.api;
+    $$('[data-api-only]').forEach((el) => { el.hidden = !api; });
+    composer.email.required = api;
+    sendBtn.firstElementChild.textContent = t(api ? 'contact.sendApi' : 'contact.send');
+    $('[data-i18n="contact.lede"]').textContent = t(api ? 'contact.ledeApi' : 'contact.lede');
+  }
+  window.__onLang = () => { if (contactCfg.api) composerMode(); };
+  function showErr(key) { composerErr.textContent = t(key); composerErr.hidden = false; }
+
+  function mountTurnstile() {
+    const box = $('[data-turnstile]');
+    if (!window.turnstile || !box) return;
+    box.hidden = false;
+    contactCfg.widget = window.turnstile.render(box, {
+      sitekey: contactCfg.sitekey,
+      theme: document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light',
+      language: document.documentElement.lang === 'tr' ? 'tr' : 'en',
+      appearance: 'interaction-only',
+      'refresh-expired': 'auto'
+    });
+  }
+
+  fetch('/api/contact').then((r) => (r.ok ? r.json() : null)).then((cfg) => {
+    if (!cfg || !cfg.ok) return;
+    if (cfg.booking && /^https:\/\//.test(cfg.booking)) {
+      const b = $('[data-booking]'); b.href = cfg.booking; b.hidden = false;
+    }
+    if (cfg.turnstile) {
+      contactCfg.api = true; contactCfg.sitekey = cfg.turnstile;
+      composerMode();
+      window.onTurnstileReady = mountTurnstile;
+      const sc = document.createElement('script');
+      sc.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onTurnstileReady';
+      sc.async = true; sc.defer = true;
+      document.head.appendChild(sc);
+    }
+  }).catch(() => {});
+
+  composer.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const f = e.currentTarget, err = $('[data-composer-error]');
-    const name = f.name.value.trim(), msg = f.msg.value.trim(), reason = f.reason.value;
-    if (!name || !msg) { err.textContent = t('contact.err'); err.hidden = false; (name ? f.msg : f.name).focus(); return; }
-    err.hidden = true;
-    const subject = `${t('subject.' + reason)} | ${name}`;
-    location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(msg + '\n\n' + name)}`;
-    toast(t('contact.opened'));
+    const f = composer;
+    const name = f.name.value.trim(), msg = f.msg.value.trim(), reason = f.reason.value, email = f.email.value.trim();
+    if (!name || !msg) { showErr('contact.err'); (name ? f.msg : f.name).focus(); return; }
+    composerErr.hidden = true;
+
+    if (!contactCfg.api) {
+      const subject = `${t('subject.' + reason)} | ${name}`;
+      location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(msg + '\n\n' + name)}`;
+      toast(t('contact.opened'));
+      return;
+    }
+    if (!f.email.checkValidity() || !email) { showErr('contact.errEmail'); f.email.focus(); return; }
+    const token = window.turnstile && contactCfg.widget != null ? window.turnstile.getResponse(contactCfg.widget) : '';
+    if (!token) { showErr('contact.errCaptcha'); return; }
+
+    sendBtn.setAttribute('aria-busy', 'true');
+    try {
+      const r = await fetch('/api/contact', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, msg, reason, token, website: f.website.value, lang: document.documentElement.lang })
+      });
+      const d = await r.json().catch(() => ({}));
+      if (!r.ok || !d.ok) {
+        showErr(d.error === 'rate' ? 'contact.errRate' : d.error === 'captcha' ? 'contact.errCaptcha' : d.error === 'invalid' ? 'contact.errEmail' : 'contact.errSend');
+        if (window.turnstile) window.turnstile.reset(contactCfg.widget);
+        return;
+      }
+      f.reset(); f.hidden = true; doneBox.hidden = false; doneBox.focus();
+      if (window.turnstile) window.turnstile.reset(contactCfg.widget);
+    } catch {
+      showErr('contact.errSend');
+    } finally {
+      sendBtn.removeAttribute('aria-busy');
+    }
   });
+  $('[data-composer-again]').addEventListener('click', () => { doneBox.hidden = true; composer.hidden = false; composer.name.focus(); });
 
   /* --------------------------------------------------------------- biko */
   let bikoBusy = false;

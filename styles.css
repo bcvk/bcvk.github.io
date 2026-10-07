@@ -525,6 +525,20 @@ kbd {
 .composer__error { margin: 0; color: #C2412D; font-weight: 600; font-size: 14.5px; }
 :root[data-theme="dark"] .composer__error { color: #FF8A73; }
 .composer .btn { justify-self: start; }
+.composer__row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.composer__captcha:empty { display: none; }
+.composer .btn[aria-busy="true"] { opacity: .7; pointer-events: none; }
+.composer .btn[aria-busy="true"]::after { content: ""; width: 14px; height: 14px; border-radius: 50%; border: 2px solid currentColor; border-right-color: transparent; animation: spin .8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.composer--done { align-content: center; justify-items: start; min-height: 320px; }
+.composer--done h3 { margin: 0; font: 760 clamp(30px, 4vw, 42px)/1 var(--display); font-stretch: 80%; letter-spacing: -.02em; }
+.composer--done p { margin: 0; color: var(--ink-2); max-width: 40ch; }
+.composer__done-mark { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 18px; background: var(--saffron); margin: 0 0 4px; }
+.composer__done-mark svg { width: 28px; height: 28px; fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 24; stroke-dashoffset: 24; animation: draw .5s .15s var(--ease) forwards; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+.contact__direct .btn .ico { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
+@media (prefers-reduced-motion: reduce) { .composer__done-mark svg { animation: none; stroke-dashoffset: 0; } }
 
 /* footer */
 .footer {

@@ -24,8 +24,8 @@
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/styles.css?v=20261008c">
-<script src="/boot.js?v=20261008c"></script>
+<link rel="stylesheet" href="/styles.css?v=20261008d">
+<script src="/boot.js?v=20261008d"></script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Burak Cevik","url":"https://burak.pm","email":"mailto:hello@burak.pm","image":"https://burak.pm/assets/burak.jpg","jobTitle":"Assistant Project Manager","worksFor":{"@type":"Organization","name":"ModSquad","url":"https://modsquad.com"},"address":{"@type":"PostalAddress","addressLocality":"Ankara","addressCountry":"TR"},"knowsLanguage":["tr","en","es"],"sameAs":["https://linkedin.com/in/bcvk","https://github.com/bcvk"]}
 </script>
@@ -255,6 +255,7 @@
       <h2 class="contact__title" id="contact-title" data-i18n="contact.title">Let's talk.</h2>
       <p data-i18n="contact.lede">Into support operations, automation, AI or building something together? Pick a reason, write a line, and your mail app opens with everything filled in.</p>
       <div class="contact__direct">
+        <a class="btn btn--solid" data-booking href="#" target="_blank" rel="noopener" hidden><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span data-i18n="contact.book">Book a call</span></a>
         <button class="btn btn--ghost" type="button" data-action="copy-email"><span>hello@burak.pm</span><span class="sr" data-i18n="contact.copy">Copy address</span></button>
         <a class="link" href="https://linkedin.com/in/bcvk" rel="me noopener" target="_blank">LinkedIn</a>
         <a class="link" href="https://github.com/bcvk" rel="me noopener" target="_blank">GitHub</a>
@@ -269,11 +270,22 @@
         <label class="chip"><input type="radio" name="reason" value="automation"><span data-i18n="reason.automation">An automation idea</span></label>
         <label class="chip"><input type="radio" name="reason" value="hello"><span data-i18n="reason.hello">Just saying hi</span></label>
       </fieldset>
-      <label class="field"><span data-i18n="contact.name">Your name</span><input name="name" autocomplete="name" required></label>
-      <label class="field"><span data-i18n="contact.msg">Message</span><textarea name="msg" rows="4" required></textarea></label>
+      <div class="composer__row">
+        <label class="field"><span data-i18n="contact.name">Your name</span><input name="name" autocomplete="name" maxlength="120" required></label>
+        <label class="field" data-api-only hidden><span data-i18n="contact.email">Your email</span><input name="email" type="email" autocomplete="email" maxlength="254" inputmode="email"></label>
+      </div>
+      <label class="field"><span data-i18n="contact.msg">Message</span><textarea name="msg" rows="4" maxlength="4000" required></textarea></label>
+      <label class="hp" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>
+      <div class="composer__captcha" data-turnstile hidden></div>
       <p class="composer__error" data-composer-error hidden></p>
-      <button class="btn btn--solid" type="submit" data-i18n="contact.send">Open in my mail app</button>
+      <button class="btn btn--solid" type="submit" data-composer-send><span data-i18n="contact.send">Open in my mail app</span></button>
     </form>
+    <div class="composer composer--done" data-composer-done hidden tabindex="-1">
+      <p class="composer__done-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></p>
+      <h3 data-i18n="contact.done">Message received.</h3>
+      <p data-i18n="contact.doneText">It landed straight in my queue. I usually reply within a day or two.</p>
+      <button class="btn btn--ghost" type="button" data-composer-again data-i18n="contact.again">Write another</button>
+    </div>
   </section>
 </main>
 
@@ -305,6 +317,6 @@
 <div class="toast" role="status" aria-live="polite" data-toast></div>
 <div class="biko" data-biko aria-hidden="true"><img src="/assets/biko.svg" alt="" width="72" height="72"><span class="biko__say" data-biko-say></span></div>
 
-<script src="/app.js?v=20261008c" defer></script>
+<script src="/app.js?v=20261008d" defer></script>
 </body>
 </html>
