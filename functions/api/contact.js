@@ -50,17 +50,33 @@ async function notifyTelegram(env, m) {
   return r.ok;
 }
 
+const REASON_LABEL = {
+  collab: 'Birlikte çalışmak', role: 'Pozisyon ya da fırsat', automation: 'Otomasyon fikri', hello: 'Merhaba', call: 'Görüşme'
+};
+
 async function notifyEmail(env, m) {
   if (!env.RESEND_API_KEY || !env.NOTIFY_EMAIL) return false;
+  const label = REASON_LABEL[m.reason] || m.reason;
+  const when = new Date().toLocaleString('tr-TR', { timeZone: 'Europe/Istanbul', dateStyle: 'long', timeStyle: 'short' });
+  const text = `burak.pm iletişim formundan yeni bir mesaj var.\n\nKimden: ${m.name} <${m.email}>\nKonu: ${label}${m.country ? '\nÜlke: ' + m.country : ''}\nZaman: ${when}\n\n${m.body}\n\nCevaplamak için bu maili yanıtlaman yeterli, cevabın doğrudan ${m.email} adresine gider.`;
+  const html = `<!doctype html><html lang="tr"><body style="margin:0;padding:24px;background:#E9ECF2;font-family:Arial,Helvetica,sans-serif;color:#191C2E">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;margin:0 auto;background:#F4F6FA;border:1px solid #C8CEDC;border-radius:16px">
+<tr><td style="padding:24px 28px 8px"><p style="margin:0;font-size:13px;color:#4A5068">burak.pm iletişim formu</p>
+<h1 style="margin:6px 0 0;font-size:22px">${esc(m.name)}</h1>
+<p style="margin:4px 0 0;font-size:14px;color:#4A5068">${esc(m.email)} · ${esc(label)}${m.country ? ' · ' + esc(m.country) : ''}</p></td></tr>
+<tr><td style="padding:16px 28px"><div style="white-space:pre-wrap;font-size:16px;line-height:1.55;background:#fff;border:1px solid #C8CEDC;border-radius:12px;padding:16px">${esc(m.body)}</div></td></tr>
+<tr><td style="padding:0 28px 24px;font-size:13px;color:#4A5068">${esc(when)}. Bu maili yanıtladığında cevabın doğrudan ${esc(m.email)} adresine gider.</td></tr>
+</table></body></html>`;
   const r = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      from: env.NOTIFY_FROM || 'burak.pm <site@burak.pm>',
+      from: env.NOTIFY_FROM || 'burak.pm İletişim <iletisim@burak.pm>',
       to: [env.NOTIFY_EMAIL],
-      reply_to: m.email,
-      subject: `burak.pm: ${m.reason} | ${m.name}`,
-      text: `${m.name} <${m.email}>${m.country ? ' (' + m.country + ')' : ''}\nReason: ${m.reason}\n\n${m.body}`
+      reply_to: `${m.name.replace(/[<>"]/g, '')} <${m.email}>`,
+      subject: `Yeni mesaj: ${m.name} (${label})`,
+      text,
+      html
     })
   });
   return r.ok;
