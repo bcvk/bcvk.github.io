@@ -98,7 +98,7 @@
       'toast.copied': 'Address copied', 'toast.theme': 'Theme switched', 'toast.vcard': 'Contact card downloaded',
       'biko': ['Hi! I used to run this place.', 'Still checking the alignment.', 'Baa. Nice queue.'],
       greet: ['Merhaba', 'Hello', 'Hola', 'Halo'],
-      title: 'Burak Cevik | Customer experience operations and automation'
+      title: 'Burak Çevik | Customer experience operations and automation'
     },
     tr: {
       skip: 'İçeriğe geç',
@@ -185,7 +185,7 @@
       'toast.copied': 'Adres kopyalandı', 'toast.theme': 'Tema değişti', 'toast.vcard': 'Kartvizit indirildi',
       'biko': ['Selam! Burayı eskiden ben işletiyordum.', 'Hâlâ hizalamaları kontrol ediyorum.', 'Mee. Güzel kuyruk.'],
       greet: ['Merhaba', 'Hello', 'Hola', 'Halo'],
-      title: 'Burak Cevik | Müşteri deneyimi operasyonu ve otomasyon'
+      title: 'Burak Çevik | Müşteri deneyimi operasyonu ve otomasyon'
     }
   };
 
@@ -351,7 +351,7 @@
   }
 
   function downloadVcard() {
-    const v = ['BEGIN:VCARD', 'VERSION:3.0', 'N:Cevik;Burak;;;', 'FN:Burak Cevik', 'ORG:ModSquad', 'TITLE:Assistant Project Manager',
+    const v = ['BEGIN:VCARD', 'VERSION:3.0', 'N:Çevik;Burak;;;', 'FN:Burak Çevik', 'ORG:ModSquad', 'TITLE:Assistant Project Manager',
       'EMAIL;TYPE=INTERNET:' + EMAIL, 'URL:https://burak.pm', 'ADR;TYPE=WORK:;;;Ankara;;;Türkiye', 'END:VCARD'].join('\r\n');
     const a = document.createElement('a');
     a.href = URL.createObjectURL(new Blob([v], { type: 'text/vcard;charset=utf-8' }));
