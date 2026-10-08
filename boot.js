@@ -7,7 +7,8 @@
     theme = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
   root.setAttribute('data-theme', theme);
-  var q = new URLSearchParams(location.search).get('lang');
+  // /tr always means Turkish; otherwise ?lang, then the saved choice, then the browser.
+  var q = /^\/tr\/?$/.test(location.pathname) ? 'tr' : new URLSearchParams(location.search).get('lang');
   var lang = q === 'tr' || q === 'en' ? q : read('bp-lang');
   if (lang !== 'tr' && lang !== 'en') {
     lang = /^tr\b/i.test(navigator.language || '') ? 'tr' : 'en';

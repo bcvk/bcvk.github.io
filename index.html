@@ -8,11 +8,14 @@
 <meta name="author" content="Burak Cevik">
 <link rel="canonical" href="https://burak.pm/">
 <link rel="alternate" hreflang="en" href="https://burak.pm/">
-<link rel="alternate" hreflang="tr" href="https://burak.pm/?lang=tr">
+<link rel="alternate" hreflang="tr" href="https://burak.pm/tr">
+<link rel="alternate" hreflang="x-default" href="https://burak.pm/">
 <meta name="theme-color" content="#E9ECF2" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#10131F" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://burak.pm/">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="tr_TR">
 <meta property="og:title" content="Burak Cevik">
 <meta property="og:description" content="I get people to the right answer. Multilingual support operations, team leadership and automation.">
 <meta property="og:image" content="https://burak.pm/assets/og.png">
@@ -24,8 +27,8 @@
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/styles.css?v=20261008g">
-<script src="/boot.js?v=20261008g"></script>
+<link rel="stylesheet" href="/styles.css?v=20261008h">
+<script src="/boot.js?v=20261008h"></script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Burak Cevik","url":"https://burak.pm","email":"mailto:hello@burak.pm","image":"https://burak.pm/assets/burak.jpg","jobTitle":"Assistant Project Manager","worksFor":{"@type":"Organization","name":"ModSquad","url":"https://modsquad.com"},"address":{"@type":"PostalAddress","addressLocality":"Ankara","addressCountry":"TR"},"knowsLanguage":["tr","en","es"],"sameAs":["https://linkedin.com/in/bcvk","https://github.com/bcvk"]}
 </script>
@@ -278,6 +281,7 @@
       <label class="hp" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>
       <div class="composer__captcha" data-turnstile hidden></div>
       <p class="composer__error" data-composer-error hidden></p>
+      <p class="composer__privacy" data-api-only hidden><span data-i18n="contact.privacy">Your message is used only to reply to you.</span> <a href="/privacy" data-i18n="contact.privacyLink">Privacy</a></p>
       <button class="btn btn--solid" type="submit" data-composer-send><span data-i18n="contact.send">Open in my mail app</span></button>
     </form>
     <div class="composer composer--done" data-composer-done hidden tabindex="-1">
@@ -291,6 +295,7 @@
 
 <footer class="footer">
   <p data-i18n="footer.made">Designed and built in Ankara.</p>
+  <p class="footer__links"><a href="/privacy" data-i18n="footer.privacy">Privacy</a></p>
   <p class="footer__keys"><span data-i18n="footer.keys">Press</span> <kbd data-modkey>Ctrl</kbd><kbd>K</kbd> <span data-i18n="footer.keys2">to jump anywhere, or type the name of a certain goat.</span></p>
 </footer>
 
@@ -329,6 +334,6 @@
 <div class="toast" role="status" aria-live="polite" data-toast></div>
 <div class="biko" data-biko aria-hidden="true"><img src="/assets/biko.svg" alt="" width="72" height="72"><span class="biko__say" data-biko-say></span></div>
 
-<script src="/app.js?v=20261008g" defer></script>
+<script src="/app.js?v=20261008h" defer></script>
 </body>
 </html>

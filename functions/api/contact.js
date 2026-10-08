@@ -120,6 +120,8 @@ export async function onRequestPost({ request, env, waitUntil }) {
 
   const m = { reason, name, email, body, country };
   waitUntil((async () => {
+    // Retention: messages older than 12 months are removed (see /privacy).
+    await env.DB.prepare('DELETE FROM messages WHERE created_at < ?1').bind(now - 365 * 86400_000).run().catch(() => {});
     const results = await Promise.allSettled([notifyTelegram(env, m), notifyEmail(env, m)]);
     if (results.some((r) => r.status === 'fulfilled' && r.value)) {
       await env.DB.prepare('UPDATE messages SET notified = 1 WHERE id = ?1').bind(meta.last_row_id).run();

@@ -23,6 +23,8 @@
     root.setAttribute('lang', lang); document.title = t('doc');
     document.querySelectorAll('[data-t]').forEach((el) => { el.textContent = t(el.dataset.t); });
     $('[data-lost-lang-label]').textContent = lang === 'tr' ? 'EN' : 'TR';
+    const base = lang === 'tr' ? '/tr' : '/';
+    document.querySelectorAll('.lost__links a, .brand').forEach((a) => { const h = a.getAttribute('href'); const hash = h.includes('#') ? h.slice(h.indexOf('#')) : ''; a.setAttribute('href', base + hash); });
     if (!game.running && game.played) $('[data-g-start]').textContent = t('again');
   }
   $('[data-lost-lang]').addEventListener('click', () => { lang = lang === 'tr' ? 'en' : 'tr'; store.set('bp-lang', lang); applyLang(); });

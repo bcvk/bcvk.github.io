@@ -85,6 +85,7 @@
       'contact.errCaptcha': 'The spam check did not finish. Wait a second and send again.',
       'contact.errRate': 'You have sent a few messages already. Try again in an hour, or write to hello@burak.pm.',
       'contact.errSend': 'The message could not be sent. Try again, or write to hello@burak.pm.',
+      'footer.privacy': 'Privacy', 'contact.privacy': 'Your message is used only to reply to you.', 'contact.privacyLink': 'How it is handled',
       'book.title': 'Book a call', 'book.lede': 'A 30 minute intro call over Google Meet. Pick a time that suits you.', 'book.out': 'Open in a new tab',
       'contact.done': 'Message received.', 'contact.doneText': 'It landed straight in my queue. I usually reply within a day or two.', 'contact.again': 'Write another',
       'subject.collab': 'Working together', 'subject.role': 'A role or opportunity', 'subject.automation': 'An automation idea', 'subject.hello': 'Hello from burak.pm',
@@ -166,11 +167,12 @@
       'contact.err': 'Adını ve kısa bir mesaj yaz, sonra tekrar dene.',
       'contact.opened': 'Mail uygulaman şimdi açılmış olmalı',
       'contact.ledeApi': 'Destek operasyonu, otomasyon, yapay zekâ ya da birlikte bir şey kurmak mı aklında? Bir konu seç, birkaç satır yaz ve gönder. Doğrudan bana ulaşır.',
-      'contact.email': 'E-posta adresin', 'contact.sendApi': 'Mesajı gönder', 'contact.book': 'Görüşme ayarla',
-      'contact.errEmail': 'E-posta adresi doğru görünmüyor. Kontrol edip tekrar dene.',
+      'contact.email': 'Mail adresin', 'contact.sendApi': 'Mesajı gönder', 'contact.book': 'Görüşme ayarla',
+      'contact.errEmail': 'Mail adresi doğru görünmüyor. Kontrol edip tekrar dene.',
       'contact.errCaptcha': 'Spam kontrolü tamamlanmadı. Bir saniye bekleyip tekrar gönder.',
       'contact.errRate': 'Kısa sürede birkaç mesaj gönderdin. Bir saat sonra tekrar dene ya da hello@burak.pm adresine yaz.',
       'contact.errSend': 'Mesaj gönderilemedi. Tekrar dene ya da hello@burak.pm adresine yaz.',
+      'footer.privacy': 'Gizlilik', 'contact.privacy': 'Mesajın yalnızca sana cevap vermek için kullanılır.', 'contact.privacyLink': 'Nasıl işlendiğini oku',
       'book.title': 'Görüşme ayarla', 'book.lede': 'Google Meet üzerinden 30 dakikalık bir tanışma görüşmesi. Sana uyan saati seç.', 'book.out': 'Yeni sekmede aç',
       'contact.done': 'Mesajın ulaştı.', 'contact.doneText': 'Doğrudan kuyruğuma düştü. Genelde bir iki gün içinde dönüyorum.', 'contact.again': 'Yeni mesaj yaz',
       'subject.collab': 'Birlikte çalışmak', 'subject.role': 'Bir pozisyon ya da fırsat', 'subject.automation': 'Bir otomasyon fikri', 'subject.hello': 'burak.pm üzerinden merhaba',
@@ -310,6 +312,10 @@
 
   function setLang(next) {
     lang = next; store.set('bp-lang', lang); applyLang();
+    // Keep the address in step with the language on the home page (/ and /tr).
+    if (/^\/(tr\/?)?$/.test(location.pathname) && history.replaceState) {
+      history.replaceState(null, '', (lang === 'tr' ? '/tr' : '/') + location.hash);
+    }
     const url = new URL(location.href);
     if (url.searchParams.has('lang')) { url.searchParams.delete('lang'); history.replaceState(null, '', url); }
   }
