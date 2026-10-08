@@ -13,5 +13,14 @@
     lang = /^tr\b/i.test(navigator.language || '') ? 'tr' : 'en';
   }
   root.setAttribute('lang', lang);
+  // Turkish letters (ş, ğ, İ) live in the latin-ext font files, so fetch them early for Turkish.
+  if (lang === 'tr') {
+    ['bricolage-grotesque-latin-ext-standard-normal', 'schibsted-grotesk-latin-ext-wght-normal'].forEach(function (f) {
+      var l = document.createElement('link');
+      l.rel = 'preload'; l.as = 'font'; l.type = 'font/woff2'; l.crossOrigin = 'anonymous';
+      l.href = '/assets/fonts/' + f + '.woff2';
+      document.head.appendChild(l);
+    });
+  }
   root.classList.add('js');
 })();

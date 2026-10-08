@@ -908,6 +908,8 @@
   /* ----------------------------------------------------------- visitor map */
   const vm = { data: null, ready: false };
   const regionName = (cc) => { try { return new Intl.DisplayNames([lang], { type: 'region' }).of(cc); } catch (e) { return cc; } };
+  // The visit is counted right away, the heavy map file only loads when the section gets close.
+  const visitReq = fetch('/api/visits', { method: 'POST', headers: { Accept: 'application/json' } }).catch(() => null);
   async function loadMap() {
     const box = $('[data-map]'); if (!box) return;
     try { box.innerHTML = await (await fetch('/assets/world.svg')).text(); } catch (e) { return; }
@@ -931,8 +933,8 @@
     svg.addEventListener('pointerleave', () => { tip.hidden = true; });
     renderMap();
     try {
-      const r = await fetch('/api/visits', { method: 'POST', headers: { Accept: 'application/json' } });
-      if (!r.ok || !(r.headers.get('content-type') || '').includes('json')) return;
+      const r = await visitReq;
+      if (!r || !r.ok || !(r.headers.get('content-type') || '').includes('json')) return;
       const d = await r.json(); if (!d.ok) return;
       vm.data = d; renderMap();
       setInterval(async () => {
@@ -962,7 +964,13 @@
     $('[data-visit-top]').innerHTML = d.countries.slice(0, 5).map((c) =>
       `<li><b>${esc(regionName(c.country))}</b><span>${c.count.toLocaleString(lang)} ${t(c.count === 1 ? 'visits.one' : 'visits.many')}</span><i style="width:${Math.max(6, (c.count / max) * 100)}%"></i></li>`).join('');
   }
-  loadMap();
+  const lazyWhenNear = (el, fn, margin = '600px') => {
+    if (!el) return;
+    if (!('IntersectionObserver' in window)) { fn(); return; }
+    const o = new IntersectionObserver((en) => { if (en.some((x) => x.isIntersecting)) { o.disconnect(); fn(); } }, { rootMargin: margin });
+    o.observe(el);
+  };
+  lazyWhenNear($('#visits'), loadMap);
 
   /* --------------------------------------------------------- facts count */
   function countUp(el) {
@@ -1051,10 +1059,20 @@
       contactCfg.api = true; contactCfg.sitekey = cfg.turnstile;
       composerMode();
       window.onTurnstileReady = mountTurnstile;
-      const sc = document.createElement('script');
-      sc.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onTurnstileReady';
-      sc.async = true; sc.defer = true;
-      document.head.appendChild(sc);
+      let tsLoaded = false;
+      const loadTs = () => {
+        if (tsLoaded) return; tsLoaded = true;
+        const sc = document.createElement('script');
+        sc.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onTurnstileReady';
+        sc.async = true; sc.defer = true;
+        document.head.appendChild(sc);
+      };
+      // Only fetch the spam check when someone is near the form or starts typing.
+      composer.addEventListener('focusin', loadTs, { once: true });
+      if ('IntersectionObserver' in window) {
+        const o = new IntersectionObserver((en) => { if (en.some((x) => x.isIntersecting)) { o.disconnect(); loadTs(); } }, { rootMargin: '400px' });
+        o.observe(composer);
+      } else loadTs();
     }
   }).catch(() => {});
 
