@@ -1039,7 +1039,9 @@
         b.addEventListener('click', (e) => {
           if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1 || !dlg.showModal) return;
           e.preventDefault();
-          if (!frame.src) frame.src = cfg.bookingEmbed;
+          // Google Calendar follows the hl parameter, so the booking UI matches the site language.
+          const want = cfg.bookingEmbed + (cfg.bookingEmbed.includes('?') ? '&' : '?') + 'hl=' + (document.documentElement.lang === 'tr' ? 'tr' : 'en');
+          if (frame.getAttribute('src') !== want) frame.setAttribute('src', want);
           dlg.showModal();
         });
         dlg.addEventListener('click', (e) => { if (e.target === dlg || e.target.closest('[data-close]')) dlg.close(); });
