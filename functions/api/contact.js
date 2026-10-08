@@ -18,7 +18,8 @@ export async function onRequestGet({ env }) {
   return json({
     ok: true,
     turnstile: env.TURNSTILE_SECRET && env.TURNSTILE_SITE_KEY ? env.TURNSTILE_SITE_KEY : null,
-    booking: env.BOOKING_URL || null
+    booking: env.BOOKING_URL || null,
+    bookingEmbed: env.BOOKING_EMBED || null
   });
 }
 

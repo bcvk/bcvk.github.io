@@ -9,6 +9,7 @@ SPOTIFY_CLIENT_ID = "ed803d50d3334d5e935a3e2bd4b6018c"
 TURNSTILE_SITE_KEY = "0x4AAAAAAFQz-wiB8T5o-gZY"
 NOTIFY_EMAIL = "hello@burak.pm"
 BOOKING_URL = "https://calendar.app.google/V7fWZNg24LWbjaAg8"
+BOOKING_EMBED = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ3haT2YJFFxDGvskHSsxkHxAbgfEldeKIoNOHNjmOaxuhcyhfvIsRkLCY75OQQcqAqJoC4KffIz?gv=true"
 
 [[d1_databases]]
 binding = "DB"

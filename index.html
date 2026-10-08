@@ -24,8 +24,8 @@
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/styles.css?v=20261008d">
-<script src="/boot.js?v=20261008d"></script>
+<link rel="stylesheet" href="/styles.css?v=20261008e">
+<script src="/boot.js?v=20261008e"></script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Burak Cevik","url":"https://burak.pm","email":"mailto:hello@burak.pm","image":"https://burak.pm/assets/burak.jpg","jobTitle":"Assistant Project Manager","worksFor":{"@type":"Organization","name":"ModSquad","url":"https://modsquad.com"},"address":{"@type":"PostalAddress","addressLocality":"Ankara","addressCountry":"TR"},"knowsLanguage":["tr","en","es"],"sameAs":["https://linkedin.com/in/bcvk","https://github.com/bcvk"]}
 </script>
@@ -294,6 +294,18 @@
   <p class="footer__keys"><span data-i18n="footer.keys">Press</span> <kbd data-modkey>Ctrl</kbd><kbd>K</kbd> <span data-i18n="footer.keys2">to jump anywhere, or type the name of a certain goat.</span></p>
 </footer>
 
+<dialog class="sheet book" data-book aria-labelledby="book-title">
+  <div class="book__head">
+    <div>
+      <h3 id="book-title" data-i18n="book.title">Book a call</h3>
+      <p class="sheet__lede" data-i18n="book.lede">A 30 minute intro call over Google Meet. Pick a time that suits you.</p>
+    </div>
+    <a class="link book__out" data-book-out href="#" target="_blank" rel="noopener" data-i18n="book.out">Open in a new tab</a>
+    <button class="sheet__close" type="button" data-close aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <div class="book__frame"><span class="book__spin" aria-hidden="true"></span><iframe data-book-frame title="Booking calendar" loading="lazy"></iframe></div>
+</dialog>
+
 <dialog class="sheet" data-project-sheet aria-labelledby="sheet-title">
   <div class="sheet__inner">
     <button class="sheet__close" type="button" data-close aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
@@ -317,6 +329,6 @@
 <div class="toast" role="status" aria-live="polite" data-toast></div>
 <div class="biko" data-biko aria-hidden="true"><img src="/assets/biko.svg" alt="" width="72" height="72"><span class="biko__say" data-biko-say></span></div>
 
-<script src="/app.js?v=20261008d" defer></script>
+<script src="/app.js?v=20261008e" defer></script>
 </body>
 </html>

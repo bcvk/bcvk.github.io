@@ -85,6 +85,7 @@
       'contact.errCaptcha': 'The spam check did not finish. Wait a second and send again.',
       'contact.errRate': 'You have sent a few messages already. Try again in an hour, or write to hello@burak.pm.',
       'contact.errSend': 'The message could not be sent. Try again, or write to hello@burak.pm.',
+      'book.title': 'Book a call', 'book.lede': 'A 30 minute intro call over Google Meet. Pick a time that suits you.', 'book.out': 'Open in a new tab',
       'contact.done': 'Message received.', 'contact.doneText': 'It landed straight in my queue. I usually reply within a day or two.', 'contact.again': 'Write another',
       'subject.collab': 'Working together', 'subject.role': 'A role or opportunity', 'subject.automation': 'An automation idea', 'subject.hello': 'Hello from burak.pm',
       'footer.made': 'Designed and built in Ankara.',
@@ -170,6 +171,7 @@
       'contact.errCaptcha': 'Spam kontrolü tamamlanmadı. Bir saniye bekleyip tekrar gönder.',
       'contact.errRate': 'Kısa sürede birkaç mesaj gönderdin. Bir saat sonra tekrar dene ya da hello@burak.pm adresine yaz.',
       'contact.errSend': 'Mesaj gönderilemedi. Tekrar dene ya da hello@burak.pm adresine yaz.',
+      'book.title': 'Görüşme ayarla', 'book.lede': 'Google Meet üzerinden 30 dakikalık bir tanışma görüşmesi. Sana uyan saati seç.', 'book.out': 'Yeni sekmede aç',
       'contact.done': 'Mesajın ulaştı.', 'contact.doneText': 'Doğrudan kuyruğuma düştü. Genelde bir iki gün içinde dönüyorum.', 'contact.again': 'Yeni mesaj yaz',
       'subject.collab': 'Birlikte çalışmak', 'subject.role': 'Bir pozisyon ya da fırsat', 'subject.automation': 'Bir otomasyon fikri', 'subject.hello': 'burak.pm üzerinden merhaba',
       'footer.made': 'Ankara’da tasarlanıp kodlandı.',
@@ -1031,6 +1033,17 @@
     if (!cfg || !cfg.ok) return;
     if (cfg.booking && /^https:\/\//.test(cfg.booking)) {
       const b = $('[data-booking]'); b.href = cfg.booking; b.hidden = false;
+      $('[data-book-out]').href = cfg.booking;
+      if (cfg.bookingEmbed && /^https:\/\/calendar\.google\.com\//.test(cfg.bookingEmbed)) {
+        const dlg = $('[data-book]'), frame = $('[data-book-frame]');
+        b.addEventListener('click', (e) => {
+          if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1 || !dlg.showModal) return;
+          e.preventDefault();
+          if (!frame.src) frame.src = cfg.bookingEmbed;
+          dlg.showModal();
+        });
+        dlg.addEventListener('click', (e) => { if (e.target === dlg || e.target.closest('[data-close]')) dlg.close(); });
+      }
     }
     if (cfg.turnstile) {
       contactCfg.api = true; contactCfg.sitekey = cfg.turnstile;
