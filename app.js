@@ -16,7 +16,7 @@
     en: {
       skip: 'Skip to content',
       'nav.work': 'What I do', 'nav.path': 'Path', 'nav.projects': 'Projects', 'nav.now': 'Now', 'nav.contact': 'Contact',
-      'hero.hello': "Hi, I'm Burak.",
+      'hero.hello': "Hi, I'm Burak Çevik.",
       'hero.title': 'I get people to the right answer.',
       'hero.lede': "I lead multilingual customer support teams and build the automations that keep repetitive work off their plates. Right now I'm an Assistant Project Manager at ModSquad, working remotely from Ankara.",
       'hero.cta1': "See what I've built", 'hero.cta2': 'Write to me',
@@ -105,7 +105,7 @@
     tr: {
       skip: 'İçeriğe geç',
       'nav.work': 'Ne yapıyorum', 'nav.path': 'Yol', 'nav.projects': 'Projeler', 'nav.now': 'Şu sıralar', 'nav.contact': 'İletişim',
-      'hero.hello': 'Merhaba, ben Burak.',
+      'hero.hello': 'Merhaba, ben Burak Çevik.',
       'hero.title': 'İnsanları doğru cevaba ulaştırırım.',
       'hero.lede': 'Çok dilli müşteri destek ekiplerini yönetiyor, tekrarlayan işleri onların üzerinden alan otomasyonlar kuruyorum. Şu an ModSquad’da Assistant Project Manager olarak Ankara’dan uzaktan çalışıyorum.',
       'hero.cta1': 'Neler yaptığıma bak', 'hero.cta2': 'Bana yaz',
