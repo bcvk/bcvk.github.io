@@ -1,5 +1,10 @@
 // Runs before first paint so theme and language never flash.
 (function () {
+  // The old GitHub Pages copy forwards to the real site.
+  if (location.hostname === 'bcvk.github.io') {
+    location.replace('https://burak.pm' + location.pathname + location.search + location.hash);
+    return;
+  }
   var root = document.documentElement;
   function read(key) { try { return localStorage.getItem(key); } catch (e) { return null; } }
   var theme = read('bp-theme');

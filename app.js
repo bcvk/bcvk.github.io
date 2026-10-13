@@ -65,9 +65,11 @@
       'filter.all': 'All', 'filter.auto': 'Automation', 'filter.ai': 'AI', 'filter.product': 'Product', 'filter.hw': 'Hardware',
       'np.now': 'Listening now on Spotify', 'np.last': 'Last played', 'np.ago': ['just now', '{n} min ago', '{n} h ago', '{n} days ago'],
       'card.more': 'Read more', 'card.noai': 'No AI on internal data', 'card.visit': 'Visit the site',
+      'sheet.problem': 'The problem', 'sheet.built': 'What I built', 'sheet.result': 'The result', 'sheet.copy': 'Copy link', 'toast.link': 'Link copied',
+      'cv.label': 'Download CV', 'cmd.cv': 'Download my CV',
       'now.title': 'These days',
       'now.1.t': 'Studying international trade and logistics', 'now.1.d': 'For years I have helped people on the other side of the world through a screen. Now I want to understand how goods and deals make that same journey, so I study it at Hitit University alongside work.',
-      'now.2.t': 'Building Tamga', 'now.2.d': 'An AI product that lets you follow every step of a cross border deal in one place.',
+      'now.2.t': 'Building Tamga', 'now.2.d': 'Turning what I learn about trade at school into a product that makes work easier for people who do business abroad.',
       'now.3.t': 'Getting better at Spanish', 'now.3.d': 'Working proficiency today, fluency is the goal.',
       'now.4.t': 'Tinkering with an ESP32', 'now.4.d': 'A little sticker printer that listens to kids and prints what they ask for.',
       'tools.title': 'What I work with', 'tools.ops': 'Operations', 'tools.ops.d': 'KPI management, quality assurance, coaching, scheduling, reporting',
@@ -152,9 +154,11 @@
       'filter.all': 'Hepsi', 'filter.auto': 'Otomasyon', 'filter.ai': 'Yapay zekâ', 'filter.product': 'Ürün', 'filter.hw': 'Donanım',
       'np.now': 'Şu an Spotify\u2019da dinliyorum', 'np.last': 'En son dinlediğim', 'np.ago': ['az önce', '{n} dk önce', '{n} saat önce', '{n} gün önce'],
       'card.more': 'Devamını oku', 'card.noai': 'İç veride yapay zekâ yok', 'card.visit': 'Siteye git',
+      'sheet.problem': 'Sorun', 'sheet.built': 'Ne kurdum', 'sheet.result': 'Sonuç', 'sheet.copy': 'Bağlantıyı kopyala', 'toast.link': 'Bağlantı kopyalandı',
+      'cv.label': 'CV’yi indir', 'cmd.cv': 'CV’mi indir',
       'now.title': 'Şu sıralar',
       'now.1.t': 'Uluslararası ticaret ve lojistik okuyorum', 'now.1.d': 'Yıllardır dünyanın öbür ucundaki insanlara bir ekranın arkasından yardım ediyorum. Şimdi malların ve anlaşmaların aynı yolculuğu nasıl yaptığını anlamak istiyorum; bu yüzden işimin yanında Hitit Üniversitesi’nde okuyorum.',
-      'now.2.t': 'Tamga’yı geliştiriyorum', 'now.2.d': 'Sınır ötesi bir anlaşmanın her adımını tek yerden takip etmeyi sağlayan bir yapay zekâ ürünü.',
+      'now.2.t': 'Tamga’yı geliştiriyorum', 'now.2.d': 'Okulda dış ticaret üzerine öğrendiklerimi, yurt dışıyla iş yapanların işini kolaylaştıracak bir ürüne dönüştürmeye çalışıyorum.',
       'now.3.t': 'İspanyolcamı ilerletiyorum', 'now.3.d': 'Bugün iş görecek seviyede, hedef akıcılık.',
       'now.4.t': 'Bir ESP32 ile uğraşıyorum', 'now.4.d': 'Çocukları dinleyip istediklerini sticker olarak basan küçük bir yazıcı.',
       'tools.title': 'Neyle çalışıyorum', 'tools.ops': 'Operasyon', 'tools.ops.d': 'KPI yönetimi, kalite güvence, koçluk, vardiya planlama, raporlama',
@@ -206,36 +210,48 @@
         blurb: 'One place for the whole team: performance, quality and coaching data pulled from more than thirteen spreadsheets and calendars.',
         lede: 'Before this, answering "how is the team doing?" meant opening a dozen files. Now it is one dashboard.',
         points: ['Reads from 13+ source spreadsheets and Google Calendars', 'Built as 17 Apps Script files over six phases', 'Flags overdue coaching reviews and missed feedback automatically', 'Plain Apps Script logic: no AI ever touches this data'],
+        problem: "Answering \"how is the team doing?\" meant opening a dozen spreadsheets and calendars.",
+        result: "Performance, quality and coaching now live on one dashboard, and overdue reviews get flagged without anyone chasing them.",
         tags: ['Google Sheets', 'Apps Script', 'No AI'] },
       { id: 'lib', noai: true, size: 'md', tone: 'blue', cats: ['auto', 'product'], glyph: 'lib',
         title: 'Feedback library',
         blurb: 'A private web app where every advisor sees their own quality feedback and coaching notes.',
         lede: 'It started as a weekly brief and grew into a small platform the whole team uses.',
         points: ['Personal metrics, quality tracking and grouping in one view', 'A buddy board that pairs advisors to learn from each other', 'Celebrations, in app notifications and email verification', 'A read only view for project managers', 'Built without AI, so advisor data stays inside the company workspace'],
+        problem: "Quality feedback went out as a weekly brief, and advisors had no single place to see their own notes.",
+        result: "It grew into a small platform the whole team uses, and advisor data never leaves the company workspace.",
         tags: ['Apps Script', 'Web app', 'No AI'] },
       { id: 'coach', size: 'sm', tone: '', cats: ['ai', 'auto'], glyph: 'coach',
         title: 'AI coaching forms',
         blurb: 'Monthly coaching prep written with the Claude API, from strengths to SMART goal ideas.',
         lede: 'AI helps with structure and wording, nothing more. It works from the skill areas I choose and never sees names, customer conversations or performance data. I review and finish every form myself.',
         points: ['Drafts pre work: strengths and skills worth focusing on', 'Suggests SMART goals across practice, research and peer learning', 'Builds a four week follow up plan', 'No personal or customer data is ever sent to the model'],
+        problem: "Monthly coaching prep had to be structured and worded from scratch for every advisor.",
+        result: "Every form starts from a clear structure and a four week plan, and I review and finish each one myself.",
         tags: ['Claude API', 'Coaching'] },
       { id: 'cal', noai: true, size: 'sm', tone: '', cats: ['auto'], glyph: 'cal',
         title: 'Availability and alerts',
         blurb: 'Shows the team when they can reach me, with an emergency button and a Telegram bot.',
         lede: 'A small system that answers "is Burak around?" without anyone having to ask.',
         points: ['Calendar driven view of meetings, point of contact shifts and classes', 'Emergency button that reaches me right away', 'Telegram bot with a one tap Handled button', 'Monthly emergency report and PDF export'],
+        problem: "The team kept needing to know whether I was around, especially when something urgent came up.",
+        result: "\"Is Burak around?\" gets answered without anyone asking, and an emergency reaches me right away.",
         tags: ['Apps Script', 'Telegram', 'No AI'] },
       { id: 'chip', size: 'sm', tone: '', cats: ['hw'], glyph: 'chip',
         title: 'Çipik',
         blurb: 'A voice to sticker printer for kids: say what you want, and a little thermal printer draws it.',
         lede: 'A hardware side project for fun and for learning.',
         points: ['ESP32 board with 16 MB flash and 8 MB PSRAM', 'Small color TFT screen for a friendly face', 'Thermal printer for instant stickers'],
+        problem: "I wanted to learn hardware by building something kids would actually enjoy.",
+        result: "A prototype in progress that turns a spoken idea into a printed sticker.",
         tags: ['ESP32', 'Hardware', 'Prototype'] },
       { id: 'tamga', video: true, size: 'full', tone: 'saffron', cats: ['product', 'ai'], glyph: 'tamga', link: 'https://usetamga.com',
         title: 'Tamga',
         blurb: 'An AI product for anyone doing business abroad, so every step of a deal can be followed in one place.',
         lede: 'My own product, growing alongside my trade and logistics studies.',
         points: ['Tracks every process of a cross border deal end to end', 'Planned in Turkish, English, Spanish, French, Russian, Arabic and Portuguese', 'Built for logistics and export teams who live in their inbox'],
+        problem: "Doing business abroad means following one deal across inboxes, documents and tools.",
+        result: "In development and planned in seven languages. You can follow it at usetamga.com.",
         tags: ['Product', 'AI', 'Trade'] }
     ],
     tr: [
@@ -243,31 +259,43 @@
         blurb: 'Bütün ekip için tek bir yer: performans, kalite ve koçluk verisi on üçten fazla tablo ve takvimden çekiliyor.',
         lede: 'Eskiden "ekip nasıl gidiyor?" sorusuna cevap vermek bir düzine dosya açmak demekti. Artık tek bir panel.',
         points: ['13+ kaynak tablodan ve Google Takvim’den okuyor', 'Altı aşamada, 17 Apps Script dosyasıyla kuruldu', 'Geciken koçluk incelemelerini ve eksik geri bildirimi kendisi işaretliyor', 'Sade Apps Script mantığıyla çalışıyor, bu veriye hiçbir yapay zekâ dokunmuyor'],
+        problem: "\"Ekip nasıl gidiyor?\" sorusuna cevap vermek bir düzine tablo ve takvim açmak demekti.",
+        result: "Performans, kalite ve koçluk artık tek panelde. Geciken incelemeler kimse peşine düşmeden işaretleniyor.",
         tags: ['Google Sheets', 'Apps Script', 'Yapay zekâ yok'] },
       { title: 'Geri bildirim kütüphanesi',
         blurb: 'Her danışmanın kendi kalite geri bildirimini ve koçluk notlarını gördüğü özel bir web uygulaması.',
         lede: 'Haftalık bir özet olarak başladı, bütün ekibin kullandığı küçük bir platforma dönüştü.',
         points: ['Kişisel metrikler, kalite takibi ve gruplama tek ekranda', 'Danışmanları birbirinden öğrenmeleri için eşleştiren buddy panosu', 'Kutlamalar, uygulama içi bildirimler ve mail doğrulama', 'Proje yöneticileri için salt okunur görünüm', 'Yapay zekâ kullanılmadan kuruldu, danışman verisi şirket ortamından çıkmıyor'],
+        problem: "Kalite geri bildirimi haftalık bir özetle gidiyordu ve danışmanların kendi notlarını görebileceği tek bir yer yoktu.",
+        result: "Bütün ekibin kullandığı küçük bir platforma dönüştü ve danışman verisi şirket ortamından hiç çıkmıyor.",
         tags: ['Apps Script', 'Web uygulaması', 'Yapay zekâ yok'] },
       { title: 'Yapay zekâ destekli koçluk formları',
         blurb: 'Claude API ile hazırlanan aylık koçluk ön çalışması, güçlü yönlerden SMART hedef önerilerine kadar.',
         lede: 'Yapay zekâ sadece yapı ve ifade konusunda yardım ediyor. Benim seçtiğim beceri alanlarıyla çalışıyor; isimleri, müşteri konuşmalarını ya da performans verisini hiç görmüyor. Her formu ben gözden geçirip tamamlıyorum.',
         points: ['Ön çalışmayı hazırlar: güçlü yönler ve odaklanmaya değer beceriler', 'Pratik, araştırma ve akran öğrenmesi başlıklarında SMART hedefler önerir', 'Dört haftalık takip planı çıkarır', 'Modele hiçbir kişisel ya da müşteri verisi gönderilmez'],
+        problem: "Aylık koçluk ön çalışmasını her danışman için sıfırdan kurgulamak ve yazmak gerekiyordu.",
+        result: "Her form net bir yapı ve dört haftalık bir planla başlıyor. Hepsini ben gözden geçirip tamamlıyorum.",
         tags: ['Claude API', 'Koçluk'] },
       { title: 'Müsaitlik ve uyarılar',
         blurb: 'Ekibe bana ne zaman ulaşabileceklerini gösteriyor; acil durum butonu ve Telegram botu da var.',
         lede: '"Burak müsait mi?" sorusunu kimse sormadan cevaplayan küçük bir sistem.',
         points: ['Toplantıları, irtibat vardiyalarını ve dersleri takvimden gösterir', 'Bana hemen ulaşan bir acil durum butonu', 'Tek dokunuşla Halledildi butonu olan Telegram botu', 'Aylık acil durum raporu ve PDF çıktısı'],
+        problem: "Ekibin, özellikle acil bir durumda, bana ulaşıp ulaşamayacağını bilmesi gerekiyordu.",
+        result: "\"Burak müsait mi?\" sorusu kimse sormadan cevaplanıyor, acil bir durum bana anında ulaşıyor.",
         tags: ['Apps Script', 'Telegram', 'Yapay zekâ yok'] },
       { title: 'Çipik',
         blurb: 'Çocuklar için sesle çalışan sticker yazıcısı: ne istediğini söyle, küçük bir termal yazıcı çizsin.',
         lede: 'Eğlence ve öğrenme için yaptığım bir donanım projesi.',
         points: ['16 MB flash ve 8 MB PSRAM’li ESP32 kart', 'Sevimli bir yüz için küçük renkli TFT ekran', 'Anında sticker için termal yazıcı'],
+        problem: "Donanımı, çocukların gerçekten seveceği bir şey yaparak öğrenmek istedim.",
+        result: "Söylenen bir fikri basılı bir sticker’a dönüştüren, geliştirmesi süren bir prototip.",
         tags: ['ESP32', 'Donanım', 'Prototip'] },
       { title: 'Tamga',
         blurb: 'Yurt dışıyla iş yapan herkes için, bir anlaşmanın her adımını tek yerden takip etmeyi sağlayan bir yapay zekâ ürünü.',
         lede: 'Ticaret ve lojistik eğitimimle birlikte büyüyen kendi ürünüm.',
         points: ['Sınır ötesi bir anlaşmanın bütün süreçlerini baştan sona takip eder', 'Türkçe, İngilizce, İspanyolca, Fransızca, Rusça, Arapça ve Portekizce planlanıyor', 'Gelen kutusunda yaşayan lojistik ve ihracat ekipleri için'],
+        problem: "Yurt dışıyla iş yapmak, tek bir anlaşmayı gelen kutuları, belgeler ve araçlar arasında takip etmek demek.",
+        result: "Geliştiriliyor ve yedi dilde planlanıyor. usetamga.com adresinden takip edebilirsin.",
         tags: ['Ürün', 'Yapay zekâ', 'Ticaret'] }
     ]
   };
@@ -288,6 +316,7 @@
     $('[data-lang-label]').textContent = lang === 'tr' ? 'EN' : 'TR';
     $('[data-action="lang"]').setAttribute('aria-label', lang === 'tr' ? 'Switch to English' : 'Türkçeye geç');
     $('[data-palette-input]').placeholder = t('palette.ph');
+    $$('[data-cv]').forEach((l) => { l.href = `/assets/burak-cevik-cv-${lang}.pdf`; });
     renderProjects();
     renderStep(activeStep, false);
     syncPauseLabel();
@@ -761,7 +790,7 @@
     $('[data-path-when]').textContent = data[0]; $('[data-path-text]').textContent = data[1];
     if (animate) { panel.classList.remove('swap'); void panel.offsetWidth; panel.classList.add('swap'); }
     const rail = $('.path__rail span');
-    if (rail) rail.style.width = (i / (steps.length - 1)) * 100 + '%';
+    if (rail) rail.style.setProperty('--p', (i / (steps.length - 1)) * 100 + '%');
   }
 
   /* ------------------------------------------------------------- projects */
@@ -809,24 +838,41 @@
   }
 
   const sheet = $('[data-project-sheet]');
-  function openSheet(i) {
+  let sheetId = null;
+  function openSheet(i, fromHash) {
     const p = project(i, lang);
+    sheetId = p.id;
     $('[data-sheet-glyph]').innerHTML = `<img src="/assets/art/${p.id}.webp" alt="">`;
     $('[data-sheet-title]').textContent = p.title;
     $('[data-sheet-lede]').textContent = p.lede;
+    $('[data-sheet-problem]').textContent = p.problem;
+    $('[data-sheet-result]').textContent = p.result;
     $('[data-sheet-points]').innerHTML = p.points.map((x) => `<li>${x}</li>`).join('');
     $('[data-sheet-tags]').innerHTML = p.tags.map((x) => `<li>${x}</li>`).join('');
     const link = $('[data-sheet-link]');
     if (p.link) { link.hidden = false; link.href = p.link; link.textContent = t('card.visit'); } else link.hidden = true;
-    sheet.showModal();
+    if (!fromHash) history.replaceState(null, '', location.pathname + location.search + '#' + p.id);
+    if (!sheet.open) sheet.showModal();
   }
   sheet.addEventListener('click', (e) => { if (e.target === sheet || e.target.closest('[data-close]')) sheet.close(); });
+  sheet.addEventListener('close', () => {
+    sheetId = null;
+    if (P.en.some((x) => '#' + x.id === location.hash)) history.replaceState(null, '', location.pathname + location.search);
+  });
+  $('[data-sheet-copy]').addEventListener('click', () => {
+    if (!sheetId) return;
+    const url = 'https://burak.pm' + (lang === 'tr' ? '/tr' : '/') + '#' + sheetId;
+    const done = () => toast(t('toast.link'));
+    if (navigator.clipboard) navigator.clipboard.writeText(url).then(done, done); else done();
+  });
+  function sheetFromHash() {
+    const i = P.en.findIndex((x) => '#' + x.id === location.hash);
+    if (i >= 0) openSheet(i, true);
+  }
+  addEventListener('hashchange', sheetFromHash);
+  sheetFromHash();
 
   /* --------------------------------------------------------- lanes (work) */
-  $$('.lane__head').forEach((h) => h.addEventListener('click', () => {
-    const open = h.getAttribute('aria-expanded') === 'true';
-    h.setAttribute('aria-expanded', String(!open));
-  }));
 
   /* ------------------------------------------------------- greetings card */
   let greetI = 0;
@@ -1144,6 +1190,7 @@
       { label: t('cmd.lang'), hint: 'L', run: () => setLang(lang === 'tr' ? 'en' : 'tr') },
       { label: t('cmd.copy'), hint: EMAIL, run: copyEmail },
       { label: t('cmd.vcard'), hint: '.vcf', run: downloadVcard },
+      { label: t('cmd.cv'), hint: 'PDF', run: () => { const a = document.createElement('a'); a.href = `/assets/burak-cevik-cv-${lang}.pdf`; a.download = ''; document.body.appendChild(a); a.click(); a.remove(); } },
       { label: t('cmd.pause'), hint: 'P', run: toggleQueue },
       ...projects,
       { label: 'LinkedIn', hint: 'linkedin.com/in/bcvk', run: () => window.open('https://linkedin.com/in/bcvk', '_blank', 'noopener') },

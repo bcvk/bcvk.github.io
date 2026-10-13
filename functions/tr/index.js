@@ -25,6 +25,7 @@ export async function onRequestGet({ request, env }) {
     .on('meta[property="og:description"]', set('content', META.ogDescription))
     .on('meta[property="og:image"]', set('content', META.image))
     .on('meta[property="og:locale"]', set('content', 'tr_TR'))
+    .on('meta[property="og:locale:alternate"]', set('content', 'en_US'))
     .transform(page);
   const headers = new Headers(out.headers);
   headers.set('Cache-Control', 'public, max-age=0, must-revalidate');

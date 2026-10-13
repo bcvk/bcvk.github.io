@@ -27,8 +27,8 @@
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/styles.css?v=20261008j">
-<script src="/boot.js?v=20261008j"></script>
+<link rel="stylesheet" href="/styles.css?v=20261013a">
+<script src="/boot.js?v=20261013a"></script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Burak Çevik","alternateName":["Burak Cevik","bcvk"],"url":"https://burak.pm","email":"mailto:hello@burak.pm","image":"https://burak.pm/assets/burak.jpg","jobTitle":"Assistant Project Manager","worksFor":{"@type":"Organization","name":"ModSquad","url":"https://modsquad.com"},"address":{"@type":"PostalAddress","addressLocality":"Ankara","addressCountry":"TR"},"knowsLanguage":["tr","en","es"],"sameAs":["https://linkedin.com/in/bcvk","https://github.com/bcvk"]}
 </script>
@@ -129,37 +129,34 @@
     <h2 class="section__title" id="work-title" data-i18n="work.title">What I do</h2>
     <div class="work__list" role="list">
       <div class="lane" role="listitem">
-        <button class="lane__head" type="button" aria-expanded="true">
+        <div class="lane__head">
           <span class="lane__glyph" aria-hidden="true"><svg viewBox="0 0 40 40"><circle cx="13" cy="14" r="5"/><circle cx="27" cy="14" r="5"/><path d="M4 33c1.5-6 5-9 9-9s7.5 3 9 9M18 33c1.5-6 5-9 9-9s7.5 3 9 9"/></svg></span>
-          <span class="lane__title" data-i18n="work.a.title">I help teams do their best work</span>
-          <span class="lane__toggle" aria-hidden="true"></span>
-        </button>
-        <div class="lane__body"><div class="lane__inner">
+          <h3 class="lane__title" data-i18n="work.a.title">I help teams do their best work</h3>
+        </div>
+        <div class="lane__body">
           <p data-i18n="work.a.body">I lead a multilingual support team. My job is to set clear goals, keep quality high, coach people one to one and make sure every customer gets a good answer, whichever language they write in.</p>
           <ul class="tags"><li data-i18n="tag.kpi">KPI management</li><li data-i18n="tag.qa">Quality frameworks</li><li data-i18n="tag.coaching">Coaching</li><li data-i18n="tag.wfm">Scheduling</li></ul>
-        </div></div>
+        </div>
       </div>
       <div class="lane" role="listitem">
-        <button class="lane__head" type="button" aria-expanded="false">
+        <div class="lane__head">
           <span class="lane__glyph" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M6 12h10l4 8-4 8H6M24 12h10M24 20h10M24 28h10"/><circle cx="20" cy="20" r="2.2"/></svg></span>
-          <span class="lane__title" data-i18n="work.b.title">I hand repetitive work to machines</span>
-          <span class="lane__toggle" aria-hidden="true"></span>
-        </button>
-        <div class="lane__body"><div class="lane__inner">
+          <h3 class="lane__title" data-i18n="work.b.title">I hand repetitive work to machines</h3>
+        </div>
+        <div class="lane__body">
           <p data-i18n="work.b.body">If a task repeats every week, I try to automate it. I build dashboards, feedback platforms and AI assisted coaching flows with Google Apps Script and the Claude API, so the team gets answers faster and I get time back for people. One rule I never bend: internal and customer data stays out of AI tools. The systems that touch it run on plain logic inside the company workspace.</p>
           <ul class="tags"><li>Apps Script</li><li>Claude API</li><li>Google Workspace</li><li>n8n</li></ul>
-        </div></div>
+        </div>
       </div>
       <div class="lane" role="listitem">
-        <button class="lane__head" type="button" aria-expanded="false">
+        <div class="lane__head">
           <span class="lane__glyph" aria-hidden="true"><svg viewBox="0 0 40 40"><rect x="9" y="9" width="22" height="22" rx="3"/><path d="M15 9V4M20 9V4M25 9V4M15 36v-5M20 36v-5M25 36v-5M9 15H4M9 20H4M9 25H4M36 15h-5M36 20h-5M36 25h-5"/><rect x="15" y="15" width="10" height="10" rx="1.5"/></svg></span>
-          <span class="lane__title" data-i18n="work.c.title">I build things to see what's possible</span>
-          <span class="lane__toggle" aria-hidden="true"></span>
-        </button>
-        <div class="lane__body"><div class="lane__inner">
+          <h3 class="lane__title" data-i18n="work.c.title">I build things to see what's possible</h3>
+        </div>
+        <div class="lane__body">
           <p data-i18n="work.c.body">Outside work I prototype hardware with ESP32 boards and I'm building Tamga, an AI product for people who do business across borders.</p>
           <ul class="tags"><li data-i18n="tag.hw">Hardware</li><li data-i18n="tag.product">Product</li><li data-i18n="tag.trade">Trade and logistics</li></ul>
-        </div></div>
+        </div>
       </div>
     </div>
   </section>
@@ -260,6 +257,7 @@
       <div class="contact__direct">
         <a class="btn btn--solid" data-booking href="#" target="_blank" rel="noopener" hidden><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span data-i18n="contact.book">Book a call</span></a>
         <button class="btn btn--ghost" type="button" data-action="copy-email"><span>hello@burak.pm</span><span class="sr" data-i18n="contact.copy">Copy address</span></button>
+        <a class="link" href="/assets/burak-cevik-cv-en.pdf" data-cv download><span data-i18n="cv.label">Download CV</span></a>
         <a class="link" href="https://linkedin.com/in/bcvk" rel="me noopener" target="_blank">LinkedIn</a>
         <a class="link" href="https://github.com/bcvk" rel="me noopener" target="_blank">GitHub</a>
         <button class="link" type="button" data-action="vcard" data-i18n="contact.vcard">Add me to contacts</button>
@@ -317,9 +315,19 @@
     <div class="sheet__glyph" data-sheet-glyph aria-hidden="true"></div>
     <h3 id="sheet-title" data-sheet-title></h3>
     <p class="sheet__lede" data-sheet-lede></p>
-    <ul class="sheet__points" data-sheet-points></ul>
+    <div class="sheet__case">
+      <h4 data-i18n="sheet.problem">The problem</h4>
+      <p data-sheet-problem></p>
+      <h4 data-i18n="sheet.built">What I built</h4>
+      <ul class="sheet__points" data-sheet-points></ul>
+      <h4 data-i18n="sheet.result">The result</h4>
+      <p data-sheet-result></p>
+    </div>
     <ul class="tags" data-sheet-tags></ul>
-    <a class="btn btn--solid" data-sheet-link hidden target="_blank" rel="noopener"></a>
+    <div class="sheet__actions">
+      <a class="btn btn--solid" data-sheet-link hidden target="_blank" rel="noopener"></a>
+      <button class="btn btn--ghost" type="button" data-sheet-copy><span data-i18n="sheet.copy">Copy link</span></button>
+    </div>
   </div>
 </dialog>
 
@@ -334,6 +342,6 @@
 <div class="toast" role="status" aria-live="polite" data-toast></div>
 <div class="biko" data-biko aria-hidden="true"><img src="/assets/biko.svg" alt="" width="72" height="72"><span class="biko__say" data-biko-say></span></div>
 
-<script src="/app.js?v=20261008j" defer></script>
+<script src="/app.js?v=20261013a" defer></script>
 </body>
 </html>
