@@ -1,6 +1,6 @@
 # burak.pm
 
-Burak Cevik's personal site. Plain HTML, CSS and JavaScript, no build step.
+[Burak Çevik](https://burak.pm)'s personal site, live at [burak.pm](https://burak.pm). Plain HTML, CSS and JavaScript, no build step.
 
 Files
   index.html      page markup (English by default, Turkish via the language toggle)
