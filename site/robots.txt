@@ -1,6 +1,22 @@
+# burak.pm: search engines and AI search assistants are welcome.
+# Using this content to train AI models is not allowed.
+Content-Signal: search=yes, ai-input=yes, ai-train=no
+
 User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /api/
+
+# AI model training crawlers
+User-agent: GPTBot
+User-agent: CCBot
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: ClaudeBot
+User-agent: anthropic-ai
+User-agent: Bytespider
+User-agent: meta-externalagent
+User-agent: cohere-training-data-crawler
+Disallow: /
 
 Sitemap: https://burak.pm/sitemap.xml
