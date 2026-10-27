@@ -1,5 +1,8 @@
-# Cloudflare Pages settings. Secrets (Spotify client secret and refresh token)
-# are NOT stored here; add them in the Pages dashboard as encrypted variables.
+# Cloudflare Pages settings. The site source lives in site/ and is built into dist/
+# by `node scripts/build.mjs` (set as the Pages build command). Functions live in functions/.
+# Secrets are NOT stored here; they are encrypted variables in the Pages project:
+#   SPOTIFY_CLIENT_SECRET, SPOTIFY_REFRESH_TOKEN, TURNSTILE_SECRET, RESEND_API_KEY,
+#   IP_HASH_KEY, SETTINGS_KEY, ADMIN_SESSION_KEY
 name = "burakpm"
 pages_build_output_dir = "dist"
 compatibility_date = "2026-09-01"

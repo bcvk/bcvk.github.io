@@ -11,248 +11,11 @@
   };
   const EMAIL = 'hello@burak.pm';
 
-  /* ------------------------------------------------------------------ copy */
-  const T = {
-    en: {
-      skip: 'Skip to content',
-      'nav.work': 'What I do', 'nav.path': 'Path', 'nav.projects': 'Projects', 'nav.now': 'Now', 'nav.contact': 'Contact',
-      'hero.hello': "Hi, I'm Burak Çevik.",
-      'hero.title': 'I get people to the right answer.',
-      'hero.lede': "I lead multilingual customer support teams and build the automations that keep repetitive work off their plates. Right now I'm an Assistant Project Manager at ModSquad, working remotely from Ankara.",
-      'hero.cta1': "See what I've built", 'hero.cta2': 'Write to me',
-      'traffic.label': 'Traffic', 'nav.visits': 'Visitors',
-      'visits.title': 'Who drops by', 'visits.lede': 'Every visit lights up a country on the map. Only the country is counted, never an address or a name.',
-      'visits.total': 'visits from', 'visits.countries': 'countries', 'visits.fewer': 'fewer', 'visits.more': 'more',
-      'visits.you': 'You are visiting from {c}. Hello!', 'visits.home': 'I am here', 'visits.one': 'visit', 'visits.many': 'visits', 'visits.none': 'No visits yet',
-      'wx': { 0: 'clear', 1: 'mostly clear', 2: 'partly cloudy', 3: 'overcast', 45: 'foggy', 48: 'foggy', 51: 'light drizzle', 53: 'drizzle', 55: 'heavy drizzle', 61: 'light rain', 63: 'rain', 65: 'heavy rain', 71: 'light snow', 73: 'snow', 75: 'heavy snow', 77: 'snow grains', 80: 'rain showers', 81: 'rain showers', 82: 'heavy showers', 85: 'snow showers', 86: 'snow showers', 95: 'thunderstorm', 96: 'thunderstorm', 99: 'thunderstorm' },
-      'wx.title': 'Weather in Ankara: {d}, {t}°C',
-      'board.title': 'Live queue',
-      'board.hint': 'Messages arrive in more than twenty languages over chat, mail and social. Each one is routed by topic and the team works through them in order. Tap one to help.',
-      'board.pause': 'Pause', 'board.play': 'Resume',
-      'board.lanes': ['Account and login', 'Billing and payments', 'Technical issues', 'General questions'],
-      'board.router': 'Routing', 'board.incoming': 'Incoming',
-      'board.done': 'Resolved', 'board.scale': 'Simulation: one second equals one minute.',
-      'traffic.calm': 'Calm', 'traffic.normal': 'Normal', 'traffic.busy': 'Peak',
-      'kpi.you': 'Resolved by you', 'kpi.team': 'Resolved by the team', 'kpi.frt': 'Average wait', 'kpi.sla': 'Within SLA', 'kpi.csat': 'Satisfaction', 'kpi.waiting': 'Waiting now',
-      'unit.min': 'min', 'mix.title': 'Language mix', 'mix.langs': 'languages so far', 'mix.other': 'Other',
-      'legend.p1': 'Urgent', 'legend.p2': 'High', 'legend.p3': 'Normal',
-      'ch.chat': 'Chat', 'ch.mail': 'Mail', 'ch.social': 'Social',
-      'tip.wait': 'Waiting', 'tip.target': 'target', 'tip.breach': 'Past its SLA, someone grab this one', 'tip.ok': 'Within its SLA', 'tip.click': 'Click to resolve',
-      'fact.years': 'years in customer experience, from the front line to project management',
-      'fact.team': 'people on my multilingual team, led by Turkish and English and spanning many other language queues',
-      'fact.langs': 'languages I work in: Turkish, English and Spanish',
-      'fact.tools': "tools I designed and built so the team spends time on people, not spreadsheets",
-      'work.title': 'What I do',
-      'work.a.title': 'I help teams do their best work',
-      'work.a.body': 'I lead a multilingual support team. My job is to set clear goals, keep quality high, coach people one to one and make sure every customer gets a good answer, whichever language they write in.',
-      'work.b.title': 'I hand repetitive work to machines',
-      'work.b.body': 'If a task repeats every week, I try to automate it. I build simple dashboards and small web apps with Google Apps Script, so the team gets answers faster and I get time back for people. Anything that touches team or customer data stays inside the company workspace, with no AI involved.',
-      'work.c.title': "I build things to see what's possible",
-      'work.c.body': "Outside work I prototype hardware with ESP32 boards and I'm building Tamga, an AI product for people who do business across borders.",
-      'tag.kpi': 'KPI management', 'tag.qa': 'Quality frameworks', 'tag.coaching': 'Coaching', 'tag.wfm': 'Scheduling',
-      'tag.hw': 'Hardware', 'tag.product': 'Product', 'tag.trade': 'Trade and logistics',
-      'path.title': 'Path',
-      'path.lede': 'Five years at one company, one step at a time. Pick a step to read about it.',
-      'path.s1.role': 'Customer Success Specialist', 'path.s2.role': 'Team Lead', 'path.s3.role': 'Assistant Project Manager', 'path.s4.role': 'Outside work',
-      'path.steps': [
-        ['Where it started', 'I began on the front line at ModSquad, answering customers myself. It taught me what a good answer feels like from the other side, and how much a clear process helps the person giving it.'],
-        ['Leading the queue', 'As a Team Lead I moved from answering tickets to helping others answer them: coaching, quality reviews, shift coverage and being the person people ping when something is on fire.'],
-        ['2025 until today', 'Now I manage a multilingual team of about twenty advisors on a major consumer software account. I own the KPIs, the coaching rhythm and the tooling, and I build most of that tooling myself.'],
-        ['Outside work', "I study international trade and logistics at Hitit University and build Tamga, my own side project, in my free time."]
-      ],
-      'projects.title': "Things I've built",
-      'projects.lede': "A few things I've built, at work and in my own time. Open any of them for the details.",
-      'filter.all': 'All', 'filter.auto': 'Automation', 'filter.ai': 'AI', 'filter.product': 'Product', 'filter.hw': 'Hardware',
-      'np.now': 'Listening now on Spotify', 'np.last': 'Last played', 'np.ago': ['just now', '{n} min ago', '{n} h ago', '{n} days ago'],
-      'card.more': 'Read more', 'card.noai': 'No AI on internal data', 'card.visit': 'Visit the site',
-      'sheet.problem': 'The problem', 'sheet.built': 'What I built', 'sheet.result': 'The result', 'sheet.copy': 'Copy link', 'toast.link': 'Link copied',
-      'now.title': 'These days',
-      'now.1.t': 'Studying international trade and logistics', 'now.1.d': 'For years I have helped people on the other side of the world through a screen. Now I want to understand how goods and deals make that same journey, so I study it at Hitit University alongside work.',
-      'now.2.t': 'Building Tamga', 'now.2.d': 'Turning what I learn about trade at school into a product that makes work easier for people who do business abroad.',
-      'now.3.t': 'Getting better at Spanish', 'now.3.d': 'Working proficiency today, fluency is the goal.',
-      'now.4.t': 'Tinkering with an ESP32', 'now.4.d': 'A little sticker printer that listens to kids and prints what they ask for.',
-      'tools.title': 'What I work with', 'tools.ops': 'Operations', 'tools.ops.d': 'KPI management, quality assurance, coaching, scheduling, reporting',
-      'tools.cx': 'Support platforms', 'tools.build': 'Building', 'tools.lang': 'Languages', 'tools.lang.d': 'Turkish (native), English (C2), Spanish (working)',
-      'contact.title': "Let's talk.",
-      'contact.lede': 'Into support operations, automation, AI or building something together? Pick a reason, write a line, and your mail app opens with everything filled in.',
-      'contact.copy': 'Copy address', 'contact.vcard': 'Add me to contacts',
-      'contact.reason': "What's it about?", 'reason.collab': 'Working together', 'reason.automation': 'An automation idea', 'reason.hello': 'Just saying hi',
-      'contact.name': 'Your name', 'contact.msg': 'Message', 'contact.send': 'Open in my mail app',
-      'contact.err': 'Add your name and a short message, then try again.',
-      'contact.opened': 'Your mail app should be open now',
-      'contact.ledeApi': 'Into support operations, automation, AI or building something together? Pick a reason, write a few lines and send it. It comes straight to me.',
-      'contact.email': 'Your email', 'contact.sendApi': 'Send message', 'contact.book': 'Book a call',
-      'contact.errEmail': 'That email address does not look right. Check it and try again.',
-      'contact.errCaptcha': 'The spam check did not finish. Wait a second and send again.',
-      'contact.errRate': 'You have sent a few messages already. Try again in an hour, or write to hello@burak.pm.',
-      'contact.errSend': 'The message could not be sent. Try again, or write to hello@burak.pm.',
-      'footer.privacy': 'Privacy', 'contact.privacy': 'Your message is used only to reply to you.', 'contact.privacyLink': 'How it is handled',
-      'book.title': 'Book a call', 'book.lede': 'A 30 minute intro call over Google Meet. Pick a time that suits you.', 'book.out': 'Open in a new tab',
-      'contact.done': 'Message received.', 'contact.doneText': 'It landed straight in my queue. I usually reply within a day or two.', 'contact.again': 'Write another',
-      'subject.collab': 'Working together', 'subject.automation': 'An automation idea', 'subject.hello': 'Hello from burak.pm',
-      'footer.made': 'Designed and built in Ankara.',
-      'footer.keys': 'Press', 'footer.keys2': 'to jump anywhere, or type the name of a certain goat.',
-      'palette.move': 'to move', 'palette.pick': 'to choose', 'palette.close': 'to close', 'palette.ph': 'Type a command or a section',
-      'palette.none': 'Nothing matches that yet',
-      'cmd.go': 'Go to', 'cmd.theme': 'Switch to the other theme', 'cmd.lang': 'Türkçeye geç', 'cmd.copy': 'Copy my email address',
-      'cmd.vcard': 'Download my contact card', 'cmd.biko': 'Call Biko', 'cmd.top': 'Back to the top', 'cmd.pause': 'Pause or resume the queue',
-      'toast.copied': 'Address copied', 'toast.theme': 'Theme switched', 'toast.vcard': 'Contact card downloaded',
-      'biko': ['Hi! I used to run this place.', 'Still checking the alignment.', 'Baa. Nice queue.'],
-      greet: ['Merhaba', 'Hello', 'Hola', 'Halo'],
-      title: 'Burak Çevik | Customer experience operations and automation'
-    },
-    tr: {
-      skip: 'İçeriğe geç',
-      'nav.work': 'Ne yapıyorum', 'nav.path': 'Yol', 'nav.projects': 'Projeler', 'nav.now': 'Şu sıralar', 'nav.contact': 'İletişim',
-      'hero.hello': 'Merhaba, ben Burak Çevik.',
-      'hero.title': 'İnsanları doğru cevaba ulaştırırım.',
-      'hero.lede': 'Çok dilli müşteri destek ekiplerini yönetiyor, tekrarlayan işleri onların üzerinden alan otomasyonlar kuruyorum. Şu an ModSquad’da Assistant Project Manager olarak Ankara’dan uzaktan çalışıyorum.',
-      'hero.cta1': 'Neler yaptığıma bak', 'hero.cta2': 'Bana yaz',
-      'traffic.label': 'Trafik', 'nav.visits': 'Ziyaretçiler',
-      'visits.title': 'Kimler uğruyor', 'visits.lede': 'Her ziyaret haritada bir ülkeyi aydınlatır. Sadece ülke sayılır; adres ya da isim asla tutulmaz.',
-      'visits.total': 'ziyaret,', 'visits.countries': 'farklı ülkeden', 'visits.fewer': 'az', 'visits.more': 'çok',
-      'visits.you': '{c} üzerinden bağlandın. Merhaba!', 'visits.home': 'Ben buradayım', 'visits.one': 'ziyaret', 'visits.many': 'ziyaret', 'visits.none': 'Henüz ziyaret yok',
-      'wx': { 0: 'açık', 1: 'çoğunlukla açık', 2: 'parçalı bulutlu', 3: 'kapalı', 45: 'sisli', 48: 'sisli', 51: 'hafif çisenti', 53: 'çisenti', 55: 'yoğun çisenti', 61: 'hafif yağmurlu', 63: 'yağmurlu', 65: 'sağanak', 71: 'hafif karlı', 73: 'karlı', 75: 'yoğun kar', 77: 'kar taneleri', 80: 'sağanak yağış', 81: 'sağanak yağış', 82: 'şiddetli sağanak', 85: 'kar sağanağı', 86: 'kar sağanağı', 95: 'gök gürültülü', 96: 'gök gürültülü', 99: 'gök gürültülü' },
-      'wx.title': 'Ankara\u2019da hava: {d}, {t}°C',
-      'board.title': 'Canlı kuyruk',
-      'board.hint': 'Mesajlar yirmiden fazla dilde sohbet, mail ve sosyal medyadan gelir. Her biri konusuna göre doğru kuyruğa yönlenir, ekip sırayla çözer. Birine dokunarak sen de yardım et.',
-      'board.pause': 'Durdur', 'board.play': 'Devam et',
-      'board.lanes': ['Hesap ve giriş', 'Ödeme ve fatura', 'Teknik sorunlar', 'Genel sorular'],
-      'board.router': 'Yönlendirme', 'board.incoming': 'Gelen',
-      'board.done': 'Çözüldü', 'board.scale': 'Simülasyonda bir saniye bir dakikaya denk.',
-      'traffic.calm': 'Sakin', 'traffic.normal': 'Normal', 'traffic.busy': 'Yoğun',
-      'kpi.you': 'Senin çözdüğün', 'kpi.team': 'Ekibin çözdüğü', 'kpi.frt': 'Ortalama bekleme', 'kpi.sla': 'SLA içinde', 'kpi.csat': 'Memnuniyet', 'kpi.waiting': 'Şu an bekleyen',
-      'unit.min': 'dk', 'mix.title': 'Dil dağılımı', 'mix.langs': 'farklı dil görüldü', 'mix.other': 'Diğer',
-      'legend.p1': 'Acil', 'legend.p2': 'Yüksek', 'legend.p3': 'Normal',
-      'ch.chat': 'Sohbet', 'ch.mail': 'Mail', 'ch.social': 'Sosyal medya',
-      'tip.wait': 'Bekleme', 'tip.target': 'hedef', 'tip.breach': 'SLA aşıldı, biri bunu hemen alsın', 'tip.ok': 'SLA içinde', 'tip.click': 'Çözmek için tıkla',
-      'fact.years': 'yıl müşteri deneyimi, ön saftan proje yönetimine',
-      'fact.team': 'kişilik çok dilli ekip, Türkçe ve İngilizce başta olmak üzere pek çok farklı dil kuyruğunda',
-      'fact.langs': 'dilde çalışıyorum: Türkçe, İngilizce ve İspanyolca',
-      'fact.tools': 'araç tasarlayıp kurdum, ekip vaktini tablolara değil insanlara ayırsın diye',
-      'work.title': 'Ne yapıyorum',
-      'work.a.title': 'Ekiplerin en iyi işini çıkarmasına yardım ederim',
-      'work.a.body': 'Çok dilli bir destek ekibine liderlik ediyorum. İşim net hedefler koymak, kaliteyi yüksek tutmak, insanlara birebir koçluk yapmak ve müşteri hangi dilde yazarsa yazsın iyi bir cevap almasını sağlamak.',
-      'work.b.title': 'Tekrarlayan işi makineye bırakırım',
-      'work.b.body': 'Bir iş her hafta tekrarlanıyorsa otomatikleştirmeye çalışırım. Google Apps Script ile sade paneller ve küçük web uygulamaları kuruyorum; ekip cevaba daha hızlı ulaşıyor, bana da insanlara ayıracak zaman kalıyor. Ekip ya da müşteri verisine dokunan her şey şirketin kendi ortamında, yapay zekâ olmadan çalışır.',
-      'work.c.title': 'Neyin mümkün olduğunu görmek için bir şeyler yaparım',
-      'work.c.body': 'İş dışında ESP32 kartlarıyla donanım prototipleri yapıyor, yurt dışıyla iş yapanlar için bir yapay zekâ ürünü olan Tamga’yı geliştiriyorum.',
-      'tag.kpi': 'KPI yönetimi', 'tag.qa': 'Kalite çerçeveleri', 'tag.coaching': 'Koçluk', 'tag.wfm': 'Vardiya planlama',
-      'tag.hw': 'Donanım', 'tag.product': 'Ürün', 'tag.trade': 'Ticaret ve lojistik',
-      'path.title': 'Yol',
-      'path.lede': 'Aynı şirkette beş yıl, adım adım. Okumak için bir adım seç.',
-      'path.s1.role': 'Customer Success Specialist', 'path.s2.role': 'Team Lead', 'path.s3.role': 'Assistant Project Manager', 'path.s4.role': 'İş dışında',
-      'path.steps': [
-        ['Başladığım yer', 'ModSquad’da ön safta, müşterilere bizzat cevap vererek başladım. İyi bir cevabın karşı taraftan nasıl hissettirdiğini ve net bir sürecin cevabı veren kişiye ne kadar yardım ettiğini burada öğrendim.'],
-        ['Kuyruğu yönetmek', 'Team Lead olunca ticket cevaplamaktan başkalarının cevaplamasına yardım etmeye geçtim: koçluk, kalite incelemeleri, vardiya boşlukları ve bir şey alev aldığında ilk aranan kişi olmak.'],
-        ['2025’ten bugüne', 'Şimdi büyük bir tüketici yazılımı hesabında yaklaşık yirmi kişilik çok dilli bir ekibi yönetiyorum. KPI’lar, koçluk ritmi ve araçlar bende; o araçların çoğunu da kendim kuruyorum.'],
-        ['İş dışında', 'Hitit Üniversitesi’nde uluslararası ticaret ve lojistik okuyor, boş zamanlarımda kendi yan projem Tamga’yı geliştiriyorum.']
-      ],
-      'projects.title': 'Kurduğum şeyler',
-      'projects.lede': 'İşte ve kendi zamanımda kurduğum birkaç şey. Ayrıntılar için birini aç.',
-      'filter.all': 'Hepsi', 'filter.auto': 'Otomasyon', 'filter.ai': 'Yapay zekâ', 'filter.product': 'Ürün', 'filter.hw': 'Donanım',
-      'np.now': 'Şu an Spotify\u2019da dinliyorum', 'np.last': 'En son dinlediğim', 'np.ago': ['az önce', '{n} dk önce', '{n} saat önce', '{n} gün önce'],
-      'card.more': 'Devamını oku', 'card.noai': 'İç veride yapay zekâ yok', 'card.visit': 'Siteye git',
-      'sheet.problem': 'Sorun', 'sheet.built': 'Ne kurdum', 'sheet.result': 'Sonuç', 'sheet.copy': 'Bağlantıyı kopyala', 'toast.link': 'Bağlantı kopyalandı',
-      'now.title': 'Şu sıralar',
-      'now.1.t': 'Uluslararası ticaret ve lojistik okuyorum', 'now.1.d': 'Yıllardır dünyanın öbür ucundaki insanlara bir ekranın arkasından yardım ediyorum. Şimdi malların ve anlaşmaların aynı yolculuğu nasıl yaptığını anlamak istiyorum; bu yüzden işimin yanında Hitit Üniversitesi’nde okuyorum.',
-      'now.2.t': 'Tamga’yı geliştiriyorum', 'now.2.d': 'Okulda dış ticaret üzerine öğrendiklerimi, yurt dışıyla iş yapanların işini kolaylaştıracak bir ürüne dönüştürmeye çalışıyorum.',
-      'now.3.t': 'İspanyolcamı ilerletiyorum', 'now.3.d': 'Bugün iş görecek seviyede, hedef akıcılık.',
-      'now.4.t': 'Bir ESP32 ile uğraşıyorum', 'now.4.d': 'Çocukları dinleyip istediklerini sticker olarak basan küçük bir yazıcı.',
-      'tools.title': 'Neyle çalışıyorum', 'tools.ops': 'Operasyon', 'tools.ops.d': 'KPI yönetimi, kalite güvence, koçluk, vardiya planlama, raporlama',
-      'tools.cx': 'Destek platformları', 'tools.build': 'Geliştirme', 'tools.lang': 'Diller', 'tools.lang.d': 'Türkçe (ana dil), İngilizce (C2), İspanyolca (iş seviyesi)',
-      'contact.title': 'Konuşalım.',
-      'contact.lede': 'Destek operasyonu, otomasyon, yapay zekâ ya da birlikte bir şey kurmak mı aklında? Bir konu seç, bir satır yaz; mail uygulaman her şey doldurulmuş şekilde açılsın.',
-      'contact.copy': 'Adresi kopyala', 'contact.vcard': 'Beni rehbere ekle',
-      'contact.reason': 'Konu ne?', 'reason.collab': 'Birlikte çalışmak', 'reason.automation': 'Bir otomasyon fikri', 'reason.hello': 'Sadece merhaba',
-      'contact.name': 'Adın', 'contact.msg': 'Mesajın', 'contact.send': 'Mail uygulamamda aç',
-      'contact.err': 'Adını ve kısa bir mesaj yaz, sonra tekrar dene.',
-      'contact.opened': 'Mail uygulaman şimdi açılmış olmalı',
-      'contact.ledeApi': 'Destek operasyonu, otomasyon, yapay zekâ ya da birlikte bir şey kurmak mı aklında? Bir konu seç, birkaç satır yaz ve gönder. Doğrudan bana ulaşır.',
-      'contact.email': 'Mail adresin', 'contact.sendApi': 'Mesajı gönder', 'contact.book': 'Görüşme ayarla',
-      'contact.errEmail': 'Mail adresi doğru görünmüyor. Kontrol edip tekrar dene.',
-      'contact.errCaptcha': 'Spam kontrolü tamamlanmadı. Bir saniye bekleyip tekrar gönder.',
-      'contact.errRate': 'Kısa sürede birkaç mesaj gönderdin. Bir saat sonra tekrar dene ya da hello@burak.pm adresine yaz.',
-      'contact.errSend': 'Mesaj gönderilemedi. Tekrar dene ya da hello@burak.pm adresine yaz.',
-      'footer.privacy': 'Gizlilik', 'contact.privacy': 'Mesajın yalnızca sana cevap vermek için kullanılır.', 'contact.privacyLink': 'Nasıl işlendiğini oku',
-      'book.title': 'Görüşme ayarla', 'book.lede': 'Google Meet üzerinden 30 dakikalık bir tanışma görüşmesi. Sana uyan saati seç.', 'book.out': 'Yeni sekmede aç',
-      'contact.done': 'Mesajın ulaştı.', 'contact.doneText': 'Doğrudan kuyruğuma düştü. Genelde bir iki gün içinde dönüyorum.', 'contact.again': 'Yeni mesaj yaz',
-      'subject.collab': 'Birlikte çalışmak', 'subject.automation': 'Bir otomasyon fikri', 'subject.hello': 'burak.pm üzerinden merhaba',
-      'footer.made': 'Ankara’da tasarlanıp kodlandı.',
-      'footer.keys': 'Her yere atlamak için', 'footer.keys2': 'tuşlarına bas ya da tanıdık bir keçinin adını yaz.',
-      'palette.move': 'gezin', 'palette.pick': 'seç', 'palette.close': 'kapat', 'palette.ph': 'Bir komut ya da bölüm yaz',
-      'palette.none': 'Buna uyan bir şey yok',
-      'cmd.go': 'Git', 'cmd.theme': 'Diğer temaya geç', 'cmd.lang': 'Switch to English', 'cmd.copy': 'Mail adresimi kopyala',
-      'cmd.vcard': 'Kartvizitimi indir', 'cmd.biko': 'Biko’yu çağır', 'cmd.top': 'En üste dön', 'cmd.pause': 'Kuyruğu durdur ya da başlat',
-      'toast.copied': 'Adres kopyalandı', 'toast.theme': 'Tema değişti', 'toast.vcard': 'Kartvizit indirildi',
-      'biko': ['Selam! Burayı eskiden ben işletiyordum.', 'Hâlâ hizalamaları kontrol ediyorum.', 'Mee. Güzel kuyruk.'],
-      greet: ['Merhaba', 'Hello', 'Hola', 'Halo'],
-      title: 'Burak Çevik | Müşteri deneyimi operasyonu ve otomasyon'
-    }
-  };
-
-  /* --------------------------------------------------------------- glyphs */
-  const G = {
-    dash: '<svg viewBox="0 0 52 52"><rect x="4" y="6" width="44" height="40" rx="6"/><path d="M4 16h44M14 38V28M22 38V24M30 38V30M38 38V22"/></svg>',
-    lib: '<svg viewBox="0 0 52 52"><path d="M8 10h10v34H8zM20 10h10v34H20zM33 12l9 2-6 31-9-2z"/><path d="M11 17h4M23 17h4"/></svg>',
-    coach: '<svg viewBox="0 0 52 52"><path d="M8 12h28a4 4 0 0 1 4 4v14a4 4 0 0 1-4 4H22l-8 7v-7H8a4 4 0 0 1-4-4V16a4 4 0 0 1 4-4z"/><path d="M44 8l1.6 3.4L49 13l-3.4 1.6L44 18l-1.6-3.4L39 13l3.4-1.6zM14 21h16M14 26h10"/></svg>',
-    cal: '<svg viewBox="0 0 52 52"><rect x="6" y="10" width="40" height="36" rx="6"/><path d="M6 20h40M16 6v8M36 6v8"/><circle cx="34" cy="34" r="6"/><path d="M34 31v3l2 2"/></svg>',
-    tamga: '<svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="20"/><path d="M6 26h40M26 6c-7 6-7 34 0 40M26 6c7 6 7 34 0 40"/><path d="M17 18l9 8 9-8"/></svg>',
-    chip: '<svg viewBox="0 0 52 52"><rect x="12" y="8" width="28" height="22" rx="4"/><path d="M16 30v8h20v-8M20 38v6h12v-6"/><circle cx="21" cy="18" r="2.5"/><circle cx="31" cy="18" r="2.5"/><path d="M21 24q5 3 10 0"/></svg>'
-  };
-
-  const P = {
-    en: [
-      { id: 'dash', noai: true, size: 'xl', tone: '', cats: ['auto'], glyph: 'dash', spark: true,
-        title: 'Team tooling',
-        blurb: 'Small dashboards and web apps that take repetitive admin off the team.',
-        lede: 'Most of my automation work lives quietly inside the company workspace, so I only describe it in broad strokes here.',
-        points: ['Brings scattered reporting together in one simple view', 'Gives everyone an easy place to find their own feedback', 'Built with Google Apps Script inside the company workspace', 'No AI and no outside services touch team or customer data'],
-        problem: "Routine admin was eating time that belonged to people.",
-        result: "The team spends less time in spreadsheets and more time with customers.",
-        tags: ['Apps Script', 'Google Workspace', 'No AI'] },
-      { id: 'chip', size: 'md', tone: '', cats: ['hw'], glyph: 'chip',
-        title: 'Çipik',
-        blurb: 'A voice to sticker printer for kids: say what you want, and a little thermal printer draws it.',
-        lede: 'A hardware side project for fun and for learning.',
-        points: ['ESP32 board with 16 MB flash and 8 MB PSRAM', 'Small color TFT screen for a friendly face', 'Thermal printer for instant stickers'],
-        problem: "I wanted to learn hardware by building something kids would actually enjoy.",
-        result: "A prototype in progress that turns a spoken idea into a printed sticker.",
-        tags: ['ESP32', 'Hardware', 'Prototype'] },
-      { id: 'tamga', video: true, size: 'full', tone: 'saffron', cats: ['product', 'ai'], glyph: 'tamga', link: 'https://usetamga.com',
-        title: 'Tamga',
-        blurb: 'An AI product for anyone doing business abroad, so every step of a deal can be followed in one place.',
-        lede: 'My own product, growing alongside my trade and logistics studies.',
-        points: ['Tracks every process of a cross border deal end to end', 'Planned in Turkish, English, Spanish, French, Russian, Arabic and Portuguese', 'Built for logistics and export teams who live in their inbox'],
-        problem: "Doing business abroad means following one deal across inboxes, documents and tools.",
-        result: "In development and planned in seven languages. You can follow it at usetamga.com.",
-        tags: ['Product', 'AI', 'Trade'] }
-    ],
-    tr: [
-      { title: 'Ekip araçları',
-        blurb: 'Tekrarlayan idari işi ekibin üzerinden alan küçük paneller ve web uygulamaları.',
-        lede: 'Otomasyon işlerimin çoğu sessizce şirketin kendi ortamında çalışıyor, o yüzden burada sadece genel hatlarıyla anlatıyorum.',
-        points: ['Dağınık raporlamayı tek ve sade bir görünümde toplar', 'Herkesin kendi geri bildirimini kolayca bulabileceği bir yer sunar', 'Google Apps Script ile şirketin kendi ortamında kuruldu', 'Ekip ya da müşteri verisine yapay zekâ veya dış servis dokunmaz'],
-        problem: "Rutin idari işler insanlara ayrılması gereken zamanı yiyordu.",
-        result: "Ekip tablolarda daha az, müşterilerle daha çok vakit geçiriyor.",
-        tags: ['Apps Script', 'Google Workspace', 'Yapay zekâ yok'] },
-      { title: 'Çipik',
-        blurb: 'Çocuklar için sesle çalışan sticker yazıcısı: ne istediğini söyle, küçük bir termal yazıcı çizsin.',
-        lede: 'Eğlence ve öğrenme için yaptığım bir donanım projesi.',
-        points: ['16 MB flash ve 8 MB PSRAM’li ESP32 kart', 'Sevimli bir yüz için küçük renkli TFT ekran', 'Anında sticker için termal yazıcı'],
-        problem: "Donanımı, çocukların gerçekten seveceği bir şey yaparak öğrenmek istedim.",
-        result: "Söylenen bir fikri basılı bir sticker’a dönüştüren, geliştirmesi süren bir prototip.",
-        tags: ['ESP32', 'Donanım', 'Prototip'] },
-      { title: 'Tamga',
-        blurb: 'Yurt dışıyla iş yapan herkes için, bir anlaşmanın her adımını tek yerden takip etmeyi sağlayan bir yapay zekâ ürünü.',
-        lede: 'Ticaret ve lojistik eğitimimle birlikte büyüyen kendi ürünüm.',
-        points: ['Sınır ötesi bir anlaşmanın bütün süreçlerini baştan sona takip eder', 'Türkçe, İngilizce, İspanyolca, Fransızca, Rusça, Arapça ve Portekizce planlanıyor', 'Gelen kutusunda yaşayan lojistik ve ihracat ekipleri için'],
-        problem: "Yurt dışıyla iş yapmak, tek bir anlaşmayı gelen kutuları, belgeler ve araçlar arasında takip etmek demek.",
-        result: "Geliştiriliyor ve yedi dilde planlanıyor. usetamga.com adresinden takip edebilirsin.",
-        tags: ['Ürün', 'Yapay zekâ', 'Ticaret'] }
-    ]
-  };
+  /* Copy and project data live in content.js (also read by the build). */
+  const { T, P } = window.BP;
   const project = (i, lang) => Object.assign({}, P.en[i], lang === 'tr' ? P.tr[i] : {});
+  // Every project also has its own page: /projects/<slug> and /tr/projeler/<slugTr>.
+  const projectUrl = (p, l) => (l === 'tr' ? '/tr/projeler/' + p.slugTr : '/projects/' + p.slug);
 
   /* ------------------------------------------------------------- language */
   let lang = root.getAttribute('lang') === 'tr' ? 'tr' : 'en';
@@ -752,13 +515,12 @@
     wrap.innerHTML = '';
     P.en.forEach((_, i) => {
       const p = project(i, lang);
-      const b = document.createElement('button');
-      b.type = 'button';
+      const b = document.createElement('a');
+      b.href = projectUrl(p, lang);
       b.className = `card card--${p.size}${p.tone ? ' card--' + p.tone : ''}`;
       b.dataset.cats = p.cats.join(' ');
       b.style.setProperty('--d', i);
       b.style.viewTransitionName = 'card-' + p.id;
-      b.setAttribute('aria-haspopup', 'dialog');
       b.innerHTML = `<span class="card__spot"></span>
         ${p.metric ? `<span class="card__metric" aria-hidden="true">${p.metric}</span>` : ''}
         <span class="card__art" aria-hidden="true">${p.video
@@ -766,7 +528,8 @@
           : `<img src="/assets/art/${p.id}.webp" alt="" loading="lazy" decoding="async">`}</span>
         <span class="card__text"><h3>${p.title}</h3><p>${p.blurb}</p>
         <span class="card__foot"><span class="card__more">${t('card.more')}</span>${p.noai ? `<span class="noai">${t('card.noai')}</span>` : ''}</span></span>`;
-      b.addEventListener('click', () => openSheet(i));
+      // A plain click opens the quick view; new tab, middle click and crawlers follow the link.
+      b.addEventListener('click', (e) => { if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0 || !sheet.showModal) return; e.preventDefault(); openSheet(i); });
       b.addEventListener('pointermove', (e) => { const r = b.getBoundingClientRect(); b.style.setProperty('--mx', e.clientX - r.left + 'px'); b.style.setProperty('--my', e.clientY - r.top + 'px'); });
       wrap.appendChild(b);
     });
@@ -803,6 +566,7 @@
     $('[data-sheet-tags]').innerHTML = p.tags.map((x) => `<li>${x}</li>`).join('');
     const link = $('[data-sheet-link]');
     if (p.link) { link.hidden = false; link.href = p.link; link.textContent = t('card.visit'); } else link.hidden = true;
+    const full = $('[data-sheet-page]'); full.href = projectUrl(p, lang); full.textContent = t('sheet.page');
     if (!fromHash) history.replaceState(null, '', location.pathname + location.search + '#' + p.id);
     if (!sheet.open) sheet.showModal();
   }
@@ -813,7 +577,8 @@
   });
   $('[data-sheet-copy]').addEventListener('click', () => {
     if (!sheetId) return;
-    const url = 'https://burak.pm' + (lang === 'tr' ? '/tr' : '/') + '#' + sheetId;
+    const p = P.en.find((x) => x.id === sheetId);
+    const url = 'https://burak.pm' + projectUrl(p, lang);
     const done = () => toast(t('toast.link'));
     if (navigator.clipboard) navigator.clipboard.writeText(url).then(done, done); else done();
   });
@@ -877,6 +642,128 @@
   loadNp(); setInterval(loadNp, 30000); setInterval(renderNp, 1000);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) loadNp(); });
 
+
+
+  /* ------------------------------------------------------ suggest a song */
+  // Visitors search Spotify (through /api/songs/search), pick a track and send it.
+  // Nothing from the API is written as HTML: rows are built with textContent.
+  const tune = { picked: null, widget: null, timer: 0, seq: 0 };
+  const tuneSheet = $('[data-tune-sheet]'), tuneForm = $('[data-tune-form]');
+  const tq = (k) => $(`[data-tune-${k}]`);
+
+  function songRow(s, onPick) {
+    const li = document.createElement('li');
+    const el = document.createElement(onPick ? 'button' : 'a');
+    el.className = 'song';
+    if (onPick) { el.type = 'button'; el.setAttribute('role', 'option'); el.addEventListener('click', () => onPick(s)); }
+    else { el.href = s.url; el.target = '_blank'; el.rel = 'noopener'; }
+    const art = document.createElement('span'); art.className = 'song__art';
+    if (s.art && /^https:\/\/i\.scdn\.co\//.test(s.art)) { const img = new Image(48, 48); img.alt = ''; img.loading = 'lazy'; img.decoding = 'async'; img.src = s.art; art.appendChild(img); }
+    const text = document.createElement('span'); text.className = 'song__text';
+    const ti = document.createElement('b'); ti.textContent = s.title;
+    const ar = document.createElement('small'); ar.textContent = s.artist;
+    text.append(ti, ar);
+    el.append(art, text);
+    if (onPick) { const c = document.createElement('span'); c.className = 'song__pick'; c.textContent = t('tune.pick'); el.appendChild(c); }
+    li.appendChild(el);
+    return li;
+  }
+
+  async function loadSongs() {
+    try {
+      const r = await fetch('/api/songs', { headers: { Accept: 'application/json' } });
+      const d = await r.json();
+      if (!d.ok) return;
+      const pl = tq('playlist');
+      if (d.playlist && /^https:\/\/open\.spotify\.com\//.test(d.playlist)) { pl.href = d.playlist; pl.hidden = false; }
+      const list = tq('list'); list.textContent = '';
+      (d.recent || []).slice(0, 4).forEach((s) => list.appendChild(songRow(s)));
+      tq('recent').hidden = !list.children.length;
+    } catch (e) { /* the box works without the list */ }
+  }
+
+  function tuneStep(name) {
+    $$('[data-tune-step]').forEach((el) => { el.hidden = el.dataset.tuneStep !== name; });
+  }
+  function tuneErr(key) { const e = tq('error'); e.textContent = key ? t(key) : ''; e.hidden = !key; }
+  function tuneReset() {
+    tune.picked = null; tuneForm.reset(); tuneErr(null);
+    tq('results').textContent = ''; tq('status').textContent = '';
+    tq('done').hidden = true; tuneForm.hidden = false; tuneStep('search');
+  }
+  function openTune() {
+    if (!tuneSheet.showModal) return;
+    if (!tq('done').hidden) tuneReset();
+    tuneSheet.showModal();
+    setTimeout(() => (tune.picked ? tuneForm.name : tq('q')).focus(), 60);
+    if (contactCfg.sitekey) loadTurnstile().catch(() => {});
+  }
+  tuneSheet.addEventListener('click', (e) => { if (e.target === tuneSheet || e.target.closest('[data-close]')) tuneSheet.close(); });
+
+  async function tuneSearch(q) {
+    const seq = ++tune.seq, status = tq('status'), list = tq('results');
+    if (q.length < 2) { list.textContent = ''; status.textContent = ''; return; }
+    status.textContent = t('tune.searching');
+    try {
+      const r = await fetch('/api/songs/search?q=' + encodeURIComponent(q), { headers: { Accept: 'application/json' } });
+      const d = await r.json();
+      if (seq !== tune.seq) return;
+      list.textContent = '';
+      if (!d.ok) { status.textContent = t('tune.errSend'); return; }
+      status.textContent = d.items.length ? '' : t('tune.none');
+      d.items.forEach((s) => list.appendChild(songRow(s, tunePick)));
+    } catch (e) { if (seq === tune.seq) status.textContent = t('tune.errSend'); }
+  }
+  tq('q').addEventListener('input', (e) => {
+    clearTimeout(tune.timer);
+    const q = e.target.value.trim();
+    tune.timer = setTimeout(() => tuneSearch(q), 320);
+  });
+  tq('q').addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); clearTimeout(tune.timer); tuneSearch(e.target.value.trim()); } });
+
+  function tunePick(s) {
+    tune.picked = s;
+    const box = tq('picked'); box.textContent = '';
+    const row = songRow(s).firstElementChild; box.appendChild(row);
+    const change = document.createElement('button'); change.type = 'button'; change.className = 'link'; change.textContent = t('tune.change');
+    change.addEventListener('click', () => { tune.picked = null; tuneStep('search'); tq('q').focus(); });
+    box.appendChild(change);
+    tuneErr(null); tuneStep('details');
+    tuneForm.name.focus();
+    if (contactCfg.sitekey) {
+      loadTurnstile().then(() => {
+        if (tune.widget == null) tune.widget = renderTurnstile(tq('turnstile'), 'song');
+      }).catch(() => {});
+    }
+  }
+
+  tuneForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!tune.picked) { tuneErr('tune.errPick'); return; }
+    if (!contactCfg.sitekey) { tuneErr('tune.errSend'); return; }
+    const token = window.turnstile && tune.widget != null ? window.turnstile.getResponse(tune.widget) : '';
+    if (!token) { tuneErr('tune.errCaptcha'); return; }
+    const btn = tq('send'); btn.setAttribute('aria-busy', 'true'); tuneErr(null);
+    try {
+      const r = await fetch('/api/songs', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ track: tune.picked.id, name: tuneForm.name.value, note: tuneForm.note.value, website: tuneForm.website.value, token, lang })
+      });
+      const d = await r.json().catch(() => ({}));
+      if (!r.ok || !d.ok) {
+        tuneErr(d.error === 'rate' ? 'tune.errRate' : d.error === 'captcha' ? 'tune.errCaptcha' : 'tune.errSend');
+      } else {
+        tq('done-title').textContent = t(d.already ? 'tune.already' : 'tune.done');
+        tuneForm.hidden = true; tq('done').hidden = false; tq('done').focus();
+      }
+    } catch (err) {
+      tuneErr('tune.errSend');
+    } finally {
+      btn.removeAttribute('aria-busy');
+      if (window.turnstile && tune.widget != null) window.turnstile.reset(tune.widget);
+    }
+  });
+  tq('again').addEventListener('click', () => { tuneReset(); tq('q').focus(); });
 
   /* -------------------------------------------------------------- weather */
   const WX_ICON = {
@@ -975,6 +862,7 @@
     o.observe(el);
   };
   lazyWhenNear($('#visits'), loadMap);
+  lazyWhenNear($('#now'), loadSongs);
 
   /* --------------------------------------------------------- facts count */
   function countUp(el) {
@@ -1028,17 +916,35 @@
   window.__onLang = () => { if (contactCfg.api) composerMode(); };
   function showErr(key) { composerErr.textContent = t(key); composerErr.hidden = false; }
 
-  function mountTurnstile() {
-    const box = $('[data-turnstile]');
-    if (!window.turnstile || !box) return;
+  // Turnstile is loaded once, on demand, and shared by the contact form and the song box.
+  let tsPromise = null;
+  function loadTurnstile() {
+    if (window.turnstile) return Promise.resolve(window.turnstile);
+    if (!tsPromise) {
+      tsPromise = new Promise((resolve, reject) => {
+        window.onTurnstileReady = () => resolve(window.turnstile);
+        const sc = document.createElement('script');
+        sc.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onTurnstileReady';
+        sc.async = true; sc.defer = true; sc.onerror = reject;
+        document.head.appendChild(sc);
+      });
+    }
+    return tsPromise;
+  }
+  function renderTurnstile(box, action) {
     box.hidden = false;
-    contactCfg.widget = window.turnstile.render(box, {
-      sitekey: contactCfg.sitekey,
+    return window.turnstile.render(box, {
+      sitekey: contactCfg.sitekey, action,
       theme: document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light',
       language: document.documentElement.lang === 'tr' ? 'tr' : 'en',
       appearance: 'interaction-only',
       'refresh-expired': 'auto'
     });
+  }
+  function mountTurnstile() {
+    const box = $('[data-turnstile]');
+    if (!window.turnstile || !box || contactCfg.widget != null) return;
+    contactCfg.widget = renderTurnstile(box, 'contact');
   }
 
   fetch('/api/contact').then((r) => (r.ok ? r.json() : null)).then((cfg) => {
@@ -1062,15 +968,7 @@
     if (cfg.turnstile) {
       contactCfg.api = true; contactCfg.sitekey = cfg.turnstile;
       composerMode();
-      window.onTurnstileReady = mountTurnstile;
-      let tsLoaded = false;
-      const loadTs = () => {
-        if (tsLoaded) return; tsLoaded = true;
-        const sc = document.createElement('script');
-        sc.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onTurnstileReady';
-        sc.async = true; sc.defer = true;
-        document.head.appendChild(sc);
-      };
+      const loadTs = () => { loadTurnstile().then(mountTurnstile).catch(() => {}); };
       // Only fetch the spam check when someone is near the form or starts typing.
       composer.addEventListener('focusin', loadTs, { once: true });
       if ('IntersectionObserver' in window) {
@@ -1143,6 +1041,7 @@
       { label: t('cmd.copy'), hint: EMAIL, run: copyEmail },
       { label: t('cmd.vcard'), hint: '.vcf', run: downloadVcard },
       { label: t('cmd.pause'), hint: 'P', run: toggleQueue },
+      { label: t('cmd.tune'), hint: 'Spotify', run: openTune },
       ...projects,
       { label: 'LinkedIn', hint: 'linkedin.com/in/bcvk', run: () => window.open('https://linkedin.com/in/bcvk', '_blank', 'noopener') },
       { label: 'GitHub', hint: 'github.com/bcvk', run: () => window.open('https://github.com/bcvk', '_blank', 'noopener') },
@@ -1205,6 +1104,7 @@
     else if (act === 'copy-email') copyEmail();
     else if (act === 'vcard') downloadVcard();
     else if (act === 'queue-pause') toggleQueue();
+    else if (act === 'tune') openTune();
   });
   $$('[data-filter]').forEach((c) => c.addEventListener('click', () => applyFilter(c.dataset.filter)));
   $$('[data-traffic]').forEach((b) => b.addEventListener('click', () => {

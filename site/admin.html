@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="tr" data-theme="light" data-lang-fixed>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Yönetim | burak.pm</title>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/styles.css?v=1">
+<script src="/boot.js?v=1"></script>
+</head>
+<body class="lost-page admin-page">
+<header class="topbar">
+  <a class="brand" href="/" aria-label="burak.pm ana sayfa"><span class="brand__mark" aria-hidden="true">b</span><span class="brand__name">burak<b>.pm</b></span></a>
+  <div class="tools">
+    <button class="tool" type="button" data-theme-toggle aria-label="Temayı değiştir">
+      <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5.3 5.3l1.7 1.7M17 17l1.7 1.7M5.3 18.7 7 17M17 7l1.7-1.7"/></svg>
+      <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6Z"/></svg>
+    </button>
+  </div>
+</header>
+
+<main class="admin" id="main">
+  <h1>Yönetim paneli</h1>
+
+  <section class="admin__login" data-view="login" hidden>
+    <p>Giriş için bir bağlantı hello@burak.pm adresine gönderilir. Bağlantı 15 dakika geçerli ve tek kullanımlıktır.</p>
+    <div class="composer__captcha" data-ts hidden></div>
+    <button class="btn btn--solid" type="button" data-login>Giriş bağlantısı gönder</button>
+    <p class="admin__note" data-login-msg aria-live="polite"></p>
+  </section>
+
+  <section data-view="app" hidden>
+    <div class="admin__tabs" role="tablist" aria-label="Bölümler">
+      <button class="chip" type="button" role="tab" data-tab="overview">Genel bakış</button>
+      <button class="chip" type="button" role="tab" data-tab="messages">Mesajlar <span data-badge="messages"></span></button>
+      <button class="chip" type="button" role="tab" data-tab="songs">Şarkılar <span data-badge="songs"></span></button>
+      <button class="chip" type="button" role="tab" data-tab="visits">Ziyaretler</button>
+      <button class="chip" type="button" role="tab" data-tab="settings">Ayarlar</button>
+    </div>
+    <div data-panel="overview" role="tabpanel" hidden></div>
+    <div data-panel="messages" role="tabpanel" hidden></div>
+    <div data-panel="songs" role="tabpanel" hidden></div>
+    <div data-panel="visits" role="tabpanel" hidden></div>
+    <div data-panel="settings" role="tabpanel" hidden></div>
+  </section>
+</main>
+
+<div class="toast" role="status" aria-live="polite" data-toast></div>
+<script src="/admin.js?v=1" defer></script>
+</body>
+</html>

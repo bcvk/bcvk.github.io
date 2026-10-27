@@ -1,34 +1,31 @@
-import { accessToken, json } from './_spotify.js';
+// What Burak is listening to on Spotify. Cached at the edge for 15 seconds so a flood of
+// visitors still means only a handful of Spotify calls.
+import { json, cached } from '../_lib/http.js';
+import { userToken, api, pickTrack, refreshToken } from '../_lib/spotify.js';
 
-const pick = (track) => ({
-  title: track.name,
-  artist: track.artists.map((a) => a.name).join(', '),
-  album: track.album.name,
-  art: (track.album.images.find((i) => i.width <= 300) || track.album.images[0] || {}).url || null,
-  url: track.external_urls.spotify,
-  duration_ms: track.duration_ms
-});
-
-export async function onRequestGet({ env }) {
-  if (!env.SPOTIFY_REFRESH_TOKEN) return json({ ok: false, reason: 'not_configured' }, 200, 300);
+async function load(env) {
+  if (!(await refreshToken(env))) return json({ ok: false, reason: 'not_configured' });
   try {
-    const token = await accessToken(env);
-    const auth = { headers: { Authorization: 'Bearer ' + token } };
-    const now = await fetch('https://api.spotify.com/v1/me/player/currently-playing?additional_types=track,episode', auth);
+    const token = await userToken(env);
+    const now = await api(token, '/me/player/currently-playing?additional_types=track');
     if (now.status === 200) {
       const d = await now.json();
       if (d && d.item && d.item.type === 'track' && d.is_playing) {
-        return json({ ok: true, playing: true, progress_ms: d.progress_ms, fetched_at: Date.now(), ...pick(d.item) }, 200, 10);
+        return json({ ok: true, playing: true, progress_ms: d.progress_ms, fetched_at: Date.now(), ...pickTrack(d.item) });
       }
     }
-    const recent = await fetch('https://api.spotify.com/v1/me/player/recently-played?limit=1', auth);
+    const recent = await api(token, '/me/player/recently-played?limit=1');
     if (recent.ok) {
       const r = await recent.json();
       const last = r.items && r.items[0];
-      if (last) return json({ ok: true, playing: false, played_at: last.played_at, ...pick(last.track) }, 200, 30);
+      if (last) return json({ ok: true, playing: false, played_at: last.played_at, ...pickTrack(last.track) });
     }
-    return json({ ok: false, reason: 'nothing' }, 200, 30);
+    return json({ ok: false, reason: 'nothing' });
   } catch (e) {
-    return json({ ok: false, reason: 'error' }, 200, 30);
+    return json({ ok: false, reason: 'error' });
   }
+}
+
+export async function onRequestGet(ctx) {
+  return cached(ctx, '/__cache/now-playing', 15, () => load(ctx.env));
 }

@@ -7,8 +7,8 @@
 <link rel="canonical" href="https://burak.pm/privacy">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/styles.css?v=20261027a">
-<script src="/boot.js?v=20261027a"></script>
+<link rel="stylesheet" href="/styles.css?v=1">
+<script src="/boot.js?v=1"></script>
 </head>
 <body class="lost-page doc-page">
 <header class="topbar">
@@ -20,7 +20,7 @@
 
 <main class="doc">
   <article lang="en">
-    <p class="doc__kicker">Last updated 8 October 2026</p>
+    <p class="doc__kicker">Last updated 27 October 2026</p>
     <h1>Privacy</h1>
     <p class="doc__lede">This is a personal site. It collects as little as it can, keeps nothing it does not need and never sells or shares your data for advertising.</p>
 
@@ -31,13 +31,22 @@
     <p>When you send a message I receive your name, your email address, the topic you picked and your message. I use them only to read and answer you.</p>
     <ul>
       <li>The message is stored in a Cloudflare D1 database and forwarded to my mailbox through Resend, an email delivery service in the EU.</li>
-      <li>To stop spam, the form uses Cloudflare Turnstile, and it keeps a one way hash of your IP address that changes every day. The hash only limits how many messages can be sent in an hour; it cannot be turned back into your address.</li>
+      <li>To stop spam, the form uses Cloudflare Turnstile. To limit how many messages can be sent in an hour, a code is calculated from your IP address with a secret key that only the site knows. Without that key the code cannot be turned back into your address, and it is erased from the message after 24 hours.</li>
+      <li>If the database is briefly unavailable, the message is only mailed to me and not stored.</li>
       <li>Your country, as reported by Cloudflare, is saved with the message.</li>
       <li>Messages are deleted automatically after 12 months. Ask me and I will delete yours sooner.</li>
     </ul>
 
     <h2>The visitor map</h2>
-    <p>Each visit adds one to a counter for the country it came from. Nothing else is stored: no IP address, no device details and no history. A small cookie named <code>bp_seen</code> remembers for one day that your visit was already counted, so refreshing the page does not count you twice.</p>
+    <p>Each visit adds one to a counter for the country it came from, along with the time that country was last seen. No IP address, device details or history are stored. A small cookie named <code>bp_seen</code> remembers for one day that your visit was already counted. So that a script cannot inflate the map, a keyed code made from your IP address (the same kind as above) is also kept for the day you visit and deleted the next day.</p>
+
+    <h2>Song suggestions</h2>
+    <p>If you suggest a song, I receive the track you picked, the site language you used, your country as reported by Cloudflare and, only if you type them, your name and a note. They are stored in the same database so I can listen and decide, and I get an email about it. Your name and note are never shown on the site. Songs I like are added to a public Spotify playlist; the track appears there, you do not.</p>
+    <ul>
+      <li>The search box sends what you type to the site, which asks Spotify for matching songs. Spotify does not see who you are.</li>
+      <li>The same spam protection applies: Cloudflare Turnstile and a keyed code from your IP address, erased after 24 hours, to allow at most three suggestions a day.</li>
+      <li>Declined suggestions are deleted after 30 days. On every decided suggestion your name and note are erased 30 days after my decision; the song itself stays in the list. Ask me and I will delete yours right away.</li>
+    </ul>
 
     <h2>Statistics</h2>
     <p>I use Cloudflare Web Analytics to see how fast pages load and how many people visit. It does not use cookies and does not follow you across other sites.</p>
@@ -52,12 +61,15 @@
     <h2>Stored in your browser</h2>
     <p>Your theme, language and best score in the 404 game are saved in your own browser. They never leave your device and you can clear them anytime.</p>
 
+    <h2>Who else sees data</h2>
+    <p>The site runs on Cloudflare, which hosts the pages and the database. Messages and song suggestion alerts reach me by email through Resend. Nothing is sent to messaging apps, advertising networks or AI services.</p>
+
     <h2>Your rights</h2>
     <p>You can ask what I hold about you, ask me to correct or delete it, or object to how it is used. Under Türkiye's personal data law (KVKK, Law No. 6698, Article 11) and the GDPR, write to <a href="mailto:hello@burak.pm">hello@burak.pm</a> and I will reply within 30 days.</p>
   </article>
 
   <article lang="tr">
-    <p class="doc__kicker">Son güncelleme: 8 Ekim 2026</p>
+    <p class="doc__kicker">Son güncelleme: 27 Ekim 2026</p>
     <h1>Gizlilik</h1>
     <p class="doc__lede">Bu kişisel bir site. Olabildiğince az veri toplar, ihtiyacı olmayanı saklamaz ve verilerini reklam amacıyla kimseyle paylaşmaz ya da satmaz.</p>
 
@@ -68,13 +80,22 @@
     <p>Mesaj gönderdiğinde adını, mail adresini, seçtiğin konuyu ve mesajını alırım. Bunları yalnızca mesajını okumak ve sana cevap vermek için kullanırım.</p>
     <ul>
       <li>Mesaj bir Cloudflare D1 veritabanında saklanır ve AB'de hizmet veren bir mail gönderim servisi olan Resend aracılığıyla posta kutuma iletilir.</li>
-      <li>Spam'i önlemek için form Cloudflare Turnstile kullanır ve IP adresinin her gün değişen, geri çevrilemez bir özetini tutar. Bu özet sadece bir saatte gönderilebilecek mesaj sayısını sınırlamak içindir, IP adresine geri dönüştürülemez.</li>
+      <li>Spam'i önlemek için form Cloudflare Turnstile kullanır. Bir saatte gönderilebilecek mesaj sayısını sınırlamak için IP adresinden, yalnızca sitenin bildiği gizli bir anahtarla bir kod hesaplanır. Bu anahtar olmadan kod IP adresine geri çevrilemez ve 24 saat sonra mesajdan silinir.</li>
+      <li>Veritabanına kısa süreliğine ulaşılamazsa mesaj saklanmaz, sadece bana mail olarak iletilir.</li>
       <li>Cloudflare'in bildirdiği ülke bilgisi de mesajla birlikte kaydedilir.</li>
       <li>Mesajlar 12 ay sonra otomatik olarak silinir. İstersen seninkini daha önce silerim.</li>
     </ul>
 
     <h2>Ziyaretçi haritası</h2>
-    <p>Her ziyaret, geldiği ülkenin sayacını bir artırır. Başka hiçbir şey saklanmaz: IP adresi, cihaz bilgisi ya da gezinme geçmişi tutulmaz. <code>bp_seen</code> adlı küçük bir çerez, ziyaretinin o gün zaten sayıldığını bir gün boyunca hatırlar. Böylece sayfayı yenilediğinde iki kez sayılmazsın.</p>
+    <p>Her ziyaret, geldiği ülkenin sayacını bir artırır ve o ülkeden en son ne zaman ziyaret geldiği kaydedilir. IP adresi, cihaz bilgisi ya da gezinme geçmişi tutulmaz. <code>bp_seen</code> adlı küçük bir çerez, ziyaretinin o gün zaten sayıldığını bir gün boyunca hatırlar. Bir yazılımın haritayı şişirememesi için IP adresinden yukarıdaki gibi anahtarlı bir kod da ziyaret ettiğin gün boyunca tutulur ve ertesi gün silinir.</p>
+
+    <h2>Şarkı önerileri</h2>
+    <p>Bir şarkı önerirsen seçtiğin şarkıyı, kullandığın site dilini, Cloudflare'in bildirdiği ülkeni ve sadece yazarsan adını ve notunu alırım. Dinleyip karar verebilmem için aynı veritabanında saklanırlar ve bana bir mail gelir. Adın ve notun sitede hiçbir zaman gösterilmez. Sevdiğim şarkılar herkese açık bir Spotify çalma listesine eklenir; orada şarkı görünür, sen görünmezsin.</p>
+    <ul>
+      <li>Arama kutusuna yazdığın metin siteye gelir, site de Spotify'dan uygun şarkıları ister. Spotify kim olduğunu görmez.</li>
+      <li>Aynı spam koruması geçerlidir: Cloudflare Turnstile ve günde en fazla üç öneri için IP adresinden hesaplanan, 24 saat sonra silinen anahtarlı bir kod.</li>
+      <li>Reddedilen öneriler 30 gün sonra silinir. Karar verilen her öneride adın ve notun, kararımdan 30 gün sonra silinir; şarkının kendisi listede kalır. İstersen seninkini hemen silerim.</li>
+    </ul>
 
     <h2>İstatistikler</h2>
     <p>Sayfaların ne kadar hızlı açıldığını ve kaç kişinin ziyaret ettiğini görmek için Cloudflare Web Analytics kullanıyorum. Çerez kullanmaz ve seni başka sitelerde takip etmez.</p>
@@ -89,12 +110,15 @@
     <h2>Tarayıcında saklananlar</h2>
     <p>Tema ve dil tercihin ile 404 oyunundaki rekorun kendi tarayıcında saklanır. Cihazından hiç çıkmaz, istediğin zaman silebilirsin.</p>
 
+    <h2>Verileri başka kim görür</h2>
+    <p>Site Cloudflare üzerinde çalışır; sayfaları ve veritabanını Cloudflare barındırır. Mesajlar ve şarkı önerisi bildirimleri bana Resend üzerinden mail olarak gelir. Hiçbir veri mesajlaşma uygulamalarına, reklam ağlarına ya da yapay zekâ servislerine gönderilmez.</p>
+
     <h2>Hakların</h2>
     <p>6698 sayılı Kişisel Verilerin Korunması Kanunu'nun 11. maddesi kapsamında hakkında hangi verilerin tutulduğunu öğrenme, düzeltilmesini ya da silinmesini isteme ve işlenmesine itiraz etme hakkın var. <a href="mailto:hello@burak.pm">hello@burak.pm</a> adresine yazman yeterli, en geç 30 gün içinde cevap veririm.</p>
   </article>
 
   <p class="doc__back"><a class="btn btn--ghost" href="/" data-doc-home>← burak.pm</a></p>
 </main>
-<script src="/doc.js?v=20261027a" defer></script>
+<script src="/doc.js?v=1" defer></script>
 </body>
 </html>

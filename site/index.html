@@ -6,6 +6,8 @@
 <title>Burak Çevik | Customer experience operations and automation</title>
 <meta name="description" content="Burak Çevik leads multilingual customer support teams and builds automations that take repetitive work off people's plates. Based in Ankara, working remotely.">
 <meta name="author" content="Burak Çevik">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:site_name" content="Burak Çevik">
 <meta property="profile:first_name" content="Burak">
 <meta property="profile:last_name" content="Çevik">
 <link rel="canonical" href="https://burak.pm/">
@@ -29,10 +31,10 @@
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/styles.css?v=20261027a">
-<script src="/boot.js?v=20261027a"></script>
+<link rel="stylesheet" href="/styles.css?v=1">
+<script src="/boot.js?v=1"></script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://burak.pm/#burak","name":"Burak Çevik","alternateName":["Burak Cevik","bcvk"],"givenName":"Burak","familyName":"Çevik","description":"Customer experience operations lead at ModSquad who manages multilingual support teams and builds automation. Based in Ankara, Türkiye.","url":"https://burak.pm/","email":"mailto:hello@burak.pm","image":"https://burak.pm/assets/burak.jpg","jobTitle":"Assistant Project Manager","worksFor":{"@type":"Organization","name":"ModSquad","url":"https://modsquad.com"},"address":{"@type":"PostalAddress","addressLocality":"Ankara","addressCountry":"TR"},"nationality":{"@type":"Country","name":"Türkiye"},"knowsLanguage":["tr","en","es"],"knowsAbout":["Customer experience","Multilingual customer support","Quality assurance","Coaching","Google Apps Script","Automation","International trade"],"sameAs":["https://www.linkedin.com/in/bcvk","https://github.com/bcvk","https://usetamga.com"]},{"@type":"WebSite","@id":"https://burak.pm/#site","url":"https://burak.pm/","name":"Burak Çevik","alternateName":["burak.pm","Burak Cevik"],"inLanguage":["en","tr"],"publisher":{"@id":"https://burak.pm/#burak"}},{"@type":"ProfilePage","@id":"https://burak.pm/#page","url":"https://burak.pm/","name":"Burak Çevik","isPartOf":{"@id":"https://burak.pm/#site"},"mainEntity":{"@id":"https://burak.pm/#burak"},"dateModified":"2026-10-27"}]}
+{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://burak.pm/#burak","name":"Burak Çevik","alternateName":["Burak Cevik","bcvk"],"givenName":"Burak","familyName":"Çevik","description":"Customer experience operations lead at ModSquad who manages multilingual support teams and builds automation. Based in Ankara, Türkiye.","url":"https://burak.pm/","email":"mailto:hello@burak.pm","image":{"@type":"ImageObject","url":"https://burak.pm/assets/burak.jpg","width":491,"height":617,"caption":"Burak Çevik"},"jobTitle":"Assistant Project Manager","worksFor":{"@type":"Organization","name":"ModSquad","url":"https://modsquad.com"},"address":{"@type":"PostalAddress","addressLocality":"Ankara","addressCountry":"TR"},"nationality":{"@type":"Country","name":"Türkiye"},"knowsLanguage":["tr","en","es"],"knowsAbout":["Customer experience","Customer support operations","Multilingual customer support","Team leadership","KPI management","Quality assurance","Coaching","Workforce scheduling","Google Apps Script","Process automation","International trade","Logistics"],"sameAs":["https://www.linkedin.com/in/bcvk","https://github.com/bcvk","https://usetamga.com"],"hasOccupation":{"@type":"Occupation","name":"Assistant Project Manager","occupationLocation":{"@type":"Country","name":"Türkiye"},"skills":"Multilingual support operations, KPI management, quality frameworks, coaching, automation"},"mainEntityOfPage":{"@id":"https://burak.pm/#page"}},{"@type":"WebSite","@id":"https://burak.pm/#site","url":"https://burak.pm/","name":"Burak Çevik","alternateName":["burak.pm","Burak Cevik"],"inLanguage":["en","tr"],"publisher":{"@id":"https://burak.pm/#burak"},"description":"Personal site of Burak Çevik: multilingual customer support operations, team leadership and automation."},{"@type":"ProfilePage","@id":"https://burak.pm/#page","url":"https://burak.pm/","name":"Burak Çevik","isPartOf":{"@id":"https://burak.pm/#site"},"mainEntity":{"@id":"https://burak.pm/#burak"},"dateModified":"2026-10-27","inLanguage":"en"}]}
 </script>
 </head>
 <body>
@@ -212,6 +214,23 @@
           <span class="np__progress"><span class="np__bar"><i data-np-bar></i></span><span class="np__time" data-np-time></span></span>
         </span>
       </a>
+      <div class="tune">
+        <div class="tune__head">
+          <span class="tune__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 18V6l11-2v12"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg></span>
+          <div>
+            <h3 class="tune__title" data-i18n="tune.title">Suggest me a song</h3>
+            <p class="tune__lede" data-i18n="tune.lede">Know a track I should hear? Find it on Spotify and send it over. The ones I love go on a shared playlist.</p>
+          </div>
+        </div>
+        <div class="tune__actions">
+          <button class="btn btn--solid btn--sm" type="button" data-action="tune"><span data-i18n="tune.open">Suggest a song</span></button>
+          <a class="link" data-tune-playlist href="https://open.spotify.com/" target="_blank" rel="noopener" hidden><span data-i18n="tune.playlist">Listen to the playlist</span></a>
+        </div>
+        <div class="tune__recent" data-tune-recent hidden>
+          <p class="tune__label" data-i18n="tune.recent">Recently added from visitors</p>
+          <ul class="songs" data-tune-list></ul>
+        </div>
+      </div>
     </div>
     <div class="now__text">
       <h2 class="section__title" id="now-title" data-i18n="now.title">These days</h2>
@@ -325,8 +344,41 @@
     </div>
     <ul class="tags" data-sheet-tags></ul>
     <div class="sheet__actions">
-      <a class="btn btn--solid" data-sheet-link hidden target="_blank" rel="noopener"></a>
+      <a class="btn btn--solid" data-sheet-page href="/projects"></a>
+      <a class="btn btn--ghost" data-sheet-link hidden target="_blank" rel="noopener"></a>
       <button class="btn btn--ghost" type="button" data-sheet-copy><span data-i18n="sheet.copy">Copy link</span></button>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="sheet tune-sheet" data-tune-sheet aria-labelledby="tune-sheet-title">
+  <div class="sheet__inner">
+    <button class="sheet__close" type="button" data-close aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <h3 id="tune-sheet-title" data-i18n="tune.title">Suggest me a song</h3>
+    <p class="sheet__lede" data-i18n="tune.lede">Know a track I should hear? Find it on Spotify and send it over. The ones I love go on a shared playlist.</p>
+    <form class="tune__form" data-tune-form novalidate>
+      <div class="tune__step" data-tune-step="search">
+        <label class="field"><span data-i18n="tune.search">Search for a song or an artist</span><input type="search" name="q" maxlength="80" autocomplete="off" spellcheck="false" enterkeyhint="search" data-tune-q></label>
+        <p class="tune__status" data-tune-status aria-live="polite"></p>
+        <ul class="songs songs--pick" data-tune-results role="listbox" aria-label="Search results"></ul>
+      </div>
+      <div class="tune__step" data-tune-step="details" hidden>
+        <p class="tune__label" data-i18n="tune.picked">Your pick</p>
+        <div class="tune__picked" data-tune-picked></div>
+        <label class="field"><span data-i18n="tune.name">Your name (optional)</span><input name="name" maxlength="60" autocomplete="given-name"></label>
+        <label class="field"><span data-i18n="tune.note">A note for me (optional)</span><textarea name="note" rows="2" maxlength="280"></textarea></label>
+        <label class="hp" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>
+        <div class="composer__captcha" data-tune-turnstile hidden></div>
+        <p class="composer__error" data-tune-error hidden></p>
+        <p class="composer__privacy"><span data-i18n="tune.privacy">Only I see your name and note. The song may end up on the public playlist.</span> <a href="/privacy" data-i18n="contact.privacyLink">How it is handled</a></p>
+        <button class="btn btn--solid" type="submit" data-tune-send><span data-i18n="tune.send">Send the suggestion</span></button>
+      </div>
+    </form>
+    <div class="tune__done" data-tune-done hidden tabindex="-1">
+      <p class="composer__done-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></p>
+      <h4 data-tune-done-title>Thanks, it is on my list!</h4>
+      <p data-i18n="tune.doneText">I listen to every suggestion. If it clicks, you will find it on the playlist.</p>
+      <button class="btn btn--ghost" type="button" data-tune-again><span data-i18n="tune.again">Suggest another</span></button>
     </div>
   </div>
 </dialog>
@@ -342,6 +394,7 @@
 <div class="toast" role="status" aria-live="polite" data-toast></div>
 <div class="biko" data-biko aria-hidden="true"><img src="/assets/biko.svg" alt="" width="72" height="72"><span class="biko__say" data-biko-say></span></div>
 
-<script src="/app.js?v=20261027a" defer></script>
+<script src="/content.js?v=1" defer></script>
+<script src="/app.js?v=1" defer></script>
 </body>
 </html>

@@ -1,24 +1,39 @@
 # burak.pm
 
-[Burak Çevik](https://burak.pm)'s personal site, live at [burak.pm](https://burak.pm). Plain HTML, CSS and JavaScript, no build step.
+[Burak Çevik](https://burak.pm)'s personal site, live at [burak.pm](https://burak.pm).
+Plain HTML, CSS and JavaScript with a tiny build step and Cloudflare Pages Functions.
 
-Files
-  index.html      page markup (English by default, Turkish via the language toggle)
-  styles.css      all styles, light and dark themes
-  app.js          copy for both languages, the live queue, projects, command menu
-  boot.js         sets theme and language before the first paint
-  _headers        security and cache headers for Cloudflare Pages
-  assets/         photo, fonts, icons, social image
+## Layout
 
-Deploy on Cloudflare Pages: connect this repo, framework preset None,
-build command empty, output directory "/". Every push to main goes live.
+    site/             the static site (copied to dist/ by the build)
+      index.html      home page markup (English; the Turkish /tr page is generated)
+      content.js      all copy for both languages and the project data
+      app.js          home page behaviour: live queue, projects, songs, contact, command menu
+      admin.html/.js  private admin panel at /admin
+      page.js         theme toggle for the generated project pages
+      _headers        security and cache headers; _routes.json limits where Functions run
+    functions/        Pages Functions (/api/*), shared code in functions/_lib
+    migrations/       D1 schema, applied in order
+    scripts/build.mjs builds dist/: /tr, /projects, one page per project, sitemap.xml, llms.txt
+    scripts/og.py     link preview images for project pages (run after copy changes)
 
-Spotify "listening now" card
-  functions/api/now-playing.js reads the current or last played track.
-  Set these as encrypted variables in the Cloudflare Pages project:
-    SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_REFRESH_TOKEN
-  To get the refresh token once: add SPOTIFY_SETUP=on, redeploy,
-  open https://burak.pm/api/spotify-setup, copy the token, then remove SPOTIFY_SETUP.
-  The card stays hidden until the API answers, so the site works without it.
+## Build and deploy
 
-Art in assets/art was generated with Higgsfield (GPT Image 2.5, Seedance 2.5).
+Cloudflare Pages builds every push to main with `node scripts/build.mjs` and serves `dist/`.
+Local: `node scripts/build.mjs && npx wrangler pages dev dist` (put test secrets in .dev.vars).
+
+## Secrets (encrypted variables in the Pages project)
+
+    SPOTIFY_CLIENT_SECRET, SPOTIFY_REFRESH_TOKEN (optional once connected from the admin panel)
+    TURNSTILE_SECRET, RESEND_API_KEY
+    IP_HASH_KEY        keys the visitor codes used for rate limits (never store raw IPs)
+    SETTINGS_KEY       seals secrets stored in D1 (the Spotify token from the admin panel)
+    ADMIN_SESSION_KEY  signs admin sessions
+
+## Admin panel
+
+https://burak.pm/admin mails a one time sign in link to NOTIFY_EMAIL. From there: messages,
+song suggestions (approve adds them to a Spotify playlist), visits, health, IndexNow and
+maintenance. Spotify must list https://burak.pm/api/admin/spotify/callback as a redirect URI.
+
+Art in site/assets/art was generated with Higgsfield (GPT Image 2.5, Seedance 2.5).
