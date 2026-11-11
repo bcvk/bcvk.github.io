@@ -125,7 +125,7 @@ function topbar(lang, other) {
 
 function footer(lang) {
   return `<footer class="footer">
-  <p>${lang === 'tr' ? '© 2026 Burak Çevik. Ankara’da tasarlanıp kodlandı.' : '© 2026 Burak Çevik. Designed and built in Ankara.'}</p>
+  <p>${lang === 'tr' ? '© 2026 Burak Çevik. Tüm hakları saklıdır. Ankara’da tasarlanıp kodlandı.' : '© 2026 Burak Çevik. All rights reserved. Designed and built in Ankara.'}</p>
   <p class="footer__links"><a href="${homePath(lang)}">burak.pm</a><a href="${lang === 'tr' ? '/privacy?lang=tr' : '/privacy'}">${esc(t(lang, 'footer.privacy'))}</a></p>
 </footer>
 <script src="/page.js?v=1" defer></script>
