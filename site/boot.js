@@ -13,7 +13,16 @@
   }
   root.setAttribute('data-theme', theme);
   // Pages that exist in one language (project pages, /tr) keep the language they were built in.
-  // Elsewhere: ?lang, then the saved choice, then the browser.
+  // Elsewhere: ?lang, then the saved choice, then the visitor's country, then the browser.
+  // Add a country here when its language gets a translation.
+  var BY_COUNTRY = { TR: 'tr' };
+  function country() {
+    try {
+      var st = (performance.getEntriesByType('navigation')[0] || {}).serverTiming || [];
+      for (var i = 0; i < st.length; i++) if (st[i].name === 'cc' && /^[A-Z]{2}$/.test(st[i].description)) return st[i].description;
+    } catch (e) { /* older browsers: fall through to the browser language */ }
+    return '';
+  }
   var lang;
   if (root.hasAttribute('data-lang-fixed') || /^\/tr(\/|$)/.test(location.pathname)) {
     lang = root.getAttribute('lang') === 'tr' || /^\/tr(\/|$)/.test(location.pathname) ? 'tr' : 'en';
@@ -21,7 +30,8 @@
     var q = new URLSearchParams(location.search).get('lang');
     lang = q === 'tr' || q === 'en' ? q : read('bp-lang');
     if (lang !== 'tr' && lang !== 'en') {
-      lang = /^tr\b/i.test(navigator.language || '') ? 'tr' : 'en';
+      var cc = country();
+      lang = cc ? (BY_COUNTRY[cc] || 'en') : /^tr\b/i.test(navigator.language || '') ? 'tr' : 'en';
     }
   }
   root.setAttribute('lang', lang);

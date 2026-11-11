@@ -29,5 +29,15 @@ export async function onRequest({ request, next }) {
     }
     return out;
   }
+  if (url.pathname === '/') {
+    // The visitor's country rides along as a Server-Timing entry, which the page can read
+    // without a cookie. boot.js uses it to pick the language on a first visit.
+    const cc = request.cf && /^[A-Z]{2}$/.test(String(request.cf.country)) ? request.cf.country : '';
+    if (cc) {
+      const out = new Response(res.body, res);
+      out.headers.append('Server-Timing', `cc;desc="${cc}"`);
+      return out;
+    }
+  }
   return res;
 }
