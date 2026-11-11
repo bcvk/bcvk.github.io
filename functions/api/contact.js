@@ -10,8 +10,9 @@ import { maintain } from '../_lib/store.js';
 
 const REASONS = ['collab', 'automation', 'hello', 'call'];
 const REASON_LABEL = { collab: 'Birlikte çalışmak', automation: 'Otomasyon fikri', hello: 'Merhaba', call: 'Görüşme' };
-// Plain addresses only: no spaces, quotes, commas, angle brackets or a second @.
-const EMAIL_RE = /^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]{1,64}@[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?(?:\.[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?)+$/;
+// Plain addresses only: no spaces, quotes, commas, angle brackets or a second @, and none of
+// ? & = % so an address can never carry extra mailto: fields (bcc, body) into a reply.
+const EMAIL_RE = /^[A-Za-z0-9.!#$'*+/^_`{|}~-]{1,64}@[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?(?:\.[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?)+$/;
 const PER_HOUR = 3;
 
 export async function onRequestGet({ env }) {

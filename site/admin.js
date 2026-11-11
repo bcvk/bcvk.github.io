@@ -76,6 +76,7 @@
     window.turnstile.reset(ts.widget);
     msg.textContent = r.ok ? 'Bağlantıyı gönderdim. Mailini kontrol et; bağlantı 15 dakika geçerli.'
       : r.error === 'rate' ? 'Son bir saatte üç bağlantı istendi. Biraz sonra tekrar dene.'
+      : r.error === 'pending' ? 'Kutunda hâlâ geçerli giriş bağlantıları var. Onlardan en yenisini kullan.'
       : r.error === 'captcha' ? 'Spam kontrolü geçmedi. Tekrar dene.' : 'Mail gönderilemedi. Ayarları kontrol et.';
   });
 
@@ -137,7 +138,7 @@
           m.notified ? null : h('span', { class: 'bad', text: 'maile gitmedi' })),
         h('p', { class: 'aitem__body', text: m.body }),
         h('div', { class: 'aitem__actions' },
-          h('a', { class: 'btn btn--solid', href: `mailto:${m.email}?subject=${encodeURIComponent('Re: burak.pm')}`, text: 'Yanıtla' }),
+          h('a', { class: 'btn btn--solid', href: `mailto:${encodeURIComponent(m.email).replace(/%40/g, '@')}?subject=${encodeURIComponent('Re: burak.pm')}`, text: 'Yanıtla' }),
           m.read_at ? null : h('button', { class: 'btn btn--ghost', type: 'button', text: 'Okundu', onclick: async () => { await post('messages/read', { id: m.id }); loaders.messages(panel); } }),
           h('button', { class: 'btn btn--ghost btn--danger', type: 'button', text: 'Sil', onclick: async () => {
             if (!confirm(`${m.name} adlı kişinin mesajı kalıcı olarak silinsin mi?`)) return;

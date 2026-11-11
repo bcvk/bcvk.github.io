@@ -35,11 +35,25 @@ export function same(a, b) {
   return r === 0;
 }
 
+// One IPv6 customer usually owns a whole /64 and can pick a new address for every request,
+// so IPv6 visitors are identified by their /64 prefix. IPv4 addresses are used as they are.
+export function ipUnit(ip) {
+  if (!ip.includes(':')) return ip;
+  const v4 = ip.match(/(\d{1,3}(?:\.\d{1,3}){3})$/);
+  if (v4) return v4[1]; // IPv4 mapped address
+  const [head, tail] = ip.toLowerCase().split('::');
+  const h = head ? head.split(':') : [];
+  const t = tail ? tail.split(':') : [];
+  const groups = tail === undefined ? h : [...h, ...Array(Math.max(0, 8 - h.length - t.length)).fill('0'), ...t];
+  if (groups.length !== 8) return ip;
+  return groups.slice(0, 4).map((g) => (parseInt(g, 16) || 0).toString(16)).join(':') + '::/64';
+}
+
 // Visitor key for rate limits and de-duplication: HMAC of the IP, never the IP itself.
 export async function visitorKey(env, request, scope) {
   const ip = request.headers.get('CF-Connecting-IP') || '';
   if (!ip || !env.IP_HASH_KEY) return null;
-  return (await hmac(env.IP_HASH_KEY, scope + '|' + ip)).slice(0, 40);
+  return (await hmac(env.IP_HASH_KEY, scope + '|' + ipUnit(ip))).slice(0, 40);
 }
 
 async function aesKey(secret) {

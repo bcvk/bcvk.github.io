@@ -61,11 +61,14 @@ async function login(env, request) {
   const d = await readJson(request, 4000);
   if (!d || !(await verifyTurnstile(env, String(d.token || ''), request, 'admin'))) return json({ ok: false, error: 'captcha' }, 400);
   const now = Date.now();
-  // Three links an hour per visitor and ten overall, so a stranger cannot lock the owner out.
+  // Three links an hour per visitor. The shared cap counts only links that still work, so
+  // strangers cannot lock the owner out: when it is reached, a usable link is already in the
+  // owner's inbox (error "pending"), and it frees up as links are used or expire.
   const who = await visitorKey(env, request, 'admin-login');
-  const recent = await env.DB.prepare('SELECT COUNT(*) AS total, SUM(CASE WHEN who = ?2 THEN 1 ELSE 0 END) AS mine FROM admin_links WHERE created_at > ?1')
-    .bind(now - 3600_000, who).first();
-  if (recent && (recent.total >= 10 || (who && recent.mine >= 3))) return json({ ok: false, error: 'rate' }, 429);
+  const recent = await env.DB.prepare('SELECT SUM(CASE WHEN used_at IS NULL AND expires_at > ?3 THEN 1 ELSE 0 END) AS live, SUM(CASE WHEN who = ?2 THEN 1 ELSE 0 END) AS mine FROM admin_links WHERE created_at > ?1')
+    .bind(now - 3600_000, who, now).first();
+  if (recent && who && recent.mine >= 3) return json({ ok: false, error: 'rate' }, 429);
+  if (recent && recent.live >= 5) return json({ ok: false, error: 'pending' }, 429);
   const token = randomToken(32);
   await env.DB.prepare('INSERT INTO admin_links (h, created_at, expires_at, who) VALUES (?1, ?2, ?3, ?4)')
     .bind(await sha256(token), now, now + LINK_MINUTES * 60_000, who).run();
