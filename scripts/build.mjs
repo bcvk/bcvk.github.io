@@ -54,7 +54,7 @@ const stamp = (html) => html.replace(/(["'])\/([a-z0-9]+\.(?:js|css))\?v=[^"']*\
 
 /* --------------------------------------------------------- shared bits */
 const PERSON = {
-  '@type': 'Person', '@id': ME, name: 'Burak Çevik', alternateName: ['Burak Cevik', 'bcvk'],
+  '@type': 'Person', '@id': ME, name: 'Burak Çevik', alternateName: ['Burak Cevik', 'bcvk'], disambiguatingDescription: "Customer support team lead and Assistant Project Manager at ModSquad, based in Türkiye. Maker of Tamga and Minik Kalp.",
   givenName: 'Burak', familyName: 'Çevik', url: `${SITE}/`, image: `${SITE}/assets/burak.jpg`,
   jobTitle: 'Assistant Project Manager', worksFor: { '@type': 'Organization', name: 'ModSquad', url: 'https://modsquad.com' },
   sameAs: ['https://www.linkedin.com/in/bcvk', 'https://github.com/bcvk', 'https://usetamga.com']
@@ -156,12 +156,12 @@ function projectPage(i, lang) {
   const ld = [
     { ...PERSON },
     {
-      '@type': p.id === 'tamga' ? 'SoftwareApplication' : 'CreativeWork',
+      '@type': p.app ? 'SoftwareApplication' : 'CreativeWork',
       '@id': `${SITE}${url}#work`, name: p.title, headline: p.title, description: p.blurb,
       abstract: p.lede, url: `${SITE}${url}`, inLanguage: lang, image: ogImage(p, lang),
       keywords: p.tags.join(', '), author: { '@id': ME }, creator: { '@id': ME },
       isPartOf: { '@id': `${SITE}/#site` },
-      ...(p.id === 'tamga' ? { applicationCategory: 'BusinessApplication', operatingSystem: 'Web', sameAs: p.link } : {})
+      ...(p.app ? { applicationCategory: p.app.category, operatingSystem: p.app.os, sameAs: p.link } : {})
     },
     { '@type': 'BreadcrumbList', itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Burak Çevik', item: `${SITE}${homePath(lang)}` },
@@ -245,7 +245,7 @@ ${footer(lang)}`;
 
 /* --------------------------------------------------------- home pages */
 function cards(lang) {
-  return projects(lang).map((p, i) => `<a class="card card--${p.size}${p.tone ? ' card--' + p.tone : ''}" href="${projectPath(p, lang)}" data-cats="${p.cats.join(' ')}" style="--d:${i}">
+  return projects(lang).map((p, i) => `<a class="card card--${p.size}${p.tone ? ' card--' + p.tone : ''}" href="${projectPath(p, lang)}" data-cats="${p.cats.join(' ')}" data-ev="project-${p.id}" style="--d:${i}">
         <span class="card__spot"></span>
         <span class="card__art" aria-hidden="true"><img src="/assets/art/${p.id}.webp" alt="" loading="lazy" decoding="async"></span>
         <span class="card__text"><h3>${esc(p.title)}</h3><p>${esc(p.blurb)}</p>
@@ -261,8 +261,8 @@ function fillHome(html, lang) {
 }
 
 const HOME_TR = {
-  title: 'Burak Çevik | Müşteri deneyimi operasyonu ve otomasyon',
-  description: 'Burak Çevik çok dilli müşteri destek ekiplerini yönetiyor ve tekrarlayan işleri insanların üzerinden alan otomasyonlar kuruyor. Ankara merkezli, uzaktan çalışıyor.',
+  title: 'Burak Çevik | Müşteri destek liderliği ve CX otomasyonu',
+  description: 'Burak Çevik, ModSquad’da müşteri destek ekip lideri ve Assistant Project Manager. Çok dilli destek ekiplerini yönetiyor ve tekrarlayan işleri insanların üzerinden alan otomasyonlar kuruyor. Ankara merkezli, uzaktan çalışıyor.',
   ogDescription: 'İnsanları doğru cevaba ulaştırırım. Çok dilli destek operasyonu, ekip liderliği ve otomasyon.',
   person: 'ModSquad’da çok dilli müşteri destek ekiplerini yöneten ve otomasyon kuran müşteri deneyimi operasyonu yöneticisi. Ankara, Türkiye.'
 };
@@ -371,6 +371,7 @@ ${projects('en').map((p) => `- [${p.title}](${SITE}${projectPath(p, 'en')}): ${p
 - LinkedIn: https://www.linkedin.com/in/bcvk
 - GitHub: https://github.com/bcvk
 - Tamga: https://usetamga.com
+- Minik Kalp: https://minikkalp.app
 - Contact: hello@burak.pm
 `);
 

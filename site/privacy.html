@@ -38,7 +38,7 @@
     </ul>
 
     <h2>The visitor map</h2>
-    <p>Each visit adds one to a counter for the country it came from, along with the time that country was last seen. No IP address, device details or history are stored. A small cookie named <code>bp_seen</code> remembers for one day that your visit was already counted. So that a script cannot inflate the map, a keyed code made from your IP address (the same kind as above) is also kept for the day you visit and deleted the next day.</p>
+    <p>Each visit adds one to a counter for the country it came from, along with the time that country was last seen. No IP address, device details or history are stored. A small cookie named <code>bp_seen</code> remembers for one day that your visit was already counted. So that a script cannot inflate the map, a keyed code made from your IP address (the same kind as above) is also kept for the day you visit and deleted the next day. A visit is counted only after you scroll, tap or press a key, so automated page loads are left out.</p>
 
     <h2>Song suggestions</h2>
     <p>If you suggest a song, I receive the track you picked, the site language you used, your country as reported by Cloudflare and, only if you type them, your name and a note. They are stored in the same database so I can listen and decide, and I get an email about it. Your name and note are never shown on the site. Songs I like are added to a public Spotify playlist; the track appears there, you do not.</p>
@@ -49,7 +49,7 @@
     </ul>
 
     <h2>Statistics</h2>
-    <p>I use Cloudflare Web Analytics to see how fast pages load and how many people visit. It does not use cookies and does not follow you across other sites.</p>
+    <p>I use Cloudflare Web Analytics to see how fast pages load and how many people visit. It does not use cookies and does not follow you across other sites. The site also keeps its own simple daily tally of which sections are seen and which main buttons are pressed, for example "the contact section was seen 12 times today". The tally holds no IP address, cookie or identifier, so it cannot be tied to you, and it is deleted after six months.</p>
 
     <h2>Things other services handle</h2>
     <ul>
@@ -87,7 +87,7 @@
     </ul>
 
     <h2>Ziyaretçi haritası</h2>
-    <p>Her ziyaret, geldiği ülkenin sayacını bir artırır ve o ülkeden en son ne zaman ziyaret geldiği kaydedilir. IP adresi, cihaz bilgisi ya da gezinme geçmişi tutulmaz. <code>bp_seen</code> adlı küçük bir çerez, ziyaretinin o gün zaten sayıldığını bir gün boyunca hatırlar. Bir yazılımın haritayı şişirememesi için IP adresinden yukarıdaki gibi anahtarlı bir kod da ziyaret ettiğin gün boyunca tutulur ve ertesi gün silinir.</p>
+    <p>Her ziyaret, geldiği ülkenin sayacını bir artırır ve o ülkeden en son ne zaman ziyaret geldiği kaydedilir. IP adresi, cihaz bilgisi ya da gezinme geçmişi tutulmaz. <code>bp_seen</code> adlı küçük bir çerez, ziyaretinin o gün zaten sayıldığını bir gün boyunca hatırlar. Bir yazılımın haritayı şişirememesi için IP adresinden yukarıdaki gibi anahtarlı bir kod da ziyaret ettiğin gün boyunca tutulur ve ertesi gün silinir. Ziyaret, sayfayı kaydırdıktan, dokunduktan ya da bir tuşa bastıktan sonra sayılır; böylece otomatik sayfa yüklemeleri dışarıda kalır.</p>
 
     <h2>Şarkı önerileri</h2>
     <p>Bir şarkı önerirsen seçtiğin şarkıyı, kullandığın site dilini, Cloudflare'in bildirdiği ülkeni ve sadece yazarsan adını ve notunu alırım. Dinleyip karar verebilmem için aynı veritabanında saklanırlar ve bana bir mail gelir. Adın ve notun sitede hiçbir zaman gösterilmez. Sevdiğim şarkılar herkese açık bir Spotify çalma listesine eklenir; orada şarkı görünür, sen görünmezsin.</p>
@@ -98,7 +98,7 @@
     </ul>
 
     <h2>İstatistikler</h2>
-    <p>Sayfaların ne kadar hızlı açıldığını ve kaç kişinin ziyaret ettiğini görmek için Cloudflare Web Analytics kullanıyorum. Çerez kullanmaz ve seni başka sitelerde takip etmez.</p>
+    <p>Sayfaların ne kadar hızlı açıldığını ve kaç kişinin ziyaret ettiğini görmek için Cloudflare Web Analytics kullanıyorum. Çerez kullanmaz ve seni başka sitelerde takip etmez. Site ayrıca hangi bölümlerin görüldüğünü ve hangi ana düğmelere basıldığını gösteren kendi basit günlük sayımını tutar; örneğin "iletişim bölümü bugün 12 kez görüldü". Bu sayımda IP adresi, çerez ya da kimlik bilgisi yoktur, yani seninle ilişkilendirilemez ve altı ay sonra silinir.</p>
 
     <h2>Diğer servislerin işlediği veriler</h2>
     <ul>

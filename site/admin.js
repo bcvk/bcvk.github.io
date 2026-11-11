@@ -99,6 +99,9 @@
 
   /* -------------------------------------------------------------- overview */
   const CHECK_NAMES = { database: 'Veritabanı', spotify: 'Spotify (dinlediğim)', spotifySearch: 'Spotify arama', email: 'Mail gönderimi', spamCheck: 'Spam kontrolü', privacyKeys: 'Gizlilik anahtarları', delivery: 'Mesaj teslimi' };
+  const EVENT_LABELS = { load: 'Etkileşimli ziyaret', 'view-work': 'Ne yapıyorum görüldü', 'view-path': 'Yol görüldü', 'view-projects': 'Projeler görüldü', 'view-now': 'Şu sıralar görüldü', 'view-visits': 'Ziyaretçi haritası görüldü', 'view-contact': 'İletişim görüldü',
+    'click-cta-work': 'Üstteki ana düğme', 'click-cta-contact': 'Üstteki "Bana yaz"', 'click-project-dash': 'Ekip araçları kartı', 'click-project-chip': 'Çipik kartı', 'click-project-minik': 'Minik Kalp kartı', 'click-project-tamga': 'Tamga kartı',
+    'click-tune': 'Şarkı öner düğmesi', 'click-tune-send': 'Şarkı önerisi gönder', 'click-booking': 'Görüşme ayarla', 'click-linkedin': 'LinkedIn', 'click-github': 'GitHub', 'click-contact-send': 'Mesaj gönder' };
   loaders.overview = async (panel) => {
     const d = await get('overview');
     badges(d.counts);
@@ -114,6 +117,10 @@
         h('div', { class: 'acard' }, h('h2', { text: 'Şarkı önerileri' }), h('span', { class: 'big', text: d.counts.pending }), h('p', { text: `bekliyor, ${d.counts.approved} tanesi listede` }),
           h('button', { class: 'btn btn--ghost', type: 'button', text: 'Önerilere git', onclick: () => openTab('songs') })),
         h('div', { class: 'acard' }, h('h2', { text: 'Ziyaretler' }), h('span', { class: 'big', text: total.toLocaleString('tr-TR') }), h('p', { text: `${d.visits.length} ülkeden` })),
+        h('div', { class: 'acard' }, h('h2', { text: 'Etkileşim (son 30 gün)' }),
+          (d.events || []).length
+            ? h('ul', { class: 'checks' }, d.events.map((ev) => h('li', {}, h('span', { text: EVENT_LABELS[ev.name] || ev.name }), h('span', { text: Number(ev.n).toLocaleString('tr-TR') }))))
+            : h('p', { text: 'Henüz veri yok.' })),
         h('div', { class: 'acard' }, h('h2', { text: 'Spotify' }),
           h('p', { text: d.spotify.connected ? `Bağlı${d.spotify.user ? ': ' + d.spotify.user.name : ''}` : 'Bağlı değil' }),
           h('p', { text: d.spotify.panelToken ? 'Çalma listesi yetkisi var.' : 'Öneri eklemek için Ayarlar sekmesinden yeniden bağla.' })),

@@ -519,6 +519,7 @@
       b.href = projectUrl(p, lang);
       b.className = `card card--${p.size}${p.tone ? ' card--' + p.tone : ''}`;
       b.dataset.cats = p.cats.join(' ');
+      b.dataset.ev = 'project-' + p.id;
       b.style.setProperty('--d', i);
       b.style.viewTransitionName = 'card-' + p.id;
       b.innerHTML = `<span class="card__spot"></span>
@@ -796,11 +797,40 @@
   }
   loadWx(); setInterval(loadWx, 15 * 60 * 1000);
 
+  /* -------------------------------------------------------------- counting */
+  // Nothing is counted until a real interaction (scroll, tap, key), so scripts that only load
+  // the page stay out of the visitor map and the section tally. The tally is anonymous: one
+  // daily number per section seen or button pressed, with no cookie, address or identifier.
+  const human = new Promise((resolve) => {
+    const kinds = ['pointerdown', 'keydown', 'scroll', 'touchstart', 'wheel'];
+    const go = () => { kinds.forEach((k) => removeEventListener(k, go, true)); resolve(); };
+    kinds.forEach((k) => addEventListener(k, go, { capture: true, passive: true }));
+  });
+  const tally = { seen: new Set(), queue: [] };
+  function track(name) { if (tally.seen.has(name)) return; tally.seen.add(name); tally.queue.push(name); }
+  function flushTally() {
+    if (!tally.queue.length || !navigator.sendBeacon) return;
+    const body = JSON.stringify({ e: tally.queue.splice(0, 20), l: lang });
+    try { navigator.sendBeacon('/api/event', new Blob([body], { type: 'application/json' })); } catch (e) { /* counting is best effort */ }
+  }
+  human.then(() => {
+    track('load');
+    // A section counts as seen when it crosses the middle of the screen.
+    const so = new IntersectionObserver((entries) => entries.forEach((en) => {
+      if (en.isIntersecting) { track('view-' + en.target.id); so.unobserve(en.target); }
+    }), { rootMargin: '-45% 0px -45% 0px' });
+    $$('main > section[id]').forEach((s) => { if (s.id !== 'top') so.observe(s); });
+    setInterval(flushTally, 15000);
+  });
+  document.addEventListener('click', (e) => { const el = e.target.closest && e.target.closest('[data-ev]'); if (el) track('click-' + el.dataset.ev); }, true);
+  addEventListener('pagehide', flushTally);
+  document.addEventListener('visibilitychange', () => { if (document.hidden) flushTally(); });
+
   /* ----------------------------------------------------------- visitor map */
   const vm = { data: null, ready: false };
   const regionName = (cc) => { try { return new Intl.DisplayNames([lang], { type: 'region' }).of(cc); } catch (e) { return cc; } };
-  // The visit is counted right away, the heavy map file only loads when the section gets close.
-  const visitReq = fetch('/api/visits', { method: 'POST', headers: { Accept: 'application/json' } }).catch(() => null);
+  // The visit is counted after the first real interaction, the heavy map file only loads when the section gets close.
+  const visitReq = human.then(() => fetch('/api/visits', { method: 'POST', headers: { Accept: 'application/json' } })).catch(() => null);
   async function loadMap() {
     const box = $('[data-map]'); if (!box) return;
     try { box.innerHTML = await (await fetch('/assets/world.svg')).text(); } catch (e) { return; }

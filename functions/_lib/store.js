@@ -33,7 +33,8 @@ const DAY = 86_400_000;
 //   rate limit codes on messages and songs are cleared after 24 hours,
 //   yesterday's "already counted" visit codes are deleted,
 //   declined songs are deleted after 30 days, old login links after a day,
-//   names and notes on decided songs are erased after 30 days.
+//   names and notes on decided songs are erased after 30 days,
+//   the anonymous section and button tally is deleted after six months.
 export async function maintain(env, force = false) {
   const now = Date.now();
   if (!force) {
@@ -50,6 +51,8 @@ export async function maintain(env, force = false) {
     env.DB.prepare('DELETE FROM admin_links WHERE expires_at < ?1').bind(now - DAY),
     env.DB.prepare("UPDATE songs SET name = NULL, note = NULL WHERE (name IS NOT NULL OR note IS NOT NULL) AND status != 'pending' AND decided_at < ?1").bind(now - 30 * DAY)
   ]);
+  // Kept out of the batch above so the privacy clean up still runs if this table is missing.
+  await env.DB.prepare('DELETE FROM events WHERE day < ?1').bind(new Date(now - 180 * DAY).toISOString().slice(0, 10)).run().catch(() => {});
   await setSetting(env, 'last_maintain', now);
   const n = (i) => (res[i] && res[i].meta ? res[i].meta.changes : 0);
   return { at: now, messagesDeleted: n(0), messageCodesCleared: n(1), songCodesCleared: n(2), songsDeleted: n(3), visitCodesDeleted: n(4), linksDeleted: n(5), songNotesCleared: n(6) };

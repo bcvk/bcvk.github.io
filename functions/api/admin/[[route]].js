@@ -128,11 +128,15 @@ async function overview(env, ctx) {
   ]);
   let user = null;
   try { user = spotifyUser ? JSON.parse(spotifyUser) : null; } catch { user = null; }
+  // Anonymous tally of the last 30 days; empty until the events table exists.
+  const events = await env.DB.prepare('SELECT name, SUM(count) AS n FROM events WHERE day >= ?1 GROUP BY name ORDER BY n DESC')
+    .bind(new Date(Date.now() - 30 * 86_400_000).toISOString().slice(0, 10)).all().then((r) => r.results).catch(() => []);
   return json({
     ok: true,
     health,
     counts,
     visits: visits.results,
+    events,
     spotify: { connected: !!(await refreshToken(env)), panelToken: !!fromPanel, user, playlist: playlistUrl },
     lastMaintain: Number(lastMaintain) || null,
     lastIndexnow: lastIndexnow ? JSON.parse(lastIndexnow) : null
